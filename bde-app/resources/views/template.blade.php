@@ -9,7 +9,7 @@
         <title>BDE CESI</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 
         <!-- CSS files -->
         {{ Html::style('css/general.css') }}
@@ -25,10 +25,17 @@
             <img alt='logo du bde' id="logo" src="img/bde_arras.png" />
             <h1>@yield('title-page')</h1>
             <div id="right-bar">
+                @if (isset($user))
                 <span id="notif"><i class="fas fa-bell fa-2x"></i></span>
+                @endif
+
+                @if (!isset($user))
                 <button id="connexion">
                     <i id="logo-connexion" class="fas fa-user fa-2x"></i><span id="text-connexion">Connexion<span>
-                </button>
+                </button>    
+                @else
+                    <p>Bonjour, {{ $user->first_name }}</p>
+                @endif
                 <span id="menu"><i class="fas fa-bars fa-2x"></i></span>
             </div>
         </header>
@@ -43,15 +50,18 @@
                 <li><a href="/shop">Boutique</a></li>                
             </ul>
             <ul>
-                <li><a href="/signin">Connexion</a></li>
+                @if (isset($user))
+                <li><a href="/logout">Déconnexion</a></li>
+                @endif
                 <li><a href="admin">Administration</a></li>
             </ul>
         </nav>
 
         <div id="sign-tab">
-            <form>
-                <label>Identifiant </label><input type="login"/>
-                <label>Mot de passe </label><input type="password"/>
+            <form method="POST" action="signin">
+                {{ csrf_field() }}
+                <label>Identifiant </label><input name="login" type="login"/>
+                <label>Mot de passe </label><input name="password" type="password"/>
                 <button type="submit">Connexion</button>
             </form>
         </div>
