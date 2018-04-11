@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/ideas', function () {
     return view('ideas');
 });
+
+Route::get('/register', function () {
+    return view('register');
+});

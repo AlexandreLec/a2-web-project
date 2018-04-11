@@ -1,0 +1,58 @@
+
+#Titre{
+    text-align: center;
+    text-decoration: underline;
+}
+
+#conteneur1{
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top : 10px;
+    
+}
+
+.field{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.field i {
+    margin: 50px;
+}
+
+
+.text{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#champ {
+    margin: 100px;
+}
+
+input{
+    border-radius: 10px 10px 10px 10px;
+    height : 30px;
+    border-style: ridge;
+    font-size: medium;
+}
+
+select{
+    border-radius: 10px 10px 10px 10px;
+    height : 30px;
+    border-style : ridge;
+}
+
+.button{
+    border-radius: 50px 50px 50px 50px;
+	background: #d34836;
+	border: none;
+	font:bold 12px Arial Black;
+    padding:6px 0px 6px 0px;
+    text-align : center;
+    margin : 100px;
+}
