@@ -13,6 +13,7 @@
 
         <!-- CSS files -->
         {{ Html::style('css/general.css') }}
+        @yield('css')
 
         <!-- Script files -->
 
