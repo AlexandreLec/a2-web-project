@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/ideas', function () {
     return view('ideas');
 });
+
+Route::get('/isubmit', function () {
+    return view('isubmit');
+});
