@@ -55,7 +55,7 @@ p {
 .carousel {
 	margin: auto;
 	width: 70%;
-	height: 400px;
+	height: 500px;
 	margin-bottom: 50px;
 	max-width: 1000px;
 	min-width: 600px;
@@ -63,7 +63,7 @@ p {
 
 .carousel-cell {
   width: 100%;
-  height: 400px;
+  height: 500px;
   margin-right: 10px;
   background: #D03E3E;
   border-radius: 5px;
@@ -73,6 +73,17 @@ p {
 .carousel-cell img {
 	width: 100%;
 	height: 100%;
+}
+
+@media screen and (max-width: 1400px) {
+
+	.carousel {
+		height: 400px;
+	}
+
+	.carousel-cell {
+	  height: 400px;
+	}
 }
 
 @media screen and (max-width: 1000px) {
@@ -97,17 +108,28 @@ p {
 	}
 }
 
+@media screen and (max-width: 800px) {
+
+	.carousel {
+		height: 300px;
+	}
+
+	.carousel-cell {
+	  	height: 300px;
+	}
+}
+
 @media screen and (max-width: 700px) {
 
 	.carousel {
-		height: 200px;
+		height: 250px;
 		min-width: 200px;
 		width: 80%;
 		max-width: 450px;
 	}
 
 	.carousel-cell {
-	  	height: 200px;
+	  	height: 250px;
 	}
 }
 
@@ -116,5 +138,13 @@ p {
 	#event-pic img {
 		width: 200px;
 		height: 200px;
+	}
+
+	.carousel {
+		height: 200px;
+	}
+
+	.carousel-cell {
+	  	height: 200px;
 	}
 }

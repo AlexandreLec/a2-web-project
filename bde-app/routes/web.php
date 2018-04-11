@@ -23,7 +23,7 @@ Route::post('/signin', 'LoginController@login');
 
 Route::get('/users', function (){
 	return App\User::all();
-}
+});
 
 Route::get('/register', function () {
     return view('register');
