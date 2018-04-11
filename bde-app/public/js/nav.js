@@ -5,7 +5,9 @@ var showNav = function (){
 	let mask = document.querySelector('#mask');
 
 	menu_nav.style.display = 'inline';
-	boutton_connexion.style.visibility = 'hidden';
+	if(boutton_connexion !== null){
+		boutton_connexion.style.visibility = 'hidden';
+	}
 	menu_nav.style.zIndex = 1001;
 	mask.style.display = 'inline';
 };
@@ -29,7 +31,9 @@ var hideNav = function (){
 	let mask = document.querySelector('#mask');
 
 	menu_nav.style.display = 'none';
-	boutton_connexion.style.visibility = 'visible';
+	if(boutton_connexion !== null){
+		boutton_connexion.style.visibility = 'visible';
+	}
 	mask.style.display = 'none';
 
 };
@@ -41,4 +45,8 @@ menu_nav.addEventListener('click', showNav);
 mask.addEventListener('click', hideNav);
 
 let signBtn = document.getElementById('connexion');
-signBtn.addEventListener('click', showSign)
+if (signBtn !== null){
+	signBtn.addEventListener('click', showSign);
+}
+
+var flkty = new Flickity('.carousel');

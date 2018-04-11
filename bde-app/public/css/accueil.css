@@ -1,0 +1,120 @@
+h1, h2{
+	font-size: x-large;
+}
+
+p {
+	font-size: large;
+	font-family: 'Raleway', sans-serif;
+	font-style: regular;
+}
+
+.board {
+	display: flex;
+	flex-direction: column;
+}
+
+.board-pres {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	margin-bottom: 50px;
+}
+.overview {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.top-event {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.top-event #event-pic {
+	align-self: center;
+}
+
+.intro h1 {
+	text-align: center;
+}
+
+.top-event h2 {
+	text-align: center;
+}
+
+.board-pic {
+	position: relative;
+}
+
+#text-intro, #text-event {
+	margin: 25px;
+	text-align: justify;
+}
+
+.carousel {
+	margin: auto;
+	width: 70%;
+	height: 400px;
+	margin-bottom: 50px;
+	max-width: 1000px;
+	min-width: 600px;
+}
+
+.carousel-cell {
+  width: 100%;
+  height: 400px;
+  margin-right: 10px;
+  background: #D03E3E;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+.carousel-cell img {
+	width: 100%;
+	height: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+
+	.carousel {
+		margin: auto;
+		margin-bottom: 30px;
+		width: 70%;
+		height: 300px;
+		min-width: 400px;
+	}
+
+	.carousel-cell {
+	  height: 300px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+
+	.board-pres {
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width: 700px) {
+
+	.carousel {
+		height: 200px;
+		min-width: 200px;
+		width: 80%;
+		max-width: 450px;
+	}
+
+	.carousel-cell {
+	  	height: 200px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+
+	#event-pic img {
+		width: 200px;
+		height: 200px;
+	}
+}

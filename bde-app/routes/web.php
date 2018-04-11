@@ -11,10 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'LoginController@index');
+
+Route::get('/logout', 'LoginController@logout');
 
 Route::get('/ideas', function () {
     return view('ideas');
+});
+
+Route::post('/signin', 'LoginController@login');
+
+Route::get('/users', function (){
+	return App\User::all();
 });
