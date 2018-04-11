@@ -34,7 +34,7 @@
 
         <nav>
             <ul>
-                <li><a href="/">Accueil</a></li>
+                <li><a href="/">Accueil et J'aime Alexandre</a></li>
                 <li><a href="/events">Evènements</a></li>
                 <li><a href="/asso">Associations</a></li>
             </ul>
