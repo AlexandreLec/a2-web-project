@@ -35,7 +35,7 @@ if(!regex_co.test(value)){
 
     surligne(true);
     return false;
-
+    alert("Veuillez remplir correctement l'email");
 }
 else{
     surligne(false);

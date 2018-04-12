@@ -11,7 +11,7 @@
 
 @section('title-page')
 
-    
+    Accueil
 
 @stop
 
