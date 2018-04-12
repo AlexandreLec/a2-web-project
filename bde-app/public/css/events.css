@@ -1,0 +1,73 @@
+header ul {
+	list-style: none;
+	display: flex;
+	padding-left : 0px;
+}
+
+header ul li {
+	float: left;
+	margin-left: 20px;
+}
+
+header ul li:hover {
+	cursor: default;
+	border-bottom: solid 2px white;
+
+}
+
+@media screen and (max-width: 650px) {
+
+	header ul li {
+		margin-left: 10px;
+	}
+
+	#logo {
+		height: 100px;
+		width: 100px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+
+	#logo {
+		height: 150px;
+		width: 150px;
+	}
+
+	header ul {
+		flex-direction: column;
+	}
+
+	header ul li {
+		margin-top: 10px;
+	}
+
+	header {
+		height: 100px;
+	}
+
+	#sign-tab {
+		margin-top: 50px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+
+	#logo {
+		height: 100px;
+		width: 100px;
+	}
+
+	#right-bar {
+		right: 10px;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#menu {
+		order: -1;
+		margin: 0px;
+	}
+
+
+}

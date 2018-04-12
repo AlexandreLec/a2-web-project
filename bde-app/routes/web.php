@@ -26,3 +26,5 @@ Route::get('/register', function () {
 Route::get('/isubmit', function () {
     return view('isubmit');
 });
+
+Route::get('/events','Events@index');
