@@ -35,9 +35,10 @@ Route::get('/events','Events@index');
 Route::get('/events/ideas', 'EventIdeaController@index');
 
 //new idea submission
-Route::get('/isubmit','IdeaSubmitController@create');
-Route::post('/isubmit','IdeaSubmitController@store');
+Route::get('/isubmit','EventIdeaController@create');
+Route::post('/isubmit','EventIdeaController@store');
 
 Route::get('/artcicle', function (){
     return view('article');
 });
+

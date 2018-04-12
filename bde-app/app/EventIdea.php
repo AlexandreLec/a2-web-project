@@ -36,4 +36,6 @@ class EventIdea extends Model
     	}
 
     }
+
+    public $timestamps = false;
 }
