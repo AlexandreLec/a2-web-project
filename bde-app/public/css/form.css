@@ -1,0 +1,24 @@
+input{
+    border-radius: 10px 10px 10px 10px;
+    height : 30px;
+    border-style: ridge;
+    font-size: medium;
+}
+
+.field{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+#Titre{
+    text-align: center;
+}
+
+.button{
+    text-align: center;
+}

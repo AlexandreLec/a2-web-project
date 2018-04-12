@@ -9,6 +9,7 @@
                 
                  <div class ="idea_title">
                          <h2>{{ $idea->name }}</h2>
+                         {{ $idea->getPoll() }}
                          <i class="fas fa-thumbs-up"></i>
                  </div>
             
@@ -17,7 +18,7 @@
                      </div>
 
                     <div class="card_descrip"> 
-                         <p>{{ wordwrap($idea->description,10) }}</p>
+                         <p>{{ $idea->description }}</p>
                     </div>
             
                     <div class="idea_detail">

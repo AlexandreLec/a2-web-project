@@ -1,17 +1,15 @@
 
-
-
-
 #Titre{
     text-align: center;
     text-decoration: underline;
+    margin-top: 100px;
 }
 
 #conteneur1{
     display : flex;
     flex-direction: column;
     align-items: center;
-    margin-top : 10px;
+    margin-bottom : 10px;
     
 }
 
@@ -22,17 +20,6 @@
     justify-content: space-between;
     align-items: center;
 }
-
-.field i {
-    margin: 50px;
-}
-
-
-.text{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 
 
 input{
@@ -48,12 +35,3 @@ select{
     border-style : ridge;
 }
 
-.button{
-    border-radius: 50px 50px 50px 50px;
-	background: #d34836;
-	border: none;
-	font:bold 12px Arial Black;
-    padding:6px 0px 6px 0px;
-    text-align : center;
-    margin : 100px;
-}
