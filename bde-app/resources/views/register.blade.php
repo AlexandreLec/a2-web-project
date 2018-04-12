@@ -1,13 +1,11 @@
 @extends('template')
 @section('css')
-    {{ Html::style('css/register.css') }}
+    {{ Html::style('css/form.css') }}
 @stop
 @section('content')
     
     <h1 id="Titre">Inscription</h1>
 
-
-<form id="champ"> 
 
 <div id="conteneur1">
 
@@ -58,8 +56,6 @@
         <i class="fas fa-lock"></i><input type="password" name="Passwordv" id="Passwordv"/>
    </div>
 </div>
-
-</form>
 
 <div class="button"><a href="page.html"> Créer votre compte </a></div>
 

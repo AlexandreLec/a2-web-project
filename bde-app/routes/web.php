@@ -23,8 +23,12 @@ Route::post('/signin', 'LoginController@login');
 
 Route::get('/users', function (){
 	return App\User::all();
-}
+});
 
-Route::get('/register', function () {
+Route::get('/register', function (){
     return view('register');
+});
+
+Route::get('/artcicle', function (){
+    return view('article');
 });
