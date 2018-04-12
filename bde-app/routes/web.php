@@ -19,11 +19,15 @@ Route::get('/users', function (){
 	return App\User::all();
 });
 
-Route::get('/register', function () {
+Route::get('/register', function (){
     return view('register');
 });
+
 
 
 //new idea submission
 Route::get('/isubmit','IdeaSubmitController@create');
 Route::post('/isubmit','IdeaSubmitController@store');
+
+Route::get('/artcicle', function (){
+    return view('article');
