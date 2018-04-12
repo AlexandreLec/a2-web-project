@@ -15,6 +15,7 @@ body {
 
 a {
 	text-decoration: none;
+	color: white;
 }
 
 button {
@@ -200,6 +201,14 @@ nav ul li a {
 		font-size: large;
 	}
 
+	.container {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+
 	#right-bar {
 		right: 20px;
 	}
@@ -210,11 +219,6 @@ nav ul li a {
 
 	#connexion {
 		border: none;
-	}
-
-	.container {
-		margin-left: 5px;
-		margin-right: 5px;
 	}
 }
 
