@@ -23,12 +23,11 @@ Route::get('/users', function (){
 });
 
 
+
+//add a new user
 Route::get('/register', 'UsersController@create');
 Route::post('/register', 'UsersController@store');
 
-Route::get('/register', function (){
-    return view('register');
-});
 
 Route::get('/isubmit', function () {
     return view('isubmit');

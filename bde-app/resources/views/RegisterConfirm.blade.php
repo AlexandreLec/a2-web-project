@@ -1,6 +1,16 @@
-@extends('template')
+@extends ('template')
+
 @section('css')
+
 @stop
+
 @section('content')
 
-<p> Merci pour votre inscription, dirigez-vous vers l'acceuil </p>
+<div>
+    <h4>Inscription</h4>
+    <div>
+        <p>Merci pour votre inscription, rejoingnez-nous sur notre site</p>
+    </div>
+</div>
+
+@stop

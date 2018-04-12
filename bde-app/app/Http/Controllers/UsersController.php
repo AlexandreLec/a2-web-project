@@ -15,11 +15,11 @@ class UsersController extends Controller
 
     public function store(Request $request){
         
-        $firstName = $request->input('first_name');
-        $surname = $request->input('surname');
-        $mail = $request->input('mail');
-        $password = $request->input('password');
-        $name = $request->input('name');
+        $firstName = $request->input('Name');
+        $surname = $request->input('Surname');
+        $mail = $request->input('Mail');
+        $password = $request->input('Password');
+        $name = $request->input('Grade');
         $add = DB::select("CALL ajout_user(?,?,?,?,?)",array($firstName, $surname, $mail, $password,$name));
         return view('RegisterConfirm');
     }

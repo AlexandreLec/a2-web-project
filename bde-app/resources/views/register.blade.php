@@ -8,8 +8,8 @@
     
     <h1 id="Titre">Inscription</h1>
 
-<form action="" method='POST'>
-{{ csrf_field() }}
+<form method='POST'>
+    {{ csrf_field() }}
 
 <div id="conteneur1">
    
@@ -66,15 +66,17 @@
         </div>
         <i class="fas fa-graduation-cap"></i>
         <select name="Grade" id="Grade">
-            <option value="1">Exia</option>
-            <option value="2">EI</option>
-            <option value="3">Corp</option>
+            <option value="Etudiant EXIA">Exia</option>
+            <option value="Etudiant EI">EI</option>
+            <option value="Salarié CESI">Corp</option>
         </select>
    </div>
-</div>
+</div> 
+
+    <div class="button">
+    <input type="submit" value="S'inscrire">
+    </div>
+
 </form>    
-    
 
-<div class="button"><a href="RegisterConfirm.blade.php"> Créer votre compte </a></div>
-
-@stop
+   
