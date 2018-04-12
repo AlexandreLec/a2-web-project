@@ -11,7 +11,7 @@
     display : flex;
     flex-direction: column;
     align-items: center;
-    margin-top : 10px;
+    margin-bottom : 10px;
     
 }
 
@@ -48,12 +48,3 @@ select{
     border-style : ridge;
 }
 
-.button{
-    border-radius: 50px 50px 50px 50px;
-	background: #d34836;
-	border: none;
-	font:bold 12px Arial Black;
-    padding:6px 0px 6px 0px;
-    text-align : center;
-    margin : 100px;
-}

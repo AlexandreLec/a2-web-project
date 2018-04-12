@@ -19,13 +19,12 @@ Route::get('/users', function (){
 	return App\User::all();
 });
 
-Route::get('/register', function (){
-    return view('register');
-});
+Route::get('/register', 'UsersController@create');
+Route::post('/register', 'UsersController@store');
 
-
-Route::get('/artcicle', function (){
+Route::get('/article', function (){
     return view('article');
+});
 
 Route::get('/isubmit', function () {
     return view('isubmit');

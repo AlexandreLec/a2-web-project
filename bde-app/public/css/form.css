@@ -21,8 +21,9 @@ input{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
 }
 
-.field i {
-    margin: 50px;
+#Titre{
+    text-align: center;
 }
