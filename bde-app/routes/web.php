@@ -23,6 +23,7 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/isubmit', function () {
-    return view('isubmit');
-});
+
+//new idea submission
+Route::get('/isubmit','IdeaSubmitController@create');
+Route::post('/isubmit','IdeaSubmitController@store');
