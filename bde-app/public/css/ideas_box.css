@@ -1,0 +1,165 @@
+.idea_button form button {
+
+    justify-content:center;
+    border-radius:8px;
+    border-color:#D03E3E;
+    font-size: 25px;
+    color : #D03E3E;
+
+    margin-bottom: 10px;
+	
+}
+
+.idea_button {
+    display: flex;
+    justify-content: center;
+}
+
+.card_idea{
+    display: flex;
+	width:33%;
+    height:20%;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-left:10px;
+    
+}
+.idea_title{
+
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    
+}
+
+.card-container {
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    width: 100%;
+
+}
+
+.card_img {
+    
+	width:250px;
+    height:150px;
+    border-style: solid ;
+    border-color: gray;
+}
+
+.card_img img {
+    
+	width:100%;
+    height:100%;
+}
+
+
+.card_descrip p{
+    color: black;
+    font-size: large;
+    margin-left: 35px; 
+    margin-right: 35px;
+    text-align: justify;
+}
+
+.idea_detail form button{
+
+    justify-content:center;
+    border-radius:8px;
+    border-color:#D03E3E;
+    font-size: 25px;
+    color : #D03E3E;
+    margin-bottom: 10px;
+}
+@media screen and (max-width: 1300px)
+{
+    .card-container {
+        flex-wrap: wrap;
+        
+    
+    }
+    .card_idea{
+        width:45%;
+        
+    }
+
+}
+@media screen and (max-width: 1100px)
+{
+    .card_img {
+        width:150px;
+        height:100px;
+        flex-direction: column;
+       
+        
+    }
+
+    .card_idea{
+        width:45%;
+        
+    }
+    .card-container {
+        flex-wrap: wrap;
+        
+    }
+  
+   
+}
+@media screen and (max-width: 900px)
+{
+    .card_img {
+        width:200px;
+        height:150px;
+        
+    }
+
+    .container {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+  
+}
+
+
+@media screen and (max-width: 800px)
+{
+
+    .card_idea{
+       margin-left: 30px;
+        
+    }
+}
+   
+   
+  
+
+@media screen and (max-width: 700px)
+{
+    .card_img {
+        width:150px;
+        height:100px;
+        
+    }
+    .container {
+        margin-left: 40px;
+        margin-right: 30px;
+        
+    }
+
+
+  
+}
+
+@media screen and (max-width: 650px)
+{
+
+    .card_idea{
+        width:100%;
+        
+    }
+}

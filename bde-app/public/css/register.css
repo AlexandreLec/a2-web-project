@@ -1,4 +1,7 @@
 
+
+
+
 #Titre{
     text-align: center;
     text-decoration: underline;
@@ -30,9 +33,7 @@
     margin-bottom: 20px;
 }
 
-#champ {
-    margin: 100px;
-}
+
 
 input{
     border-radius: 10px 10px 10px 10px;
