@@ -9,7 +9,7 @@
         <title>BDE CESI</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" >
 
         <!-- CSS files -->
         {{ Html::style('css/general.css') }}
@@ -22,8 +22,9 @@
 
     <body>
         <header>
-            <img alt='logo du bde' id="logo" src="img/bde_arras.png" />
+            <img alt='logo du bde' id="logo" src="/img/bde_arras.png" />
             <h1>@yield('title-page')</h1>
+            @yield('bar')
             <div id="right-bar">
                 @if (isset($user))
                 <span id="notif"><i class="fas fa-bell fa-2x"></i></span>
@@ -63,7 +64,7 @@
         <div id="sign-tab">
             <form method="POST" action="signin">
                 {{ csrf_field() }}
-                <label>Identifiant </label><input name="login" type="login"/>
+                <label>Identifiant </label><input name="login" type="text"/>
                 <label>Mot de passe </label><input name="password" type="password"/>
                 <button type="submit">Connexion</button>
             </form>

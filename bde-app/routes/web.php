@@ -9,6 +9,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
 Route::get('/', 'LoginController@index');
 Route::get('/logout', 'LoginController@logout');
 Route::get('/ideas', function () {
@@ -19,14 +22,28 @@ Route::get('/users', function (){
 	return App\User::all();
 });
 
+
 Route::get('/register', 'UsersController@create');
 Route::post('/register', 'UsersController@store');
+
+Route::get('/register', function (){
+    return view('register');
+});
+
+Route::get('/isubmit', function () {
+    return view('isubmit');
+});
+
+Route::get('/events','Events@index');
+
+Route::get('/events/ideas', 'EventIdeaController@index');
+
+//new idea submission
+Route::get('/isubmit','EventIdeaController@create');
+Route::post('/isubmit','EventIdeaController@store');
+
 
 Route::get('/article', function (){
     return view('article');
 });
 
-Route::get('/isubmit', function () {
-    return view('isubmit');
-
-});

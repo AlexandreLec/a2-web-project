@@ -2,6 +2,7 @@
 @section('css')
     {{ Html::style('css/register.css') }}
     {{ Html::style('css/form.css') }}
+    {{ Html::style('js/check_connex.js') }}
 @stop
 @section('content')
     

@@ -1,17 +1,19 @@
 @extends('template')
 
 @section('css')
-    {{ Html::style('css/submit_idea.css') }}
+    {{ Html::style('css/form.css') }}
+    {{ Html::style('css/isubmit_idea.css') }}
 @stop
 
 @section('content')
     
-    <h1>Soumettre une idée d'évènement</h1>
+<h1 id="Titre">Soumettre une idée d'évènement</h1>
     
-    <form action="" method="">
+<form method="POST">
+    {{ csrf_field() }}
         <div>
-            <label for="name">Nom de l'événement:</label>
-            <input autofocus="true" type="text" id="name" name="event_name">
+            <label class="text" for="name">Nom de l'event:</label>
+            <input class="field" autofocus="true" type="text" id="name" name="event_name">
         </div>
         <div>
             <label for="period">Période de l'event</label>
@@ -25,6 +27,10 @@
                     <option>Goûter</option>
                 <optgroup/>
             </select>
+        </div>
+        <div>
+            <label for="place">Lieu de l'event</label>
+            <input type="text" id="place" name="event_place">
         </div>
         <div>
             <label for="description">Description :</label>
@@ -42,11 +48,11 @@
         </div>
         <div>
             <label for="img">Illustration</label>
-            <input type="file" accept="image/*" multiple>
+            <input type="file" accept="image/*">
         </div>
         
         <input type="submit" value="Soumettre l'idée">
         
-    </form>
+</form>
 
 @stop
