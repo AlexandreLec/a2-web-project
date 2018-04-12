@@ -9,6 +9,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+
 Route::get('/', 'LoginController@index');
 Route::get('/logout', 'LoginController@logout');
 Route::get('/ideas', function () {
@@ -28,6 +31,8 @@ Route::get('/isubmit', function () {
 });
 
 Route::get('/events','Events@index');
+
+Route::get('/events/ideas', 'EventIdeaController@index');
 
 //new idea submission
 Route::get('/isubmit','IdeaSubmitController@create');
