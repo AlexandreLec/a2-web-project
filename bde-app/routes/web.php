@@ -40,8 +40,4 @@ Route::post('/isubmit','IdeaSubmitController@store');
 
 Route::get('/artcicle', function (){
     return view('article');
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> origin/master
