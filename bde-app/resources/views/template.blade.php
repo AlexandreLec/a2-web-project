@@ -22,7 +22,7 @@
 
     <body>
         <header>
-            <img alt='logo du bde' id="logo" src="img/bde_arras.png" />
+            <img alt='logo du bde' id="logo" src="/img/bde_arras.png" />
             <h1>@yield('title-page')</h1>
             @yield('bar')
             <div id="right-bar">
