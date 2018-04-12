@@ -21,27 +21,25 @@
     <article class="board-pic">
 
             <div class="carousel">
-                <div class="carousel-cell"><img src="https://picsum.photos/1000/500"/></div>
-                <div class="carousel-cell"><img src="https://picsum.photos/1000/500"/></div>
-                <div class="carousel-cell"><img src="https://picsum.photos/1000/500"/></div>
-                <div class="carousel-cell"><img src="https://picsum.photos/1000/500"/></div>
-                <div class="carousel-cell"><img src="https://picsum.photos/1000/500"/></div>
+                @foreach ($pictures as $picture)
+                    <div class="carousel-cell"><img src="{{ 'event/img/'.$picture }}"/></div>
+                @endforeach
             </div>
         </article>        
         <article class="board-pres">
             <div class="overview">
                 <div class="intro">
                     <h1>Le BDE de l'école d'ingénieur CESI</h1>
-                    <p id="text-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p id="text-intro">Le Bureau des étudiants est l’association en charge de la vie étudiante de l'école d'ingénieur CESI. Il s’occupe aussi bien de l’organisation d’événements que de l’amélioration de la vie quotidienne sur le campus. Ce sont donc des étudiants, éluent par les étudiants pour les étudiants.</p>
                 </div>
                 <div class="top-products">
                     
                 </div>
             </div>
             <div class="top-event">
-                <h2>Event du mois : Karting</h2>
-                <p id="text-event">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <div id="event-pic"><img src="https://picsum.photos/300"/></div>
+                <h2>Event du mois : {{ $monthEvent->name }}</h2>
+                <p id="text-event">{{ $monthEvent->description }}</p>
+                <div id="event-pic"><img src="{{ $monthEvent->url_img }}"/></div>
             </div>
         </article>
         

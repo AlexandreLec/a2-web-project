@@ -42,7 +42,7 @@
 
         <nav>
             <ul>
-                <li><a href="/">Accueil et J'aime Alexandre</a></li>
+                <li><a href="/">Accueil</a></li>
                 <li><a href="/events">Evènements</a></li>
                 <li><a href="/asso">Associations</a></li>
             </ul>
@@ -52,8 +52,11 @@
             <ul>
                 @if (isset($user))
                 <li><a href="/logout">Déconnexion</a></li>
+                    @if ($user->checkAdmin())
+                    <li><a href="admin">Administration</a></li>
+                    @endif
                 @endif
-                <li><a href="admin">Administration</a></li>
+                
             </ul>
         </nav>
 
