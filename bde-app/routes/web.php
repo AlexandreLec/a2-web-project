@@ -36,11 +36,13 @@ Route::get('/events','Events@index');
 
 Route::get('/events/ideas', 'EventIdeaController@index');
 
-Route::get('/events/ideas/{id}', 'EventIdeaController@show');
 
 //new idea submission
 Route::get('/events/ideas/create','EventIdeaController@create');
 Route::post('/events/ideas/create','EventIdeaController@store');
+
+Route::get('/events/ideas/{id}', 'EventIdeaController@show');
+
 
 
 Route::get('/article', function (){
@@ -50,6 +52,4 @@ Route::get('/article', function (){
 Route::get('/idea/poll/add/{id}', 'EventIdeaController@addPoll');
 Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 
-Route::get('/idea', function (){
-    return view('event/idea');
-});
+
