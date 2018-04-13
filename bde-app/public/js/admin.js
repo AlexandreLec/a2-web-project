@@ -1,23 +1,60 @@
+var User = function(id,name, surname, mail, group) {
+  this.id = id;
+  this.name = name;
+  this.surname = surname;
+  this.mail = mail;
+  this.group = group;
+};
+
+var users=[];
+
+var getUserById = function(id){
+
+	return users.find(function(element){
+		return element.id == id;
+	});
+};
+
+var showEdit = function (){
+
+	let boardEdit = document.querySelector('.board-edit form');
+	let hidePanel = document.querySelector('#hide');
+
+	boardEdit.style.visibility = 'visible';
+	hidePanel.style.display = 'inline';
+
+	user = getUserById(this.id);
+	document.getElementById("name").value=user.name;
+	document.getElementById("surname").value=user.surname;
+	document.getElementById("mail").value=user.mail;
+	document.getElementById("user-form").action="/users/update/"+user.id;
+
+	document.getElementById(user.group.name).setAttribute("selected", "");
+};
+
+var hideEdit = function (){
+
+	let boardEdit = document.querySelector('.board-edit form');
+	let hidePanel = document.querySelector('#hide');
+
+	boardEdit.style.visibility = 'hidden';
+	hidePanel.style.display = 'none';
+
+};
 
 var actionsButton = function (user){
 	let actions = document.createElement("td");
-	let actionModify = document.createElement("a");
 	let modify = document.createElement("i");
-
-	let path = "/admin/user/edit/"+user.id;
-	actionModify.setAttribute("href", path);
 	modify.className="fas fa-edit";
-
-	actionModify.appendChild(modify);
-
-	actions.appendChild(actionModify);
+	actions.setAttribute('id', user.id);
+	actions.appendChild(modify);
+	actions.addEventListener('click', showEdit);
 
 	return actions;
 }
 
 $(document).ready( function () {
     
-
     $.get("/api/users", function(data, status){
         data.forEach(function (user){
         	let row = document.createElement("tr");
@@ -33,6 +70,8 @@ $(document).ready( function () {
         	mail.innerHTML = user.mail;
         	group.innerHTML = user.group.name;
 
+        	users.push(new User(user.id, user.first_name, user.surname, user.mail, user.group));
+
         	row.appendChild(firstname);
         	row.appendChild(surname);
         	row.appendChild(mail);
@@ -46,3 +85,8 @@ $(document).ready( function () {
     });
 });
 
+
+
+let hidePanel = document.getElementById('hide');
+
+hidePanel.addEventListener('click', hideEdit);

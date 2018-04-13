@@ -15,7 +15,7 @@
 Route::get('/', 'LoginController@index');
 Route::get('/admin', 'UserController@admin');
 Route::get('/logout', 'LoginController@logout');
-//Route::get('/admin/user/edit/{id}', 'UserController@create');
+
 Route::get('/ideas', function () {
     return view('ideas');
 });
@@ -24,11 +24,12 @@ Route::get('/users', function (){
 	return App\User::all();
 });
 
-
+//User management
+Route::post('/users/update/{n}', 'UserController@update');
 
 //add a new user
-Route::get('/register', 'UsersController@create');
-Route::post('/register', 'UsersController@store');
+Route::get('/register', 'UserController@register');
+Route::post('/register', 'UserController@store');
 
 
 Route::get('/events','Events@index');
