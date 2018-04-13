@@ -104,5 +104,10 @@ class EventIdeaController extends Controller
         }
         
     }
+
+    public function show($id){
+        $idea = EventIdea::find($id);
+        return view('event.idea', compact('idea'));
+    }
     
 }
