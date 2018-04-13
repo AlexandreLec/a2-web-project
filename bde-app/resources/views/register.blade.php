@@ -79,9 +79,4 @@
     <input type="submit" value="S'inscrire">
     </div>
 
-
-<a id="button" href="page.html"> Créer votre compte </a>
-{{ Html::script('js/check_connex.js') }}
-@stop
-
 </form>    
