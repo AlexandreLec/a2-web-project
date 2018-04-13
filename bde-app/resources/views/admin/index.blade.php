@@ -8,7 +8,7 @@
 
     {{ Html::script('https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js') }}
 
-    {{ Html::script('js/admin.js') }}
+    
 
 @stop
 
@@ -26,8 +26,8 @@
 	    	<table id="users" class="display">
 			    <thead>
 			        <tr>
+			            <th>Prénom</th>
 			            <th>Nom</th>
-			            <th>Prenom</th>
 			            <th>Mail</th>
 			            <th>Groupe</th>
 			            <th>Action</th>
@@ -44,7 +44,30 @@
 	    <section class="manage-board" id="shop-manage">
 	    	<h2>Boutique</h2>
 	    </section>
-	</div>
 
+	</div>
+	<div class="board-edit">
+		<form id="user-form" method="POST" action="/users/update/">
+			{{ csrf_field() }}
+	    	<label>Prénom</label><input id="name" name="firstname" type="text" />
+	    	<label>Nom</label><input id="surname" name="surname" type="text" />
+	    	<label>Mail</label><input id="mail" name="mail" type="text" />
+	    	<label>Groupe</label>
+	    	<select id="grade" name="grade">
+	            <option id="Etudiant EXIA" value="Etudiant EXIA">Exia</option>
+	            <option id="Etudiant EI" value="Etudiant EI">EI</option>
+	            <option id="Salarié CESI" value="Salarié CESI">Corp</option>
+	            <option id="Membre BDE" value="Membre BDE">Membre BDE</option>
+        	</select>
+        	<button type="submit">Mettre à jour</button>
+        	<form id="suppr" method="POST" action="/users/update/">
+        		{{ csrf_field() }}
+        		<button type="submit">Supprimer</button>
+        	</form>
+        </form>
+	</div>
+	<div id="hide"></div>
+
+	{{ Html::script('js/admin.js') }}
 
 @stop

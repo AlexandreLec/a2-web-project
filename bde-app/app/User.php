@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'surname', 'mail', 'password','id_group',
     ];
 
     /**
@@ -56,6 +56,17 @@ class User extends Authenticatable
             return $this->groupName;
         }
         return $this->group;
+    }
+
+    public function change($firstname, $surname, $mail, $group){
+
+        $this->first_name = $firstname;
+        $this->surname = $surname;
+        $this->mail = $mail;
+
+        $this->id_group = DB::table('groups')->where('name', '=', $group)->get()->all()[0]->id;
+
+        $this->save();
     }
 
     public function group()
