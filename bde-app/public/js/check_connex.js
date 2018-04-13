@@ -1,98 +1,124 @@
-var emailB = surnameB = firstnameB = passwordB = gradeB = false; 
+var mailB = surnameB = firstnameB = passwordB  = false;
 
-function checkname(){
+function checkname() {
     var firstname = document.getElementById('Name');
-   
- if(firstname.value.length <= 15 ){
-   firstname.style.border ="solid 2px green";
+    var filtre = /[a-z]{2,}$/;
+    console.log(firstname.value)
+
+    if (filtre.test(firstname.value)) {
+
+        firstname.style.border = "solid 2px green";
         firstnameB = true;
     }
- else 
-    {
-        firstname.style.border ="solid 2px red";
-        
+    else {
+        firstname.style.border = "solid 2px red";
+
     }
 }
 
-function checksecondname(){
+function checksecondname() {
     var surname = document.getElementById('Surname');
-
- if(surname.value.length <= 15 ){
-      surname.style.border ="solid 2px green";
+    var filtre = /[a-z]{2,}$/;
+    if (filtre.test(surname.value)) {
+        surname.style.border = "solid 2px green";
         surnameB = true;
     }
- else {
-      surname.style.border ="solid 2px red";
-       }
-   }
+    else {
+        surname.style.border = "solid 2px red";
+    }
+}
 
 
 function checkmail() {
-    /*var regex_co = /^[a-z.]+@[a-z]{2,}\.fr$/;*/
-    /*var regex_co = /^[a-z.]+@[a-z]{2,}\.[a-z]{1}$/;*/
-    var regex_cesi = /^[a-z.]{2,}@cesi\.fr/;
+    var grade = document.getElementById('Grade').value;
     var regex_viacesi = /^[a-z.]{2,}@viacesi\.fr/;
+    var regex_cesi = /^[a-z.]{2,}@cesi\.fr/;
+    var mail = document.getElementById('Mail');
 
-    if(regex_cesi.test(this.value)){
-            mailB = true ;
-      
-     this.style.border = "solid 2px green";
+    console.log('check grade');
+    if ((grade == "Etudiant EXIA" || grade == "Etudiant EI") && regex_viacesi.test(mail.value)) {
+
+        console.log('ok student');
+        mail.style.border = "solid 2px green";
+        mailB=true;
     }
-    else{
-        this.style.border = "solid 2px red";
-        
+    else if (grade == "Salarié CESI" && regex_cesi.test(mail.value)) {
+        console.log("ok corp");
+        mail.style.border = "solid 2px green";
     }
-    
-    if(regex_viacesi.test(this.value)){
-        mailB = true ;
-  
- this.style.border = "solid 2px green";
-    }
-else{
-    this.style.border = "solid 2px red";
-    
+    else {
+        mail.style.border = "solid 2px red";
     }
 }
-function checkgrade(){
-        var grade = document.getElementById('Grade').value;
 
-     if(grade){
-       grade.style.border ="solid 2px green";
-            gradeB = true;
-        }
-     else 
-        {
-            grade.style.border ="solid 2px red";
+function checkpassword(){
+    var password = document.getElementById('Password');
+    var passwordv = document.getElementById('Passwordv');
+    var regex_pass =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{2,})/
+    console.log("ok");
+
+        if ((password.value == '' || passwordv.value == '') && regex_pass.test(password.value)){
+            //alert('Tous les champs ne sont pas remplis');
+            console.log("mdpcheck");
+            password.focus();
+           
+           // return false;
             
-        }
+            }
+          
+          else if (password.value != passwordv.value) {
+          
+            password.focus();
+            password.style.border = "solid 2px red"
+            passwordv.style.border = "solid 2px red"
+    
+            //return false;
+            }
+          else if ((password.value == passwordv.value) &&  regex_pass.test(password.value)){
+            //return true;
+            console.log("bon mdp");
+            password.style.border = "solid 2px green"
+            passwordv.style.border = "solid 2px green"
+            passwordB =true;
+          }
+          else {
+             
+            alert('Il manque une majuscule et une minuscule ou un chiffre!');
+            password.focus();
+            //return false;
+            password.style.border = "solid 2px red"
+            passwordv.style.border = "solid 2px red"
+            }
+          
+
     }
     
-
-
-
 
 
 var firstname = document.getElementById('Name');
-firstname.addEventListener('change',checkname);
-
-var mail = document.getElementById('Mail');
-mail.addEventListener('change',checkmail);
+firstname.addEventListener('keyup', checkname);
 
 var surname = document.getElementById('Surname');
-surname.addEventListener('change',checksecondname);
+surname.addEventListener('keyup', checksecondname);
+
+var mail = document.getElementById('Mail');
+mail.addEventListener('keyup', checkmail);
+
+
+var password = document.getElementById('Password');
+password.addEventListener('change', checkpassword);
+
+var passwordv = document.getElementById('Passwordv');
+passwordv.addEventListener('change', checkpassword);
 
 
 var grade = document.getElementById('Grade');
-grade.addEventListener('click',checkgrade);
+grade.addEventListener('click', checkmail);
 
 
-
-document.getElementById('button').addEventListener('click', function(e) {
-        
-    if (mailB && surnameB && firstnameB && passwordB) {
-    } 
-    else {
-        e.preventDefault();    
-        style.border = "solid 2px red";  
+document.getElementById('btnSubmit').addEventListener('click', function (e) {
+        if (firstnameB == false || surnameB == false || passwordB == false || mailB == false) {
+            e.preventDefault();
+        }
     }
-});
+);
