@@ -45,4 +45,3 @@ Route::post('/isubmit','EventIdeaController@store');
 Route::get('/article', function (){
     return view('article');
 });
-

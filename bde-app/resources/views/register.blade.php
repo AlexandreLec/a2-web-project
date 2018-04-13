@@ -2,7 +2,7 @@
 @section('css')
     {{ Html::style('css/register.css') }}
     {{ Html::style('css/form.css') }}
-    {{ Html::style('js/check_connex.js') }}
+    
 @stop
 @section('content')
     
@@ -79,6 +79,9 @@
     <input type="submit" value="S'inscrire">
     </div>
 
-</form>    
 
-   
+<a id="button" href="page.html"> Créer votre compte </a>
+{{ Html::script('js/check_connex.js') }}
+@stop
+
+</form>    
