@@ -10,11 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    private $admin;
-
-    public function __construct(){
-        $this->admin = null;
-    }
+    private $admin = null;
+    public $groupName = null;
 
     /**
      * The attributes that are mass assignable.
@@ -52,4 +49,18 @@ class User extends Authenticatable
         }
         return $this->admin;
     }
+
+    public function getGroup(){
+        if($this->group === null){
+            $this->groupName = $this->group;
+            return $this->groupName;
+        }
+        return $this->group;
+    }
+
+    public function group()
+    {
+        return $this->belongsTo('App\Group','id_group');
+    }
+
 }

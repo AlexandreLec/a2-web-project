@@ -1,38 +1,27 @@
 
-
-
-
 #Titre{
     text-align: center;
     text-decoration: underline;
+    margin-top: 100px;
 }
 
 #conteneur1{
     display : flex;
     flex-direction: column;
     align-items: center;
-    margin-top : 10px;
+    width : 100%;
     
 }
 
 .field{
-    width: 50%;
+
+    width: 70%;
+    margin-top: 35px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+
 }
-
-.field i {
-    margin: 50px;
-}
-
-
-.text{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 
 
 input{
@@ -40,6 +29,7 @@ input{
     height : 30px;
     border-style: ridge;
     font-size: medium;
+    margin-left : 10px;
 }
 
 select{
@@ -48,12 +38,31 @@ select{
     border-style : ridge;
 }
 
+
+.icon{
+    margin-right: 35px;
+    margin-left: 35px;
+
+}
+
 .button{
-    border-radius: 50px 50px 50px 50px;
-	background: #d34836;
-	border: none;
-	font:bold 12px Arial Black;
-    padding:6px 0px 6px 0px;
-    text-align : center;
-    margin : 100px;
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 500px){
+
+    .field{
+
+        flex-direction: column;
+    
+    }
+    
+}
+
+@media screen and (max-width: 400px){
+
+    .text{
+        display : flex;
+        flex-direction: column;
+    }
 }

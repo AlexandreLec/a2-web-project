@@ -9,7 +9,7 @@
                 
                  <div class ="idea_title">
                          <h2>{{ $idea->name }}</h2>
-                         <i class="fas fa-thumbs-up"></i>
+                         <div><span>{{ $idea->getPoll() }}</span><i class="fas fa-thumbs-up"></i></div>
                  </div>
             
                      <div class="card_img"> 
@@ -17,22 +17,20 @@
                      </div>
 
                     <div class="card_descrip"> 
-                         <p>{{ wordwrap($idea->description,10) }}</p>
+                         <p>{{ $idea->description }}</p>
                     </div>
             
                     <div class="idea_detail">
-                        <form>
-                             <button type="submit">Voir détails</button>
-                        </form>
+                        <a href="/events/ideas/{{ $idea->id }}"><button type="button">Voir détails</button></a>
                     </div>
     </div>
     @endforeach
 </div>   
 
 <div class="idea_button">
-    <form>
-        <button type="submit">Proposer une nouvelle idée</button>
-    </form>
+    <a href="/events/ideas/create"><button type="button">Proposer une nouvelle idée</button></a>
 </div>
+
+<script src=""></script>
         
 @stop

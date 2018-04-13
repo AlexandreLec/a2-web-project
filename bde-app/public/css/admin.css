@@ -1,0 +1,12 @@
+a {
+	color: black;
+}
+
+#admin-board {
+	display: flex;
+	flex-direction: column;
+}
+
+.manage-board {
+	border-top: solid 1px gray;
+}
