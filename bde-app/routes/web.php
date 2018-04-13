@@ -35,6 +35,8 @@ Route::get('/events','Events@index');
 
 Route::get('/events/ideas', 'EventIdeaController@index');
 
+Route::get('/events/ideas/{id}', 'EventIdeaController@show');
+
 //new idea submission
 Route::get('/events/ideas/create','EventIdeaController@create');
 Route::post('/events/ideas/create','EventIdeaController@store');
@@ -42,4 +44,8 @@ Route::post('/events/ideas/create','EventIdeaController@store');
 
 Route::get('/article', function (){
     return view('article');
+});
+
+Route::get('/idea', function (){
+    return view('event/idea');
 });

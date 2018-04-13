@@ -12,7 +12,7 @@
    
     <div class="field">
         <div class="text">
-        <label for="name">* Nom de l'article</label>
+        <label for="name"> Nom de l'article</label>
         </div>
         <div class="icon">
         <i class="fas fa-angle-double-right"></i><input type="text" name="name" id="name" />
@@ -21,7 +21,7 @@
 
     <div class="field">
     <div class="text">
-        <label for="price">* Prix de l'article</label>
+        <label for="price"> Prix de l'article</label>
         </div>
         <div class="icon">
         <i class="fas fa-euro-sign"></i><input type="number" name="price" id="price" />
@@ -30,7 +30,7 @@
 
     <div class="field">
     <div class="text">
-        <label for="description">* Description</label>
+        <label for="description"> Description</label>
         </div>
         <div class="icon">
         <i class="fas fa-align-justify"></i><input type"email" name="description" id="description" />
@@ -39,7 +39,7 @@
 
     <div class="field">
     <div class="text">
-        <label for="picture">* Photo de l'article</label>
+        <label for="picture"> Photo de l'article</label>
         </div>
         <div class="icon">
         <i class="fas fa-image"></i><input type"file" name="picture" id="picture" />
