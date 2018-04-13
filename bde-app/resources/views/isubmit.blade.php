@@ -9,7 +9,7 @@
     
 <h1 id="Titre">Soumettre une idée d'évènement</h1>
     
-<form method="POST">
+<form  action="/isubmit" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
         <div>
             <label class="text" for="name">Nom de l'event:</label>
@@ -48,7 +48,7 @@
         </div>
         <div>
             <label for="img">Illustration</label>
-            <input type="file" accept="image/*">
+            <input type="file" id="img"  name="photo">
         </div>
         
         <input type="submit" value="Soumettre l'idée">
