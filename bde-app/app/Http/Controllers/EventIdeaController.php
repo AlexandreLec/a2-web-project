@@ -55,13 +55,15 @@ class EventIdeaController extends Controller
                 if ($request->file('photo')->isValid()) {
                     
                     //validates file type
-                    $this->validate($request, [
-                        'image' => 'mimes:jpeg,bmp,png', //only allow this type extension file.
-                    ]);
+//                    $request->validate($request, [
+//                        'image' => 'mimes:jpeg,bmp,png', //only allow this type extension file.
+//                    ]);
+//                    dd($request);
                     
                     $file = $request->file('photo');
-                    $destinationPath = $request->file('photo')->store('users_upload');
-                    $eventIdea->url_img = $destinationPath;
+                    $destinationPath = $request->file('photo')->store('users_upload', 'public');
+                 
+                    $eventIdea->url_img = '/storage/'.$destinationPath;
                 }
 
             }

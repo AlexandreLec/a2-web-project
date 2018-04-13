@@ -9,7 +9,7 @@
     
 <h1 id="Titre">Soumettre une idée d'évènement</h1>
     
-<form  action="/isubmit" method="POST" enctype="multipart/form-data">
+<form  action="/events/ideas/create" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
         <div>
             <label class="text" for="name">Nom de l'event:</label>
