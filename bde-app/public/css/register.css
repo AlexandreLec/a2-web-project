@@ -9,16 +9,18 @@
     display : flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom : 10px;
+    width : 100%;
     
 }
 
 .field{
-    width: 50%;
+
+    width: 70%;
+    margin-top: 35px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+
 }
 
 
@@ -27,6 +29,7 @@ input{
     height : 30px;
     border-style: ridge;
     font-size: medium;
+    margin-left : 10px;
 }
 
 select{
@@ -35,3 +38,31 @@ select{
     border-style : ridge;
 }
 
+
+.icon{
+    margin-right: 35px;
+    margin-left: 35px;
+
+}
+
+.button{
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 500px){
+
+    .field{
+
+        flex-direction: column;
+    
+    }
+    
+}
+
+@media screen and (max-width: 400px){
+
+    .text{
+        display : flex;
+        flex-direction: column;
+    }
+}

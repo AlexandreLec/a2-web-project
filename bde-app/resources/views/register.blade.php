@@ -14,7 +14,7 @@
 <div id="conteneur1">
    
     <div class="field">
-        <div classe="text">
+        <div class="text">
             <label for="Name">* Votre nom</label>
         </div>
         <div class="icon">
@@ -24,7 +24,7 @@
 
 
     <div class="field">
-        <div classe="text">
+        <div class="text">
             <label for="Surname">* Votre Prénom</label>
         </div>
         <div class="icon">
@@ -33,7 +33,7 @@
    </div>
 
     <div class="field">
-    <div classe="text">
+    <div class="text">
         <label for="Mail">* Email Viacesi</label>
     </div>
     <div class="icon">
@@ -42,7 +42,7 @@
     </div>     
 
     <div class="field">
-        <div classe="text">
+        <div class="text">
             <label for="Password">* Mot De Passe</label>
         </div>
         <div class="icon">
@@ -51,8 +51,8 @@
         </div>
        
     <div class="field">
-        <div classe="text">
-            <label for="Passwordv">* Confirmation du Mot De Passe</label>
+        <div class="text">
+            <label for="Passwordv">* Confirmation</label>
         </div>
         <div class="icon">   
             <i class="fas fa-lock"></i><input type="password" name="Passwordv" id="Passwordv"/>
@@ -61,15 +61,17 @@
 
 
    <div class="field">
-        <div classe="text">
+        <div class="text">
        <label for="Training">* Formation</label>
         </div>
+        <div class="icon">
         <i class="fas fa-graduation-cap"></i>
         <select name="Grade" id="Grade">
             <option value="Etudiant EXIA">Exia</option>
             <option value="Etudiant EI">EI</option>
             <option value="Salarié CESI">Corp</option>
         </select>
+        </div>
    </div>
 </div> 
 
