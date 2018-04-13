@@ -18,7 +18,7 @@ class EventIdea extends Model
 
     public function truncatDesc() {
 
-    	$nb_words = 20;
+    	$nb_words = 10;
     	$tab = explode(' ', $this->description, $nb_words+1);
     	unset($tab[$nb_words]);
     	$this->description = implode(' ', $tab).'...';

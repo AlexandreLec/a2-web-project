@@ -1,12 +1,12 @@
-.idea_button form button {
+.idea_button button {
 
     justify-content:center;
-    border-radius:8px;
-    border-color:#D03E3E;
+    border: solid 1px #D03E3E;
+    border-radius: 5px 5px 5px 5px;
     font-size: 25px;
     color : #D03E3E;
 
-    margin-bottom: 10px;
+    margin-top: 50px;
 	
 }
 
@@ -21,7 +21,7 @@
     height:20%;
     flex-direction: column;
     align-items: center;
-    
+    justify-content: start;
     margin-left:10px;
     
 }
@@ -36,10 +36,25 @@
     
 }
 
+.idea_title div{
+
+    display: flex;
+    justify-content: space-between;
+    font-size: x-large;
+    width: 50px;
+    padding: 5px;
+    color: #D03E3E;
+    border: solid 1px #D03E3E;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.idea_title div i{
+
+    margin-left: 10px;
+}
+
 .card-container {
     display: flex;
-    align-items: center;
-    align-content: space-between;
     width: 100%;
 
 }
@@ -48,8 +63,6 @@
     
 	width:250px;
     height:150px;
-    border-style: solid ;
-    border-color: gray;
 }
 
 .card_img img {
@@ -67,10 +80,11 @@
     text-align: justify;
 }
 
-.idea_detail form button{
+.idea_detail button{
 
     justify-content:center;
-    border-radius:8px;
+    border: solid 1px #D03E3E;
+    border-radius: 5px 5px 5px 5px;
     border-color:#D03E3E;
     font-size: 25px;
     color : #D03E3E;

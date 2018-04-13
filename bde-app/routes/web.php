@@ -13,7 +13,9 @@
 
 
 Route::get('/', 'LoginController@index');
+Route::get('/admin', 'UserController@admin');
 Route::get('/logout', 'LoginController@logout');
+//Route::get('/admin/user/edit/{id}', 'UserController@create');
 Route::get('/ideas', function () {
     return view('ideas');
 });
@@ -26,17 +28,13 @@ Route::get('/register', function (){
     return view('register');
 });
 
-Route::get('/isubmit', function () {
-    return view('isubmit');
-});
-
 Route::get('/events','Events@index');
 
 Route::get('/events/ideas', 'EventIdeaController@index');
 
 //new idea submission
-Route::get('/isubmit','EventIdeaController@create');
-Route::post('/isubmit','EventIdeaController@store');
+Route::get('/events/ideas/create','EventIdeaController@create');
+Route::post('/events/ideas/create','EventIdeaController@store');
 
 Route::get('/artcicle', function (){
     return view('article');
