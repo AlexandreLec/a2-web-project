@@ -1,0 +1,16 @@
+input{
+    border-radius: 10px 10px 10px 10px;
+    height : 30px;
+    border-style: ridge;
+    font-size: medium;
+}
+
+
+
+#Titre{
+    text-align: center;
+}
+
+.button{
+    text-align: center;
+}
