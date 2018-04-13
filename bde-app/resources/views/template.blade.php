@@ -60,7 +60,7 @@
                 @if (isset($user))
                 <li><a href="/logout">Déconnexion</a></li>
                     @if ($user->checkAdmin())
-                    <li><a href="admin">Administration</a></li>
+                    <li><a href="/admin">Administration</a></li>
                     @endif
                 @endif
                 

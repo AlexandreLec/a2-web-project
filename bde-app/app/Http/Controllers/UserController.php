@@ -10,6 +10,7 @@ use App\Group;
 
 class UserController extends Controller
 {
+
 	public function randomPictures(){
 
 		//Open pictures directory
@@ -55,6 +56,21 @@ class UserController extends Controller
     	return view('welcome', compact('user', 'monthEvent','pictures'));
     }
 
+    public function register(){
+        return view('register');
+    }
+
+    public function store(Request $request){
+        $firstName = $request->input('Name');
+        $surname = $request->input('Surname');
+        $mail = $request->input('Mail');
+        $password = $request->input('Password');
+        $name = $request->input('Grade');
+        $password = Hash::make($password);
+        $add = DB::select("CALL ajout_user(?,?,?,?,?)",array($firstName, $surname, $mail, $password,$name));
+        return view('RegisterConfirm');
+    }
+
     public function admin(){
     	if(Auth::check()) {
     		$user = Auth::user();
@@ -65,8 +81,27 @@ class UserController extends Controller
     	return $this->index();
     }
 
+    public function update($id, Request $request){
+    	if(Auth::check()) {
+    		$user = Auth::user();
+    		
+    		$userUpdate = User::find($id);
+
+    		$userUpdate->change($request->input('firstname'),$request->input('surname'),$request->input('mail'), $request->input('grade'));
+
+
+    		//$userUpdate->id_group = $request->input('firstName');
+
+
+    		return $this->admin();
+    	}
+    }
+
     //API methods
     public function list(){
+    	if(Auth::check()) {
+    		$user = Auth::user();
+    	}
 
     	$users = User::all();
 
@@ -75,5 +110,12 @@ class UserController extends Controller
     	}
 
     	return $users;
+    }
+
+    public function get($id){
+    	if(Auth::check()) {
+    		$user = Auth::user();
+    	}
+    	return User::find($id);
     }
 }
