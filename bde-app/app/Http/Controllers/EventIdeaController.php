@@ -30,6 +30,32 @@ class EventIdeaController extends Controller
 
     	return view('event.ideas', compact('ideas', 'user'));
     }
+
+    public function addPoll($id){
+        if(Auth::check()) {
+            $user = Auth::user();
+            try {
+                EventIdea::find($id)->addPoll($user->id,$id);
+            } catch (\Exception $e) {
+                return "Vote déjà prit en compte ";
+            }
+            return 'ok';   
+        }
+        return 'Utilisateur non authentifié';
+    }
+
+    public function getPoll($id){
+        if(Auth::check()) {
+            $user = Auth::user();
+            try {
+                $idea = EventIdea::find($id);
+                return $idea->getPoll();
+            } catch (\Exception $e) {
+                return "Idea Event indisponible";
+            } 
+        }
+        return 'Utilisateur non authentifié';
+    }
     
     public function create() {
         return view('isubmit');
@@ -77,6 +103,11 @@ class EventIdeaController extends Controller
             return view('mustconnect');
         }
         
+    }
+
+    public function show($id){
+        $idea = EventIdea::find($id);
+        return view('event.idea', compact('idea'));
     }
     
 }

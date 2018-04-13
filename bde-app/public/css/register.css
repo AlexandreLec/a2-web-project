@@ -23,15 +23,6 @@
 
 }
 
-
-input{
-    border-radius: 10px 10px 10px 10px;
-    height : 30px;
-    border-style: ridge;
-    font-size: medium;
-    margin-left : 10px;
-}
-
 select{
     border-radius: 10px 10px 10px 10px;
     height : 30px;
@@ -43,10 +34,6 @@ select{
     margin-right: 35px;
     margin-left: 35px;
 
-}
-
-.button{
-    margin-top: 25px;
 }
 
 @media screen and (max-width: 500px){

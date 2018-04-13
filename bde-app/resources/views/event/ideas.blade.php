@@ -9,7 +9,7 @@
                 
                  <div class ="idea_title">
                          <h2>{{ $idea->name }}</h2>
-                         <div><span>{{ $idea->getPoll() }}</span><i class="fas fa-thumbs-up"></i></div>
+                         <div id="{{ $idea->id }}" class="poll"><span>{{ $idea->getPoll() }}</span><i class="fas fa-thumbs-up"></i></div>
                  </div>
             
                      <div class="card_img"> 
@@ -31,6 +31,6 @@
     <a href="/events/ideas/create"><button type="button">Proposer une nouvelle idée</button></a>
 </div>
 
-<script src=""></script>
+<script src="/js/poll.js"></script>
         
 @stop

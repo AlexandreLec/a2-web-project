@@ -1,6 +1,7 @@
 input, textarea{
     border-style: ridge;
     font-size: medium;
+    margin-left : 10px;
 }
 
 input {
@@ -19,4 +20,5 @@ textarea {
 
 .button{
     text-align: center;
+    margin-top: 25px; 
 }

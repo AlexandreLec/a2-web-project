@@ -1,0 +1,45 @@
+#conteneur1{
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    width : 100%;
+    
+}
+
+.field{
+
+    width: 70%;
+    margin-top: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#Titre{
+    text-decoration: underline;
+}
+
+.icon{
+    margin-right: 35px;
+    margin-left: 35px;
+}
+
+@media screen and (max-width: 500px){
+
+    .field{
+
+        flex-direction: column;
+    
+    }
+    
+}
+
+@media screen and (max-width: 400px){
+
+    .text{
+        display : flex;
+        flex-direction: column;
+    }
+}
