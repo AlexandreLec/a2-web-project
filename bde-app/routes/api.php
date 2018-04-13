@@ -21,3 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/users', 'UserController@list');
 
 Route::get('/users/{id}', 'UserController@get');
+
+Route::get('/idea/{id}/poll', 'EventIdeaController@addPoll');
+

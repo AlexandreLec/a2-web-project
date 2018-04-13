@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
 
 class EventIdea extends Model
 {
@@ -35,6 +36,13 @@ class EventIdea extends Model
     		return $this->poll;
     	}
 
+    }
+
+    public function addPoll($idUser, $idIdea) {
+        
+        DB::table('poll')->insert([
+            'id_user' => $idUser,
+            'id_idea' => $idIdea]);
     }
 
     public $timestamps = false;
