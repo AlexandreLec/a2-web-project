@@ -33,13 +33,16 @@
          <i class="fas fa-thumbs-up"></i>
         </div>
         </div>
+        
+        
 </div>     
 </div>
-
-<div class="img">
+    <div class="img">
         <img src="{{ $idea->url_img }}">
         </div>
+        
     <div class="description"> 
         <p>{{ $idea->description }}</p>
     </div>
+
 @stop
