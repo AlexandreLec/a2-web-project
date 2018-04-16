@@ -26,6 +26,7 @@ Route::get('/users', function (){
 
 //User management
 Route::post('/users/update/{n}', 'UserController@update');
+Route::get('/users/delete/{id}', 'UserController@delete');
 
 //add a new user
 Route::get('/register', 'UserController@register');

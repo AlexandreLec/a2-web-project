@@ -74,4 +74,9 @@ class User extends Authenticatable
         return $this->belongsTo('App\Group','id_group');
     }
 
+    public function ideas()
+    {
+        return $this->hasMany('App\EventIdea','id_user');
+    }
+
 }

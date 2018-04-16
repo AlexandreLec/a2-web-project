@@ -86,16 +86,24 @@ class UserController extends Controller
     	if(Auth::check()) {
     		$user = Auth::user();
     		
-    		$userUpdate = User::find($id);
-
-    		$userUpdate->change($request->input('firstname'),$request->input('surname'),$request->input('mail'), $request->input('grade'));
-
-
-    		//$userUpdate->id_group = $request->input('firstName');
-
-
+            if($user->group->id === 4){
+                $userUpdate = User::find($id);
+            $userUpdate->change($request->input('firstname'),$request->input('surname'),$request->input('mail'), $request->input('grade'));
+            }
     		return $this->admin();
     	}
+    }
+
+    public function delete($id){
+        if(Auth::check()) {
+            $user = Auth::user();
+            if($user->group->id === 4){
+                User::find($id)->delete();
+                return 'ok';
+            }
+            return 'hello';
+        }
+        return 'refused';
     }
 
     //API methods
@@ -119,4 +127,6 @@ class UserController extends Controller
     	}
     	return User::find($id);
     }
+
+
 }

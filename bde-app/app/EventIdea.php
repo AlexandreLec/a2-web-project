@@ -15,8 +15,6 @@ class EventIdea extends Model
      */
     protected $table = 'event_idea';
 
-    private $poll = null;
-
     public function truncatDesc() {
 
     	$nb_words = 10;
@@ -43,6 +41,15 @@ class EventIdea extends Model
         DB::table('poll')->insert([
             'id_user' => $idUser,
             'id_idea' => $idIdea]);
+    }
+
+    public function getUser(){
+            return $this->user;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'id_user');
     }
 
     public $timestamps = false;

@@ -11,6 +11,10 @@ a {
 	border-top: solid 1px gray;
 }
 
+.display {
+	
+}
+
 #user-form {
 	z-index: 1001;
 	width : 50%;

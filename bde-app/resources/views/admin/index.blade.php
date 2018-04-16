@@ -40,6 +40,21 @@
 	    </section>
 	    <section class="manage-board" id="ideas-manage">
 	    	<h2>Boîte à idées</h2>
+	    	<table id="ideas" class="display">
+			    <thead>
+			        <tr>
+			            <th>Titre</th>
+			            <th>Lieu</th>
+			            <th>Description</th>
+			            <th>Prix</th>
+			            <th>Vote</th>
+			            <th>Soumis par</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	
+			    </tbody>
+			</table>
 	    </section>
 	    <section class="manage-board" id="shop-manage">
 	    	<h2>Boutique</h2>
@@ -60,10 +75,6 @@
 	            <option id="Membre BDE" value="Membre BDE">Membre BDE</option>
         	</select>
         	<button type="submit">Mettre à jour</button>
-        	<form id="suppr" method="POST" action="/users/update/">
-        		{{ csrf_field() }}
-        		<button type="submit">Supprimer</button>
-        	</form>
         </form>
 	</div>
 	<div id="hide"></div>
