@@ -20,7 +20,7 @@ class EventIdea extends Model
     	$nb_words = 10;
     	$tab = explode(' ', $this->description, $nb_words+1);
     	unset($tab[$nb_words]);
-    	$this->description = implode(' ', $tab).'...';
+    	$this->descriptionShort = implode(' ', $tab).'...';
 
     	return $this;
     }

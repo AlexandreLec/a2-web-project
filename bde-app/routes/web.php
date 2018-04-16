@@ -37,6 +37,7 @@ Route::get('/events','Events@index');
 
 Route::get('/events/ideas', 'EventIdeaController@index');
 
+Route::get('/events/category','EventCategoryController@index');
 
 //new idea submission
 Route::get('/events/ideas/create','EventIdeaController@create');

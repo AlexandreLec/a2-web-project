@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Group;
+use App\EventCategory;
 
 class UserController extends Controller
 {
@@ -76,7 +77,8 @@ class UserController extends Controller
     	if(Auth::check()) {
     		$user = Auth::user();
     		if($user->group->id === 4){
-    			return view('admin.index', compact('user'));
+                $categories = EventCategory::all();
+    			return view('admin.index', compact('user', 'categories'));
     		}
     	}
     	return $this->index();
