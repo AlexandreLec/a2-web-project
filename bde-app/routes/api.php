@@ -22,5 +22,7 @@ Route::get('/users', 'UserController@list');
 
 Route::get('/users/{id}', 'UserController@get');
 
+Route::get('/ideas', 'EventIdeaController@getAll');
+
 Route::get('/idea/{id}/poll', 'EventIdeaController@addPoll');
 

@@ -16,8 +16,7 @@ class EventIdeaController extends Controller
 
     public function index(){
     	if(Auth::check()) {
-    		$user = Auth::user();
-                
+    		$user = Auth::user();     
     	}
 
     	$ideas = EventIdea::all();
@@ -108,6 +107,20 @@ class EventIdeaController extends Controller
     public function show($id){
         $idea = EventIdea::find($id);
         return view('event.idea', compact('idea'));
+    }
+
+    //API methods
+    public function getAll(){
+
+        $ideas = EventIdea::all();
+
+        foreach ($ideas as $key => $idea) {
+            $idea->getUser();
+            $idea->getPoll();
+            $idea = $idea->truncatDesc();
+        }
+
+        return $ideas;
     }
     
 }
