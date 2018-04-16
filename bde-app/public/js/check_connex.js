@@ -2,7 +2,7 @@ var mailB = surnameB = firstnameB = passwordB  = false;
 
 function checkname() {
     var firstname = document.getElementById('Name');
-    var filtre = /[a-z]{2,}$/;
+    var filtre = /^[a-zA-z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\.\,\!\?\-]{3,35}$/;
     
 
     if (filtre.test(firstname.value)) {
@@ -18,7 +18,7 @@ function checkname() {
 
 function checksecondname() {
     var surname = document.getElementById('Surname');
-    var filtre = /[a-z]{2,}$/;
+    var filtre = /^[a-zA-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\.\,\!\?\-]{3,35}$/;
     if (filtre.test(surname.value)) {
         surname.style.border = "solid 2px green";
         surnameB = true;
@@ -31,8 +31,8 @@ function checksecondname() {
 
 function checkmail() {
     var grade = document.getElementById('Grade').value;
-    var regex_viacesi = /^[a-z.]{2,}@viacesi\.fr/;
-    var regex_cesi = /^[a-z.]{2,}@cesi\.fr/;
+    var regex_viacesi = /^[a-z\.A-Z]{2,}@viacesi\.fr/;
+    var regex_cesi = /^[a-z\.A-Z]{2,}@cesi\.fr/;
     var mail = document.getElementById('Mail');
 
   
@@ -84,7 +84,7 @@ function checkpassword(){
           }
           else {
              
-            alert('Il manque une majuscule et une minuscule ou un chiffre!');
+            alert('Il manque une majuscule ou une minuscule ou un chiffre  ');
             password.focus();
             //return false;
             password.style.border = "solid 2px red"

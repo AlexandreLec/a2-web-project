@@ -49,6 +49,7 @@
 			            <th>Prix</th>
 			            <th>Vote</th>
 			            <th>Soumis par</th>
+			            <th>Action</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -75,6 +76,30 @@
 	            <option id="Membre BDE" value="Membre BDE">Membre BDE</option>
         	</select>
         	<button type="submit">Mettre à jour</button>
+        </form>
+        <form id="event-form" method="POST" action="/event/insert/">
+			{{ csrf_field() }}
+			<h3>Ajouter un nouvel évènement</h3>
+	    	<label>Nom</label><input id="event-name" name="name" type="text" />
+	    	<label>Description</label><textarea rows="8" id="desc-event" name="desc" ></textarea>
+	    	<label>Lieu</label><input id="event-location" name="location" type="text" />
+	    	<label>Prix</label><input id="event-price" name="price" type="number" step="0.1" value="0" />
+	    	<label>Date</label><input id="event-date" name="date" type="date" />
+	    	<label>Heure</label><input id="event-hour" name="hour" type="time" />
+			<label>Recurence</label>
+	    	<select id="event-rec" name="recurence">
+	            <option id="DAY" value="Etudiant EXIA">Quotidien</option>
+	            <option id="WEEK" selected value="Etudiant EI">Hebdomadaire</option>
+	            <option id="MONTH" value="Salarié CESI">Mensuel</option>
+	            <option id="YEAR" value="Membre BDE">Annuel</option>
+        	</select>
+        	<label>Catégorie</label>
+	    	<select id="event-cat" name="categorie">
+	    		@foreach ($categories as $category)
+	            <option id="{{ $category->id }}" value="{{ $category->name }}">{{ $category->name }}</option>
+	            @endforeach
+        	</select>
+        	<button type="submit">Ajouter</button>
         </form>
 	</div>
 	<div id="hide"></div>

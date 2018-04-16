@@ -17,7 +17,7 @@
                      </div>
 
                     <div class="card_descrip"> 
-                         <p>{{ $idea->description }}</p>
+                         <p>{{ $idea->descriptionShort }}</p>
                     </div>
             
                     <div class="idea_detail">

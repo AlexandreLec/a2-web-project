@@ -19,6 +19,18 @@ var Idea = function(id,name, location, desc, price, poll, user) {
 var users=[];
 var ideas=[];
 
+
+var ScrollToTop=function() {
+
+    $("html, body").animate({ scrollTop: 0 }, 500);
+}
+ 
+var StopAnimation=function() {
+  $("html, body").bind("scroll mousedown DOMMouseScroll mousewheel keyup", function(){
+    $('html, body').stop();
+  });
+}
+
 var getUserById = function(id){
 
 	return users.find(function(element){
@@ -26,13 +38,24 @@ var getUserById = function(id){
 	});
 };
 
+var getIdeaById = function(id){
+
+    return ideas.find(function(element){
+        return element.id == id;
+    });
+};
+
 var showEdit = function (){
 
-	let boardEdit = document.querySelector('.board-edit form');
+	let boardEdit = document.querySelector('.board-edit #user-form');
 	let hidePanel = document.querySelector('#hide');
 
 	boardEdit.style.visibility = 'visible';
 	hidePanel.style.display = 'inline';
+
+    ScrollToTop();
+    StopAnimation();
+    $('body').css('overflow-y','hidden');
 
 	user = getUserById(this.id);
 	document.getElementById("name").value=user.name;
@@ -43,13 +66,51 @@ var showEdit = function (){
 	document.getElementById(user.group.name).setAttribute("selected", "");
 };
 
+var newEvent = function (){
+
+    let boardEdit = document.querySelector('.board-edit #event-form');
+    let hidePanel = document.querySelector('#hide');
+
+    boardEdit.style.visibility = 'visible';
+    hidePanel.style.display = 'inline';
+
+    ScrollToTop();
+    StopAnimation();
+    $('body').css('overflow-y','hidden');
+
+    idea = getIdeaById(this.id);
+
+    if(idea !== undefined){
+        document.querySelector('#event-name').value = idea.name;
+        document.querySelector('#desc-event').value = idea.desc;
+        document.querySelector('#event-price').value = idea.price;
+        document.querySelector('#event-location').value = idea.location;
+    }
+    else {
+        document.querySelector('#event-name').value = "";
+        document.querySelector('#desc-event').value = "";
+        document.querySelector('#event-price').value = "";
+        document.querySelector('#event-location').value = "";
+    }
+    document.getElementById("event-form").action="/events/insert/";
+};
+
 var hideEdit = function (){
 
-	let boardEdit = document.querySelector('.board-edit form');
+    let boardEditUser = document.querySelector('.board-edit #user-form');
+    let boardEditEvent = document.querySelector('.board-edit #event-form');
 	let hidePanel = document.querySelector('#hide');
 
-	boardEdit.style.visibility = 'hidden';
+	if(boardEditUser.style.visibility == 'visible'){
+        boardEditUser.style.visibility = 'hidden';
+    };
+    if(boardEditEvent.style.visibility == 'visible'){
+        boardEditEvent.style.visibility = 'hidden';
+    };
+
 	hidePanel.style.display = 'none';
+
+    $('body').css('overflow-y','scroll');
 
 };
 
@@ -126,6 +187,31 @@ var getDataUsers = function () {
     });
 };
 
+var actionsIdea = function (idea){
+    let actions = document.createElement("td");
+    let edit = document.createElement("i");
+    let del = document.createElement("i");
+    let spanEdit = document.createElement("span");
+    let spanDel = document.createElement("span");
+
+    edit.className="fas fa-edit";
+    del.className="fas fa-trash-alt";
+
+    spanEdit.setAttribute('id', idea.id);
+    spanDel.setAttribute('id', idea.id);
+    
+    spanEdit.appendChild(edit);
+    spanDel.appendChild(del);
+
+    actions.appendChild(spanEdit);
+    actions.appendChild(spanDel);
+    
+    spanEdit.addEventListener('click', newEvent);
+    spanDel.addEventListener('click', confirmDel);
+
+    return actions;
+}
+
 var getDataIdeas = function () {
     
     $.get("/api/ideas", function(data, status){
@@ -133,8 +219,6 @@ var getDataIdeas = function () {
         if($('tbody').children().length !== 0){
             $('#ideas tbody').children().remove();
         }
-
-        console.log(data);
 
         data.forEach(function (idea){
             let row = document.createElement("tr");
@@ -147,12 +231,15 @@ var getDataIdeas = function () {
 
             name.innerHTML = idea.name;
             location.innerHTML = idea.location;
-            description.innerHTML = idea.description;
+            description.innerHTML = idea.descriptionShort;
             price.innerHTML = idea.price;
             user.innerHTML = idea.user.first_name+" "+idea.user.surname;
             poll.innerHTML = idea.poll;
 
-            ideas.push(new Idea(idea.id, idea.name,idea.location, idea.description, idea.price, idea.poll, idea.user.first_name+" "+idea.user.surname));
+            let newIdea = new Idea(idea.id, idea.name,idea.location, idea.description, idea.price, idea.poll, idea.user.first_name+" "+idea.user.surname);
+            ideas.push(newIdea);
+
+            let actions = actionsIdea(newIdea);
 
             row.appendChild(name);
             row.appendChild(location);
@@ -160,6 +247,7 @@ var getDataIdeas = function () {
             row.appendChild(price);
             row.appendChild(poll)
             row.appendChild(user);
+            row.appendChild(actions);
 
             $('#ideas tbody').append(row);
             

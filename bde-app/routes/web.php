@@ -37,12 +37,17 @@ Route::get('/events','Events@index');
 
 Route::get('/events/ideas', 'EventIdeaController@index');
 
+Route::get('/events/category','EventCategoryController@index');
 
 //new idea submission
 Route::get('/events/ideas/create','EventIdeaController@create');
 Route::post('/events/ideas/create','EventIdeaController@store');
 
 Route::get('/events/ideas/{id}', 'EventIdeaController@show');
+
+//new participate event
+Route::get('/events/participate','EventIdeaController@create');
+Route::post('/events/participate','EventIdeaController@store');
 
 
 
