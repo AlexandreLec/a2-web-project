@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 //use Input;
 use App\User;
 use App\EventIdea;
+use App\Image;
 
 class EventIdeaController extends Controller
 {
@@ -82,23 +83,8 @@ class EventIdeaController extends Controller
                 
             //uploaded img verification
             //check for img presence
-            if ($request->hasFile('photo')) {
-                if ($request->file('photo')->isValid()) {
-                    
-                    //validates file type
-//                    $request->validate($request, [
-//                        'image' => 'mimes:jpeg,bmp,png', //only allow this type extension file.
-//                    ]);
-//                    dd($request);
-                    
-                    $file = $request->file('photo');
-                    $destinationPath = $request->file('photo')->store('users_upload', 'public');
-                 
-                    $eventIdea->url_img = '/storage/'.$destinationPath;
-                }
+            $eventIdea->url_img = Image::upload($request, 'users_upload');
 
-            }
-             
             //save to database
             $eventIdea->save();
 
@@ -108,6 +94,17 @@ class EventIdeaController extends Controller
             return view('mustconnect');
         }
         
+    }
+
+    public function delete($id){
+        if(Auth::check()) {
+            $user = Auth::user();
+            if($user->group->id === 4){
+                EventIdea::find($id)->delete();
+                return 'ok';
+            }
+        }
+        return 'refused';
     }
 
     public function show($id){

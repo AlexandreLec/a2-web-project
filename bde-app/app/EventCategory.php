@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\DB;
 
 class EventCategory extends Model
 {
@@ -12,4 +13,9 @@ class EventCategory extends Model
      * @var string
      */
     protected $table = 'category_event';
+
+    public function events()
+    {
+        return $this->hasMany('App\Event', 'id_cat');
+    }
 }
