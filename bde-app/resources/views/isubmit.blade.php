@@ -11,7 +11,7 @@
     
     <h1 id="Titre">Soumettre une idée d'évènement</h1>
     
-    <form  action="/events/ideas/create" method="POST" enctype="multipart/form-data">
+    <form  action="/events/ideas/create" method="POST" enctype="multipart/form-data" onsubmit="return FormValidation()">
         {{ csrf_field() }}
         
             <div class="field">
@@ -45,14 +45,17 @@
         
             <div class="field">
                 <label for="link">Lien site web</label>
-                <input type="url" id="link" name="event_url">
+                <input type="text" id="link" name="event_url">
             </div>
         
             <div class="field">
                 <label for="price">Prix</label>
                 <input type="text" id="price" name="event_price">
-                <input id="free" type="checkbox">
+            </div>
+        
+            <div class="field">
                 <label for="free">Gratuit</label>
+                <input class="checkbox" id="free" type="checkbox">
             </div>
         
             <div class="field">
@@ -60,9 +63,10 @@
                 <input type="file" id="img"  name="photo">
             </div>
 
-            <input class="button" type="submit" value="Soumettre l'idée">
+        <input class="button" type="submit" id="submit" value="Soumettre l'idée">
 
     </form>
 </div>
-
+{{ Html::script('js/check_newidea.js') }}
 @stop
+
