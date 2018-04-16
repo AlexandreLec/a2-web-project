@@ -30,7 +30,7 @@ function checkplace() {
 
 function checklink() {
     var elmt = document.getElementById('link');
-    var filter = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    var filter = /^(https?:\/\/)?([\da-zA-Z\.-]+)\.([a-zA-Z\.]{2,6})([\/\w \.-]*)*\/?$/;
     
     if (elmt.value==''){
         elmt.style.border = "solid 1px gray";
@@ -52,20 +52,32 @@ function checklink() {
 function checkprice() {
     var elmt = document.getElementById('price');
     var chbx = document.getElementById('free');
+    var label = document.getElementById('freelabel');
+    var lbl = document.getElementById('pricelabel');
     var filtre = /^[^0]([0-9]{0,2})$/;
     
     if (filtre.test(elmt.value) && chbx.checked == false){
         
         elmt.style.border = "solid 2px green";
+        label.style.color = "gray";
+        chbx.disabled=true;
         priceChecked = true;
     }
-    else if (chbx.checked == true && elmt.value == ''){
-        elmt.style.border = "solid 2px green";
+    else if (chbx.checked == true){
+        elmt.style.border = "solid 1px gray";
+        elmt.value = '';
+        elmt.disabled=true;
+        lbl.style.color = "gray";
+        
         priceChecked = true;
     }
     else {
         elmt.style.border = "solid 2px red";
         priceChecked = false;
+        elmt.disabled=false;
+        chbx.disabled=false;
+        lbl.style.color = "black";
+        label.style.color = "black";
     }
 }
 
@@ -91,8 +103,9 @@ var Price = document.getElementById('price');
 var Free = document.getElementById('free');
 Price.addEventListener('keyup', checkprice);
 Price.addEventListener('blur', checkprice);
+Price.addEventListener('click', checkprice);
 Free.addEventListener('blur', checkprice);
-Free.addEventListener('focus', checkprice);
+Free.addEventListener('click', checkprice);
 
 
 //blocks the submission when form not correctly completed

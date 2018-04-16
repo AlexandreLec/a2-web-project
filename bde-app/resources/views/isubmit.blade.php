@@ -49,12 +49,12 @@
             </div>
         
             <div class="field">
-                <label for="price">Prix</label>
+                <label for="price" id="pricelabel">Prix</label>
                 <input type="text" id="price" name="event_price">
             </div>
         
             <div class="field">
-                <label for="free">Gratuit</label>
+                <label for="free" id="freelabel">Gratuit</label>
                 <input class="checkbox" id="free" type="checkbox">
             </div>
         
