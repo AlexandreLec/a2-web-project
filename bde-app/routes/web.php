@@ -45,6 +45,10 @@ Route::post('/events/ideas/create','EventIdeaController@store');
 
 Route::get('/events/ideas/{id}', 'EventIdeaController@show');
 
+//new participate event
+Route::get('/events/participate','EventIdeaController@create');
+Route::post('/events/participate','EventIdeaController@store');
+
 
 
 Route::get('/article', function (){
