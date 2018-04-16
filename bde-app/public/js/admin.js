@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+    }
+});
+
 var User = function(id,name, surname, mail, group) {
   this.id = id;
   this.name = name;
@@ -16,8 +22,23 @@ var Idea = function(id,name, location, desc, price, poll, user) {
   this.user = user; 
 };
 
+var Event = function(id,name, location, desc, price, date, time, recurrence, month=false, category, statut) {
+  this.id = id;
+  this.name = name;
+  this.location = location;
+  this.desc = desc;
+  this.price = price;
+  this.date = date;
+  this.time = time; 
+  this.recurrence = recurrence;
+  this.eventMonth = month; 
+  this.category = category;
+  this.statut = statut;
+};
+
 var users=[];
 var ideas=[];
+var events=[];
 
 
 var ScrollToTop=function() {
@@ -41,6 +62,13 @@ var getUserById = function(id){
 var getIdeaById = function(id){
 
     return ideas.find(function(element){
+        return element.id == id;
+    });
+};
+
+var getEventById = function(id){
+
+    return events.find(function(element){
         return element.id == id;
     });
 };
@@ -95,6 +123,37 @@ var newEvent = function (){
     document.getElementById("event-form").action="/events/insert/";
 };
 
+var showEvent = function (){
+
+    let boardEdit = document.querySelector('.board-edit #event-form');
+    let hidePanel = document.querySelector('#hide');
+
+    boardEdit.style.visibility = 'visible';
+    hidePanel.style.display = 'inline';
+
+    ScrollToTop();
+    StopAnimation();
+    $('body').css('overflow-y','hidden');
+
+    event = getEventById(this.id);
+
+    document.querySelector('#event-name').value = event.name;
+    document.querySelector('#desc-event').value = event.desc;
+    document.querySelector('#event-price').value = event.price;
+    document.querySelector('#event-location').value = event.location;
+    document.querySelector('#event-date').value = event.date;
+    document.querySelector('#event-hour').value = event.time;
+
+    idRec = event.recurrence;
+    $('#event-cat').children().removeAttr('selected');
+    $('#event-rec').children().removeAttr('selected');
+    $("#"+idRec).attr('selected','selected');
+
+    $('option[value='+event.category+']').attr('selected','selected');
+
+    document.getElementById("event-form").action="/events/update/"+event.id;
+};
+
 var hideEdit = function (){
 
     let boardEditUser = document.querySelector('.board-edit #user-form');
@@ -118,12 +177,42 @@ var confirmDel = function () {
     element = this;
     user = getUserById(element.id);
     if (confirm("Vous allez supprimer l'utilisateur "+user.name+" "+user.surname+". Cette opération est irréversible, voulez-vous continuer ?")){
-        console.log(element);
-        $.get("/users/delete/"+element.id, function(data, status){
-            getDataUsers();
+        $.ajax({
+            url: "/users/"+element.id,
+            type: 'DELETE',
+            success: function(data, statut){
+                getDataUsers();
+            }
         });
     };
+}
 
+var confirmDelIdea = function () {
+    element = this;
+    idea = getIdeaById(element.id);
+    if (confirm("Vous allez supprimer l'idée "+idea.name+". Cette opération est irréversible, voulez-vous continuer ?")){
+        $.ajax({
+            url: "/events/ideas/"+element.id,
+            type: 'DELETE',
+            success: function(data, statut){
+                getDataIdeas();
+            }
+        });
+    };
+}
+
+var confirmDelEvent = function () {
+    element = this;
+    event = getEventById(element.id);
+    if (confirm("Vous allez supprimer l'évènement "+event.name+". Cette opération est irréversible, voulez-vous continuer ?")){
+        $.ajax({
+            url: "/events/"+element.id,
+            type: 'DELETE',
+            success: function(data, statut){
+                getDataEvents();
+            }
+        });
+    };
 }
 
 var actionsButton = function (user){
@@ -150,9 +239,68 @@ var actionsButton = function (user){
 	return actions;
 }
 
+var actionsIdea = function (idea){
+    let actions = document.createElement("td");
+    let edit = document.createElement("i");
+    let del = document.createElement("i");
+    let spanEdit = document.createElement("span");
+    let spanDel = document.createElement("span");
+
+    edit.className="fas fa-plus";
+    del.className="fas fa-trash-alt";
+
+    spanEdit.setAttribute('id', idea.id);
+    spanDel.setAttribute('id', idea.id);
+    
+    spanEdit.appendChild(edit);
+    spanDel.appendChild(del);
+
+    actions.appendChild(spanEdit);
+    actions.appendChild(spanDel);
+    
+    spanEdit.addEventListener('click', newEvent);
+    spanDel.addEventListener('click', confirmDelIdea);
+
+    return actions;
+}
+
+var actionsEvent = function (event) {
+    let actions = document.createElement("td");
+    let edit = document.createElement("i");
+    let del = document.createElement("i");
+    let participants = document.createElement("i");
+    let spanEdit = document.createElement("span");
+    let spanDel = document.createElement("span");
+    let spanPart = document.createElement("span");
+    let csv = document.createElement("a");
+    let pdf = document.createElement("span");
+
+    edit.className="fas fa-edit";
+    del.className="fas fa-trash-alt";
+    participants.className="fas fa-users";
+
+    spanEdit.setAttribute('id', event.id);
+    spanDel.setAttribute('id', event.id);
+    csv.setAttribute('href', '/api/event/users/'+event.id);
+    csv.setAttribute('download', 'download');
+    
+    spanEdit.appendChild(edit);
+    spanDel.appendChild(del);
+    spanPart.appendChild(participants);
+
+    actions.appendChild(spanEdit);
+    actions.appendChild(spanDel);
+    actions.appendChild(csv);
+    
+    spanEdit.addEventListener('click', showEvent);
+    spanDel.addEventListener('click', confirmDelEvent);
+
+    return actions;
+}
+
 var getDataUsers = function () {
     
-    $.get("/api/users", function(data, status){
+    $.get("/api/users", function(data, statut){
 
         if($('tbody').children().length !== 0){
             $('#users tbody').children().remove();
@@ -187,34 +335,9 @@ var getDataUsers = function () {
     });
 };
 
-var actionsIdea = function (idea){
-    let actions = document.createElement("td");
-    let edit = document.createElement("i");
-    let del = document.createElement("i");
-    let spanEdit = document.createElement("span");
-    let spanDel = document.createElement("span");
-
-    edit.className="fas fa-edit";
-    del.className="fas fa-trash-alt";
-
-    spanEdit.setAttribute('id', idea.id);
-    spanDel.setAttribute('id', idea.id);
-    
-    spanEdit.appendChild(edit);
-    spanDel.appendChild(del);
-
-    actions.appendChild(spanEdit);
-    actions.appendChild(spanDel);
-    
-    spanEdit.addEventListener('click', newEvent);
-    spanDel.addEventListener('click', confirmDel);
-
-    return actions;
-}
-
 var getDataIdeas = function () {
     
-    $.get("/api/ideas", function(data, status){
+    $.get("/api/ideas", function(data, statut){
 
         if($('tbody').children().length !== 0){
             $('#ideas tbody').children().remove();
@@ -256,11 +379,75 @@ var getDataIdeas = function () {
     });
 };
 
+var getDataEvents = function () {
+    
+    $.get("/api/event", function(data, statut){
+
+        if($('tbody').children().length !== 0){
+            $('#events tbody').children().remove();
+        }
+
+        console.log(data);
+
+        data.forEach(function (event){
+            let row = document.createElement("tr");
+            let name = document.createElement("td");
+            let location = document.createElement("td");
+            let description = document.createElement("td");
+            let price = document.createElement("td");
+            let date = document.createElement("td");
+            let heure = document.createElement("td");
+            let recurrence = document.createElement("td");
+            let category = document.createElement("td");
+
+            name.innerHTML = event.name;
+            location.innerHTML = event.location;
+            description.innerHTML = event.description.slice(0, 120)+"...";
+            price.innerHTML = event.price;
+            date.innerHTML = event.event_date;
+            heure.innerHTML = event.event_time;
+            recurrence.innerHTML = event.recurrence;
+            category.innerHTML = event.category.name;
+
+            if(event.month_event === 1){
+                var newEvent = new Event(event.id,event.name, event.location, event.description, event.price, event.event_date, event.event_time, event.recurrence, true, event.category.name, event.statut);
+            }
+            else {
+                var newEvent = new Event(event.id,event.name, event.location, event.description, event.price, event.event_date, event.event_time, event.recurrence, false, event.category.name, event.statut);
+            }
+
+            events.push(newEvent);
+
+            let actions = actionsEvent(newEvent);
+
+            row.appendChild(name);
+            row.appendChild(description);
+            row.appendChild(location);
+            row.appendChild(date);
+            row.appendChild(heure)
+            row.appendChild(price);
+            row.appendChild(recurrence);
+            row.appendChild(category);
+            row.appendChild(actions);
+
+            if(event.statut == 'DONE'){
+                $('#events-past tbody').append(row);
+            }else {
+                $('#events tbody').append(row);
+            }
+            
+            
+        });
+        $('#events').DataTable();
+        $('#events-past').DataTable();
+    });
+};
+
 
 $(document).ready( function () {
     getDataUsers();
-    $('#ideas').DataTable();
     getDataIdeas();
+    getDataEvents();
 });
 
 let hidePanel = document.getElementById('hide');
