@@ -80,3 +80,4 @@
     </div>
 
 </form>    
+{{ Html::script('js/check_connex.js') }}

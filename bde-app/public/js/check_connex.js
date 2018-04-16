@@ -3,7 +3,7 @@ var mailB = surnameB = firstnameB = passwordB  = false;
 function checkname() {
     var firstname = document.getElementById('Name');
     var filtre = /[a-z]{2,}$/;
-    console.log(firstname.value)
+    
 
     if (filtre.test(firstname.value)) {
 
@@ -35,16 +35,17 @@ function checkmail() {
     var regex_cesi = /^[a-z.]{2,}@cesi\.fr/;
     var mail = document.getElementById('Mail');
 
-    console.log('check grade');
+  
     if ((grade == "Etudiant EXIA" || grade == "Etudiant EI") && regex_viacesi.test(mail.value)) {
 
-        console.log('ok student');
+     
         mail.style.border = "solid 2px green";
         mailB=true;
     }
     else if (grade == "Salarié CESI" && regex_cesi.test(mail.value)) {
-        console.log("ok corp");
+     
         mail.style.border = "solid 2px green";
+        mailB=true;
     }
     else {
         mail.style.border = "solid 2px red";
@@ -55,11 +56,11 @@ function checkpassword(){
     var password = document.getElementById('Password');
     var passwordv = document.getElementById('Passwordv');
     var regex_pass =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{2,})/
-    console.log("ok");
+    
 
         if ((password.value == '' || passwordv.value == '') && regex_pass.test(password.value)){
             //alert('Tous les champs ne sont pas remplis');
-            console.log("mdpcheck");
+       
             password.focus();
            
            // return false;
@@ -76,7 +77,7 @@ function checkpassword(){
             }
           else if ((password.value == passwordv.value) &&  regex_pass.test(password.value)){
             //return true;
-            console.log("bon mdp");
+            
             password.style.border = "solid 2px green"
             passwordv.style.border = "solid 2px green"
             passwordB =true;

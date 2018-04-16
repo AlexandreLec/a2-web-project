@@ -1,0 +1,31 @@
+input:focus, textarea:focus {
+    /* Pour souligner légèrement les éléments actifs */
+    border-color: #000;
+}
+
+form {
+    /* Uniquement centrer le formulaire sur la page */
+    max-width: 500px;
+    margin: 0 auto;
+    /* Encadré pour voir les limites du formulaire */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+form div, form .button{
+    margin-top: 1em;
+}
+
+.button{
+    display: inline-block;
+    
+}
+
+label {
+    /* Pour être sûrs que toutes les étiquettes ont même taille et sont correctement alignées */
+    display: inline-block;
+    width: 130px;
+    text-align: right;
+    margin: 0.7em;
+}
