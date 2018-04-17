@@ -56,6 +56,7 @@ Route::post('/article','ArticleController@store');
 Route::post('/events/insert','EventController@insert');
 Route::delete('/events/{id}','EventController@delete');
 
+Route::get('/events/soon', 'EventController@index');
 
 
 Route::get('/idea/poll/add/{id}', 'EventIdeaController@addPoll');

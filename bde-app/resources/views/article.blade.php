@@ -43,7 +43,7 @@
         <label for="picture"> Photo de l'article</label>
         </div>
         <div class="icon">
-        <i class="fas fa-image"></i><input type"file" name="picture" id="picture" />
+        <i class="fas fa-image"></i><input type="file" name="picture" id="picture" />
 </div>
     </div>  
 
@@ -54,7 +54,7 @@
         <select name="category" id="category">
             <option value="1">Bracelet</option>
             <option value="2">Mugg</option>
-            <option value="3">T-shirt></option>
+            <option value="3">T-shirt</option>
             <option value="4">Autocollant</option>
             <option value="5">Coque</option>
         </select>
@@ -62,7 +62,7 @@
 </div>
 
     <div class="button">
-    <input type="Submit" value="Mettre en vente">
+    <input type="Submit" id="submit" value="Mettre en vente">
     </div>
 
 @stop
