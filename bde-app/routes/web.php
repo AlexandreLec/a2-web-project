@@ -56,9 +56,10 @@ Route::post('/article','ArticleController@store');
 Route::post('/events/insert','EventController@insert');
 Route::delete('/events/{id}','EventController@delete');
 
+//eventSoon route
 Route::get('/events/soon', 'EventController@event');
 
-
+//liker and have the number of vote
 Route::get('/idea/poll/add/{id}', 'EventIdeaController@addPoll');
 Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 

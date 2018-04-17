@@ -21,16 +21,16 @@
                     </div>
                 <p>{{ $event->event_date }}</p>
                 </div> 
-                </div>
+            </div>
 
                  <div class="event_descrip"> 
                          <p>{{ $event->description }}</p>
-                </div>
+        </div>
 
-                
-                    
-            
-    </div>
+            <div class="button">
+    <a href="/events/soon/detail"><button type="button">Plus d'information </button></a>
+</div>
+</div>
     @endforeach
 </div>
 
