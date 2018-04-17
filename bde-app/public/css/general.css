@@ -111,6 +111,29 @@ nav ul li a {
 	background-color: #D03E3E;
 }
 
+#sign-notif {
+	position: absolute;
+	right: 10px;
+	top: 60px;
+	height: 200px;
+	width:200px;
+	padding: 5px;
+	color: white;
+	border-radius:7px;
+	z-index: 1000;
+	display: none;
+	animation: fadein 1s;
+	background-color: #D03E3E;
+}
+#sign-notif form {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: space-around;
+	font-size: medium;
+	font-weight: normal;
+}
+
 #sign-tab form {
 	display: flex;
 	height: 100%;
@@ -120,6 +143,11 @@ nav ul li a {
 	font-weight: normal;
 }
 
+#sign-notif form label {
+
+	align-self: center;
+
+}
 #sign-tab form button {
 	margin-top: 10px;
 	align-self: center;
@@ -163,6 +191,15 @@ nav ul li a {
 	right: 35px;
 }
 
+
+#right-bar button{
+	margin-top: 2px;
+	align-self: center;
+	color: white;
+	background-color : #D03E3E;
+	border:1px solid white;
+	border-radius:7px;
+}
 #menu {
 	margin-left: 25px;
 }
@@ -230,8 +267,15 @@ nav ul li a {
 	}
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 475px) {
 
+
+	body p{
+		 
+		visibility: hidden;
+		display: none;
+
+	}
 	footer {
 		flex-direction: column;
 		padding-top: 35px;
@@ -242,6 +286,15 @@ nav ul li a {
 		margin-left: 10px;
 		margin-right: 10px;
 	}
+}
+
+@media screen and (max-width: 320px) {
+
+	.container {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	
 }
 
 @media screen and (max-width: 250px) {

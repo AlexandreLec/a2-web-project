@@ -33,7 +33,19 @@
             @yield('bar')
             <div id="right-bar">
                 @if (isset($user))
-                <span id="notif"><i class="fas fa-bell fa-2x"></i></span>
+                <button id="notif">
+                    <i class="fas fa-bell fa-2x"></i>
+                </button>
+                    
+                <div id="sign-notif">
+                    <form> 
+
+                        <label>Notif </label><input name="login" type="text"/>
+                        <input name="login" type="text"/>
+                      
+                    </form>
+                 </div>
+    
                 @endif
 
                 @if (!isset($user))

@@ -75,4 +75,11 @@ class EventController extends Controller
         $event = Event::find($id);
         return $event->imgs;
     }
+
+    public function event(){
+        $events = Event::all();
+
+     return view('event.Event', compact('events'));
+
+    }
 }
