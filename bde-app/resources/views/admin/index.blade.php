@@ -32,7 +32,7 @@
 	    	
 	    </section>
 	    <section class="manage-board" id="events-manage">
-	    	<h2>Evènements à venir</h2>
+	    	<h2>Evènements à venir</h2><button id="add-event">Ajouter un événement</button>
 	    	<table id="events" class="display">
 			    <thead>
 			        <tr>
@@ -51,6 +51,7 @@
 			    	
 			    </tbody>
 			</table>
+			
 	    </section>
 	    <section class="manage-board" id="ideas-manage">
 	    	<h2>Boîte à idées</h2>
@@ -159,6 +160,7 @@
 	</div>
 	<div id="hide"></div>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 	{{ Html::script('js/admin.js') }}
 
 @stop
