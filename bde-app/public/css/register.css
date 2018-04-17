@@ -40,10 +40,11 @@ select{
 .error {
   width  : 100%;
   padding: 0;
+  text-align: center;
  
-  font-size: 80%;
-  color: white;
-  background-color: #900;
+  font-size: 75%;
+  color: red;
+  /*background-color: #900;*/
   border-radius: 0 0 5px 5px;
  
   -moz-box-sizing: border-box;

@@ -93,6 +93,7 @@ function checkmail() {
         error.className = "error";
      }
      else {
+        mail.style.border = "solid 2px red";
         error.innerHTML = "Cet email existe déjà, connectez vous";
         error.className = "error active";     }
      }
@@ -151,8 +152,7 @@ function checkpassword(){
 
     }
     
-
-window.addEventListener('load', getemails);
+getemails();
 
 var firstname = document.getElementById('Name');
 firstname.addEventListener('keyup', checkname);
