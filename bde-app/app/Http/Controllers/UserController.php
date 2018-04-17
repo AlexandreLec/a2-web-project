@@ -103,7 +103,6 @@ class UserController extends Controller
                 User::find($id)->delete();
                 return 'ok';
             }
-            return 'hello';
         }
         return 'refused';
     }
@@ -118,6 +117,7 @@ class UserController extends Controller
 
     	foreach ($users as $key => $user) {
     		$user->getGroup();
+            $user->events;
     	}
 
     	return $users;

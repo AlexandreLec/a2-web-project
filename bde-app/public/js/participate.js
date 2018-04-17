@@ -5,6 +5,7 @@ function samemail() {
      samemail.addEventListener('readystatechange', function () {
 
         if (samemail.readyState === 4) {
+            if (httpRequest.status === 200){
         
             var results = JSON.parse(samemail.responseXML)
             result.innerHTML = ''
@@ -18,7 +19,7 @@ function samemail() {
 
             }
 
-            
+        }
         }
     });
     samemail.open('GET', 'localhost:8000/api/users', true);
