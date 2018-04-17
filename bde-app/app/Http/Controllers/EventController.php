@@ -70,4 +70,9 @@ class EventController extends Controller
     	$event = Event::find($id);
     	return $event->participants;
     }
+    
+    public function eventImgs($id){
+        $event = Event::find($id);
+        return $event->imgs;
+    }
 }

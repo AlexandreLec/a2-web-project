@@ -45,6 +45,10 @@ Route::post('/events/ideas/create','EventIdeaController@store');
 Route::delete('/events/ideas/{id}', 'EventIdeaController@delete');
 Route::get('/events/ideas/{id}', 'EventIdeaController@show');
 
+//idea description page
+Route::get('/events/desc/{id}', 'EventDescController@show');
+Route::post('/events/desc/{id}', 'EventDescController@storepic');
+
 //new participate event
 Route::get('/events/participate','EventIdeaController@create');
 Route::post('/events/participate','EventIdeaController@store');

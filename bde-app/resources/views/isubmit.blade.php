@@ -55,7 +55,7 @@
         
             <div class="field">
                 <label for="free" id="freelabel">Gratuit</label>
-                <input class="checkbox" id="free" type="checkbox">
+                <input class="checkbox" id="free" type="checkbox" name="free">
             </div>
         
             <div class="field">
