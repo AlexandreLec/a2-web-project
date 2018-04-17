@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-var mailB = surnameB = firstnameB = passwordB = false;
-=======
 var mailB = surnameB = firstnameB = passwordB  = false;
 var emails = [];
 
@@ -38,7 +35,7 @@ function getemails(){
     });
      
 }
->>>>>>> origin/master
+
 
 function checkname() {
     var firstname = document.getElementById('Name');
@@ -76,7 +73,7 @@ function checkmail() {
     var mail = document.getElementById('Mail');
     var error = document.querySelector('.error');
 
-<<<<<<< HEAD
+
 
     if ((grade == "Etudiant EXIA" || grade == "Etudiant EI") && regex_viacesi.test(mail.value)) {
 
@@ -91,7 +88,7 @@ function checkmail() {
     }
     else {
         mail.style.border = "solid 2px red";
-=======
+
 
     if(chkuniqmail(mail.value)){
         if ((grade == "Etudiant EXIA" || grade == "Etudiant EI") && regex_viacesi.test(mail.value)) {
@@ -125,7 +122,7 @@ function chkuniqmail(tstdmail){
             return false;
         }
         i+=1;
->>>>>>> origin/master
+
     }
     return true;
 }
@@ -176,7 +173,7 @@ function checkpassword() {
 
 
 
-window.addEventListener('load', getemails);
+getemails();
 
 var firstname = document.getElementById('Name');
 firstname.addEventListener('keyup', checkname);
@@ -207,4 +204,4 @@ document.getElementById('btnSubmit').addEventListener('click', function (e) {
 
 );
 
-
+}
