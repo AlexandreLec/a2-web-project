@@ -39,7 +39,7 @@ function getemails(){
 function checkname() {
     var firstname = document.getElementById('Name');
     var filtre = /^[a-zA-z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\.\,\!\?\-]{3,35}$/;
-    
+
 
     if (filtre.test(firstname.value)) {
 
@@ -71,7 +71,6 @@ function checkmail() {
     var regex_cesi = /^[a-z\.A-Z]{2,}@cesi\.fr/;
     var mail = document.getElementById('Mail');
     var error = document.querySelector('.error');
-
 
     if(chkuniqmail(mail.value)){
         if ((grade == "Etudiant EXIA" || grade == "Etudiant EI") && regex_viacesi.test(mail.value)) {
@@ -106,52 +105,57 @@ function chkuniqmail(tstdmail){
             return false;
         }
         i+=1;
+
     }
     return true;
 }
 
-function checkpassword(){
+function checkpassword() {
     var password = document.getElementById('Password');
     var passwordv = document.getElementById('Passwordv');
-    var regex_pass =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{2,})/
-    
+    var regex_pass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{2,})/;
 
-        if ((password.value == '' || passwordv.value == '') && regex_pass.test(password.value)){
-            //alert('Tous les champs ne sont pas remplis');
-       
-            password.focus();
-           
-           // return false;
-            
-            }
-          
-          else if (password.value != passwordv.value) {
-          
-            password.focus();
-            password.style.border = "solid 2px red"
-            passwordv.style.border = "solid 2px red"
-    
-            //return false;
-            }
-          else if ((password.value == passwordv.value) &&  regex_pass.test(password.value)){
-            //return true;
-            
-            password.style.border = "solid 2px green"
-            passwordv.style.border = "solid 2px green"
-            passwordB =true;
-          }
-          else {
-             
-            alert('Il manque une majuscule ou une minuscule ou un chiffre  ');
-            password.focus();
-            //return false;
-            password.style.border = "solid 2px red"
-            passwordv.style.border = "solid 2px red"
-            }
-          
+
+    if ((password.value == '' || passwordv.value == '') && regex_pass.test(password.value)) {
+        //alert('Tous les champs ne sont pas remplis');
+
+        password.focus();
+
+        // return false;
 
     }
-    
+
+    else if (password.value != passwordv.value) {
+
+        password.focus();
+        password.style.border = "solid 2px red"
+        passwordv.style.border = "solid 2px red"
+
+        //return false;
+    }
+    else if ((password.value == passwordv.value) && regex_pass.test(password.value)) {
+        //return true;
+
+        password.style.border = "solid 2px green"
+        passwordv.style.border = "solid 2px green"
+        passwordB = true;
+    }
+    else {
+
+        alert('Il manque une majuscule ou une minuscule ou un chiffre  ');
+        password.focus();
+        //return false;
+        password.style.border = "solid 2px red"
+        passwordv.style.border = "solid 2px red"
+    }
+
+
+}
+
+
+
+
+
 getemails();
 
 var firstname = document.getElementById('Name');
@@ -176,8 +180,11 @@ grade.addEventListener('click', checkmail);
 
 
 document.getElementById('btnSubmit').addEventListener('click', function (e) {
-        if (firstnameB == false || surnameB == false || passwordB == false || mailB == false) {
-            e.preventDefault();
-        }
+    if (firstnameB == false || surnameB == false || passwordB == false || mailB == false) {
+        e.preventDefault();
     }
+}
+
 );
+
+

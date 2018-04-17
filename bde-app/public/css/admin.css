@@ -15,6 +15,10 @@ a {
 	
 }
 
+button {
+	margin-bottom: 30px;
+}
+
 td span svg, td a svg {
 	padding-left: 5px;
 }

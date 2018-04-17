@@ -61,8 +61,13 @@ class EventController extends Controller
     }
 
     //API methods
-    public function participants($id){
+    public function participantsCsv($id){
     	$event = Event::find($id);
     	return redirect($event->participantsCsv());
+    }
+
+    public function participants($id){
+    	$event = Event::find($id);
+    	return $event->participants;
     }
 }

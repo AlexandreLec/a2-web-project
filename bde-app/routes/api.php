@@ -22,6 +22,8 @@ Route::get('/event', 'EventController@index');
 
 Route::get('/event/users/{id}', 'EventController@participants');
 
+Route::get('/event/users/csv/{id}', 'EventController@participantsCsv');
+
 Route::get('/users', 'UserController@list');
 
 Route::get('/users/{id}', 'UserController@get');

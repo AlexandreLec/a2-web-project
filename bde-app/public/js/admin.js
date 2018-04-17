@@ -268,32 +268,38 @@ var actionsEvent = function (event) {
     let actions = document.createElement("td");
     let edit = document.createElement("i");
     let del = document.createElement("i");
+    let pdf = document.createElement('i');
     let participants = document.createElement("i");
     let spanEdit = document.createElement("span");
     let spanDel = document.createElement("span");
     let spanPart = document.createElement("span");
     let csv = document.createElement("a");
-    let pdf = document.createElement("span");
+    let spanPdf = document.createElement("span");
 
     edit.className="fas fa-edit";
     del.className="fas fa-trash-alt";
     participants.className="fas fa-users";
+    pdf.className="fas fa-file-pdf";
 
     spanEdit.setAttribute('id', event.id);
     spanDel.setAttribute('id', event.id);
-    csv.setAttribute('href', '/api/event/users/'+event.id);
+    spanPdf.setAttribute('id', event.id);
+    csv.setAttribute('href', '/api/event/users/csv/'+event.id);
     csv.setAttribute('download', 'download');
     
     spanEdit.appendChild(edit);
     spanDel.appendChild(del);
-    spanPart.appendChild(participants);
+    csv.appendChild(participants);
+    spanPdf.appendChild(pdf);
 
     actions.appendChild(spanEdit);
     actions.appendChild(spanDel);
     actions.appendChild(csv);
+    actions.appendChild(spanPdf);
     
     spanEdit.addEventListener('click', showEvent);
     spanDel.addEventListener('click', confirmDelEvent);
+    spanPdf.addEventListener('click', participantsPDF);
 
     return actions;
 }
@@ -443,13 +449,37 @@ var getDataEvents = function () {
     });
 };
 
+var participantsPDF = function (){
+    console.log('hello');
+    $.get("/api/event/users/"+this.id, function(data, statut){
+
+        var pdf = new jsPDF();
+        var y = 10;
+        pdf.setFontStyle('bold');
+        pdf.text(12, y, "Prénom");
+        pdf.text(50, y, "Nom");
+        pdf.setFontStyle('normal');
+
+        data.forEach(function(participant){
+            y=y+10;
+            pdf.text(12, y, participant.first_name);
+            pdf.text(50, y, participant.surname);
+        });
+        pdf.save('participants.pdf');
+    });
+}
+
 
 $(document).ready( function () {
     getDataUsers();
     getDataIdeas();
     getDataEvents();
+
+    
 });
 
 let hidePanel = document.getElementById('hide');
+let addEvent = document.getElementById('add-event');
 
+addEvent.addEventListener('click', newEvent);
 hidePanel.addEventListener('click', hideEdit);
