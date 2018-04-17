@@ -66,3 +66,5 @@ Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 //Shop routes
 Route::get('/shop', 'ShopController@index');
 
+//Notification route
+Route::get('/notification','NotificationController@notif');

@@ -42,8 +42,7 @@
 
                         <label>Notif </label><input name="login" type="text"/>
                         <input name="login" type="text"/>
-                        <input name="login" type="text"/>
-                        <input name="login" type="text"/>
+                      
                     </form>
                  </div>
     
