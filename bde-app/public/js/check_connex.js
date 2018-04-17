@@ -1,3 +1,5 @@
+
+
 var mailB = surnameB = firstnameB = passwordB  = false;
 var emails = [];
 
@@ -64,7 +66,6 @@ function checksecondname() {
     }
 }
 
-
 function checkmail() {
     var grade = document.getElementById('Grade').value;
     var regex_viacesi = /^[a-z\.A-Z]{2,}@viacesi\.fr/;
@@ -109,6 +110,7 @@ function chkuniqmail(tstdmail){
     }
     return true;
 }
+console.log("test");
 
 function checkpassword() {
     var password = document.getElementById('Password');
@@ -154,8 +156,6 @@ function checkpassword() {
 
 
 
-
-
 getemails();
 
 var firstname = document.getElementById('Name');
@@ -184,7 +184,4 @@ document.getElementById('btnSubmit').addEventListener('click', function (e) {
         e.preventDefault();
     }
 }
-
 );
-
-
