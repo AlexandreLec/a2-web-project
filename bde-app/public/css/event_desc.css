@@ -8,15 +8,38 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 30px;
+    
+/*    padding: 4px;
+    border: 1px solid black;
+    border-radius: 5px;*/
 }
 
 .info {
-    justify-content: flex-end;
-    width: 50%;
     
-    padding: 4px;
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    
+/*    padding: 4px;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 5px;*/
+}
+
+.field {
+    display: flex;
+    flex-direction: row;
+    
+    margin: auto;
+}
+
+i{
+    
+}
+
+.rest {
+    display:flex;
+    
 }
 
 .event{
@@ -31,33 +54,36 @@
 }
 
 h2 {
-    width: 50%;
+    margin-right: 15px;
     
-    padding: 4px;
-    border: 1px solid black;
-    border-radius: 5px;
 }
 
 .title{
     padding: 4px;
-    border: 1px solid black;
-    border-radius: 5px;
+    border-bottom: 1px solid black;
+    
     
     display: flex;
-    
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-#info p{
+.rest p{
     text-align: justify;
-    width: 80%;
-    justify-content: center;
-    margin-left: 5%;
+/*    width: 75%;*/
+    padding: 15px;
+    border-right: 1px solid black;
 }
 
 .info p{
-    padding: 4px;
+/*    padding: 4px;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 5px;*/
+}
+
+.back {
+    width: 200px;
 }
 
 .photos{
@@ -70,40 +96,20 @@ h2 {
 }
 
 .upldimg{
-/*    display:none;*/
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    width: 30%;
+    padding-left: 15px;
+    align-self: center;
 }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 4px;
+#photos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-/* Create four equal columns that sits next to each other */
-.column {
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
-}
-
-.column img {
-  width: 100%;
-  margin-top: 8px;
-  vertical-align: middle;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .column {
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    flex: 100%;
-    max-width: 100%;
-  }
+img{
+    margin: 10px;
 }
