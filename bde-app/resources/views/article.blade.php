@@ -4,11 +4,14 @@
     {{ Html::style('css/form.css') }}
 @stop
 @section('content')
-    
+
+
+ <div id="conteneur1">   
+
     <h1 id="Titre">Ajouter un article</h1>
 
-
-<div id="conteneur1">
+<form action="/article" method="POST" enctype="multipart/form-data">
+    {{ csrf_field() }}
    
     <div class="field">
         <div class="text">
@@ -58,11 +61,15 @@
             <option value="4">Autocollant</option>
             <option value="5">Coque</option>
         </select>
-   </div>
-</div>
-
+   </div> 
+    
     <div class="button">
     <input type="Submit" id="submit" value="Mettre en vente">
     </div>
+
+    </form>
+</div>
+
+   
 
 @stop

@@ -27,7 +27,7 @@ class ArticleController extends Controller
             $article->price = $request->price;
             $article->id_category = $request->category;
 
-             $file = $request->file('picture');
+                $file = $request->file('picture');
                     $destinationPath = $request->file('picture')->store('users_upload/goodie', 'public');
                  
                     $article->url_img = '/storage/'.$destinationPath;
@@ -36,6 +36,5 @@ class ArticleController extends Controller
                     
                     return view('ArticleConfirm');
         }
-                    
     }
 }
