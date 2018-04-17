@@ -37,8 +37,10 @@
         <label for="Mail">* Email Viacesi</label>
     </div>
     <div class="icon">
-        <i class="fas fa-envelope"></i><input type"email" name="Mail" id="Mail" />
-    </div>   
+        <i class="fas fa-envelope"></i>    
+        <input type="email" name="Mail" id="Mail" />
+        <span class="error" aria-live="polite"></span>
+    </div>
     </div>     
 
     <div class="field">

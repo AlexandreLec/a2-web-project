@@ -1,4 +1,40 @@
 var mailB = surnameB = firstnameB = passwordB  = false;
+var emails = [];
+
+function getemails(){
+    
+    //xml http request to /api/users
+    url = '/api/users';
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.send(null);
+    
+    xhr.addEventListener('readystatechange', function() {
+
+    //if request completed gets the JSON file
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      
+      console.log("request complete");
+      var response = JSON.parse(xhr.responseText);
+      var i=0;
+      
+      
+      while(response[i] != null){
+        emails[i] = response[i].mail;
+        i+=1;
+      }
+     
+     
+
+    }
+    else {
+        return 'error';
+    }
+
+    });
+     
+}
 
 function checkname() {
     var firstname = document.getElementById('Name');
@@ -34,22 +70,43 @@ function checkmail() {
     var regex_viacesi = /^[a-z\.A-Z]{2,}@viacesi\.fr/;
     var regex_cesi = /^[a-z\.A-Z]{2,}@cesi\.fr/;
     var mail = document.getElementById('Mail');
+    var error = document.querySelector('.error');
 
-  
-    if ((grade == "Etudiant EXIA" || grade == "Etudiant EI") && regex_viacesi.test(mail.value)) {
 
-     
-        mail.style.border = "solid 2px green";
-        mailB=true;
+    if(chkuniqmail(mail.value)){
+        if ((grade == "Etudiant EXIA" || grade == "Etudiant EI") && regex_viacesi.test(mail.value)) {
+
+
+            mail.style.border = "solid 2px green";
+            mailB=true;
+        }
+        else if (grade == "Salarié CESI" && regex_cesi.test(mail.value)) {
+
+            mail.style.border = "solid 2px green";
+            mailB=true;
+        }
+        else {
+            mail.style.border = "solid 2px red";
+        }
+        
+        error.innerHTML = ""; // Reset the content of the message
+        error.className = "error";
+     }
+     else {
+        error.innerHTML = "Cet email existe déjà, connectez vous";
+        error.className = "error active";     }
+     }
+
+function chkuniqmail(tstdmail){
+    var i=0;
+    while(emails[i] != null){
+        if(emails[i] == tstdmail){
+            
+            return false;
+        }
+        i+=1;
     }
-    else if (grade == "Salarié CESI" && regex_cesi.test(mail.value)) {
-     
-        mail.style.border = "solid 2px green";
-        mailB=true;
-    }
-    else {
-        mail.style.border = "solid 2px red";
-    }
+    return true;
 }
 
 function checkpassword(){
@@ -95,6 +152,7 @@ function checkpassword(){
     }
     
 
+window.addEventListener('load', getemails);
 
 var firstname = document.getElementById('Name');
 firstname.addEventListener('keyup', checkname);

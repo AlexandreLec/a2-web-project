@@ -73,8 +73,14 @@ class EventIdeaController extends Controller
             $eventIdea->name = $request->event_name;
             $eventIdea->location = $request->event_place;
             $eventIdea->description = $request->event_desc;
-            $eventIdea->price = $request->event_price;
             
+            if($request->free == "on"){
+                $eventIdea->price = 0;
+            } 
+            else {                
+                $eventIdea->price = $request->event_price;
+            }
+                
             //uploaded img verification
             //check for img presence
             $eventIdea->url_img = Image::upload($request, 'users_upload');
