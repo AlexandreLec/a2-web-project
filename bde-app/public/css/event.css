@@ -1,0 +1,31 @@
+.globalcontainer{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.card_idea{
+    border-style: solid;
+}
+
+.event_title{
+    display: flex;
+    align-items: baseline;
+}
+
+.event_date{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.event_descrip{
+    text-align: center;
+}
+
+.event_info{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+}
