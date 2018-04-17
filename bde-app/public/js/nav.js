@@ -23,6 +23,18 @@ var showSign = function (){
 		signTab.style.display = 'inline';
 	}
 };
+var showNotif = function (){
+
+	let signNotif = document.getElementById('sign-notif');
+
+	if (signNotif.style.display == 'inline'){
+		signNotif.style.display = 'none';
+	}
+	else {
+		signNotif.style.display = 'inline';
+	}
+};
+
 
 var hideNav = function (){
 
@@ -48,5 +60,11 @@ let signBtn = document.getElementById('connexion');
 if (signBtn !== null){
 	signBtn.addEventListener('click', showSign);
 }
+
+let signbtn = document.getElementById('notif');
+if (signbtn !== null){
+	signbtn.addEventListener('click', showNotif);
+}
+
 
 var flkty = new Flickity('.carousel');
