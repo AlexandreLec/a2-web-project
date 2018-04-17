@@ -36,7 +36,6 @@ function getemails(){
      
 }
 
-
 function checkname() {
     var firstname = document.getElementById('Name');
     var filtre = /^[a-zA-z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\.\,\!\?\-]{3,35}$/;
@@ -110,6 +109,7 @@ function checkmail() {
         error.className = "error";
      }
      else {
+        mail.style.border = "solid 2px red";
         error.innerHTML = "Cet email existe déjà, connectez vous";
         error.className = "error active";     }
      }

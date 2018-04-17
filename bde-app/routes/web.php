@@ -49,15 +49,18 @@ Route::get('/events/ideas/{id}', 'EventIdeaController@show');
 Route::get('/events/participate','EventIdeaController@create');
 Route::post('/events/participate','EventIdeaController@store');
 
+//add new goodie
+Route::get('/article','ArticleController@create');
+Route::post('/article','ArticleController@store');
+
 Route::post('/events/insert','EventController@insert');
 Route::delete('/events/{id}','EventController@delete');
 
 
-Route::get('/article', function (){
-    return view('article');
-});
 
 Route::get('/idea/poll/add/{id}', 'EventIdeaController@addPoll');
 Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 
+//Shop routes
+Route::get('/shop', 'ShopController@index');
 

@@ -1,4 +1,5 @@
-function samemail() {
+var url ='/api/users';
+function participate() {
     
     var samemail = new XMLHttpRequest();
 
@@ -22,7 +23,7 @@ function samemail() {
         }
         }
     });
-    samemail.open('GET', 'localhost:8000/api/users', true);
+    samemail.open('GET', url, true);
     samemail.send();
 
 }

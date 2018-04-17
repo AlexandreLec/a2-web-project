@@ -39,7 +39,7 @@
     <div class="icon">
         <i class="fas fa-envelope"></i>    
         <input type="email" name="Mail" id="Mail" />
-        <span class="error" aria-live="polite"></span>
+        <div class="error" aria-live="polite"></div>
     </div>
     </div>     
 
