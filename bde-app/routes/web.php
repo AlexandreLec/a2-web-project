@@ -26,7 +26,7 @@ Route::get('/users', function (){
 
 //User management
 Route::post('/users/update/{n}', 'UserController@update');
-Route::get('/users/delete/{id}', 'UserController@delete');
+Route::delete('/users/{id}', 'UserController@delete');
 
 //add a new user
 Route::get('/register', 'UserController@register');
@@ -42,7 +42,7 @@ Route::get('/events/category','EventCategoryController@index');
 //new idea submission
 Route::get('/events/ideas/create','EventIdeaController@create');
 Route::post('/events/ideas/create','EventIdeaController@store');
-
+Route::delete('/events/ideas/{id}', 'EventIdeaController@delete');
 Route::get('/events/ideas/{id}', 'EventIdeaController@show');
 
 //new participate event
@@ -52,6 +52,10 @@ Route::post('/events/participate','EventIdeaController@store');
 //add new goodie
 Route::get('/article','ArticleController@create');
 Route::post('/article','ArticleController@store');
+
+Route::post('/events/insert','EventController@insert');
+Route::delete('/events/{id}','EventController@delete');
+
 
 
 Route::get('/idea/poll/add/{id}', 'EventIdeaController@addPoll');

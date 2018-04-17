@@ -15,12 +15,20 @@ a {
 	
 }
 
+button {
+	margin-bottom: 30px;
+}
+
+td span svg, td a svg {
+	padding-left: 5px;
+}
+
 #user-form {
 	z-index: 1001;
 	width : 50%;
 	background-color: white;
 	position: absolute;
-	top: 25%;
+	top: 1%;
 	right: 25%;
 	display: flex;
 	flex-direction: column;
@@ -33,7 +41,7 @@ a {
 	width : 50%;
 	background-color: white;
 	position: absolute;
-	top: 10%;
+	top: 1%;
 	right: 25%;
 	display: flex;
 	flex-direction: column;
@@ -47,7 +55,7 @@ a {
 }
 
 form label {
-	margin-top: 20px;
+	margin-top: 15px;
 	margin-bottom: 5px;
 }
 
