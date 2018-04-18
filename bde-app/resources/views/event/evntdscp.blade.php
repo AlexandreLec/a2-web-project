@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="event">
-    <a href="/event/past"><button class="back" > <--   Retourner aux events</button></a>
+    <a href="/events/past"><button class="back" > <--   Retourner aux events</button></a>
 
     <div id="info">
         <div class="title">
