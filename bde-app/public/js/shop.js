@@ -278,6 +278,32 @@ var sendBasket = function() {
     })
 }
 
+var sendCommand = function() {
+
+    datas = JSON.stringify({ basket });
+
+    $.ajax({
+      url:"/shop/command",
+      type:"POST",
+      data:datas,
+      contentType:"application/json; charset=utf-8",
+      dataType:"text",
+      success: function(data){
+        if(data == 'nonauth'){
+            msg = document.createElement('p');
+            msg.innerHTML = "Vous devez être connecté pour passer une commande";
+            msg.style.color = 'red';
+            msg.setAttribute('id', 'alert-auth');
+            $('#alert-auth').remove();
+            $('.command-content').append(msg);
+        }
+        else {
+            document.location.href=data;
+        }
+      }
+    })
+}
+
 let search_bar = document.querySelector('#search_bar');
 
 search_bar.addEventListener('keyup', function() {
@@ -307,10 +333,8 @@ search_bar.addEventListener('keyup', function() {
     
 });
 
-
 getDataGoodies();
 getBasket();
-
 
 $('li input[name="cat"]').click(sortByCategory);
 $('li input[name="sort"]').click(sort);
@@ -319,3 +343,4 @@ $('.fa-cart-plus').click(addToBasket);
 console.log(document.querySelectorAll('.fa-cart-plus'));
 setInterval(sendBasket, 10000);
 document.getElementById('command').addEventListener('click', showCommand);
+document.getElementById('submit').addEventListener('click', sendCommand);

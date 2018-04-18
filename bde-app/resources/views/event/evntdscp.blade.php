@@ -31,10 +31,10 @@
 
             <div class="upldimg">
                 <label for="usrimg">Vous avez une image de cet évènement?</label>
-                <form action="/events/desc/{id}" method="POST" enctype="multipart/form-data">
+                <form action="/events/desc/{{ $eventid->id }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" id="eventid" name="event_id" value="{{ $eventid->id }}">
-                    <<input type="hidden" id="imgsloaded" value="0">
+                    <input type="hidden" id="imgsloaded" value="0">
                     <input type="file" id="usrimg" name="photo">
                     <input id="submit" type="submit" value="Poster image">
                 </form>
@@ -64,7 +64,5 @@
 </div>
 
 {{ Html::script('js/load_imgs.js') }}
-{{ Html::script('js/click_on_img.js') }}
-
 
 @stop

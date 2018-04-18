@@ -79,6 +79,11 @@ Route::get('/shop', 'ShopController@index');
 
 Route::post('/shop/basket', 'ShopController@saveBasket');
 Route::get('/shop/basket', 'ShopController@retrieveBasket');
+Route::get('/shop/confirm', function(){
+	return view('shop.confirm');
+});
+Route::post('/shop/command', 'ShopController@command');
+
 
 //Notification route
 Route::get('/notification','NotificationController@notif');

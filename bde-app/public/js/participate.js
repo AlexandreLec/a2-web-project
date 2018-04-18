@@ -1,7 +1,9 @@
-var url ='/api/users';
+
 var participate = [];
+var user;
+var event;
 function participate() {
-    
+    var url ='/api/users';
     var samemail = new XMLHttpRequest();
 
      samemail.addEventListener('readystatechange', function () {
@@ -25,19 +27,8 @@ function participate() {
         }
     });
     samemail.open('GET', url, true);
-    samemail.send();
+    samemail.send(null);
 
 
-function inscrit(inscrit){
-        var i=0;
-        while(participate[i] != null){
-            if(participate[i] == inscrit){
-                
-                return false;
-            }
-            i+=1;
-    
-        }
-        return true;
-    }
+
 }

@@ -117,7 +117,7 @@ nav ul li a {
 	right: 10px;
 	top: 60px;
 	height: auto;
-	width:200px;
+	width:auto;
 	padding: 5px;
 	color: white;
 	border-radius:7px;
@@ -151,7 +151,13 @@ nav ul li a {
 #sign-notif form label {
 	
 	align-self: center;
-color: blue;
+
+
+}
+#nom {
+	
+color:blue;
+
 
 }
 
