@@ -40,10 +40,10 @@
                 <div id="sign-notif">
                     <form> 
 
-                        <label>Notif </label><input name="login" type="text"/>
-                        <input name="login" type="text"/>
-                        <input name="login" type="text"/>
-                        <input name="login" type="text"/>
+                        <label>Nom </label>: <label id = "nom"></label>
+                        <label>Description</label> : <label id = "desc"></label>
+                       
+                      
                     </form>
                  </div>
     
@@ -113,5 +113,6 @@
         </footer>
 
         {{ Html::script('js/nav.js') }}
+        {{ Html::script('js/notif.js') }}
     </body>
 </html>

@@ -13,7 +13,7 @@ function getemails(){
     xhr.send(null);
     
     xhr.addEventListener('readystatechange', function() {
-
+console.log("ok");
     //if request completed gets the JSON file
     if (xhr.readyState === 4 && xhr.status === 200) {
       

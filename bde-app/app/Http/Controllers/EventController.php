@@ -70,6 +70,11 @@ class EventController extends Controller
     	$event = Event::find($id);
     	return $event->participants;
     }
+    
+    public function eventImgs($id){
+        $event = Event::find($id);
+        return $event->imgs;
+    }
 
     public function event(){
         $events = Event::all();
@@ -81,8 +86,11 @@ class EventController extends Controller
         return view('event.Detail', compact('event'));
     }
 
+
     public function past($id){
         $events = Event::all()->where('statut', '=', 'DONE');
         return view('event.Past', compact('events'));
         }
     }
+
+

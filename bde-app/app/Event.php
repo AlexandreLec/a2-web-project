@@ -44,4 +44,17 @@ class Event extends Model
     {
         return $this->belongsToMany('App\User', 'participate', 'id_event', 'id_user');
     }
+    
+    public function nbrParticipants()
+    {
+        return count($this->participants);
+    }
+    
+    public function imgs() {
+        return $this->hasMany('App\Image', 'id_event');
+    }
+    
+  
+           
+            
 }
