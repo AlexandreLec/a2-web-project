@@ -46,9 +46,7 @@
     </div>
         
     <div id="photos">
-<!--        <div class="fixed-aspect-ratio-container square">
-            <img id="myImg" src="/storage/users_upload/event/mpfswW4QgatFkGYuZR7bwI4nRqNhZEBXKTbRz6X8.png">
-        </div>-->
+<!--        
     </div>
     
     <!-- The Modal -->
