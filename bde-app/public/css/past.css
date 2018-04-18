@@ -1,10 +1,10 @@
 .container{
-    width: 100%;
+    width: 90%;
 }
 
 .cardevent{
-    width: 70%;
-    align-items: center;
+    width: 50%;
+    margin-left: 230px;
     text-align: center;
     border-style: solid;
     margin-bottom: 10px;
@@ -30,4 +30,9 @@
     display: flex;
     border-radius: 10px 5px 10px 5px;
     flex-direction: row-reverse;
+}
+
+.event-img{
+    display: flex;
+    
 }
