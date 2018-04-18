@@ -59,7 +59,7 @@
                 <h4>TOTAL :</h4><p id="total"></p>
 
             </div>
-            <button>Finaliser la commande</button>
+            <button id="submit">Finaliser la commande</button>
         </div>
     </div>
     {{ Html::script('js/shop.js') }}

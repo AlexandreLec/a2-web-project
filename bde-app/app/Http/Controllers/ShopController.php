@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\ArticleCategory;
+use Illuminate\Support\Facades\Auth;
+use App\Command;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Contact;
 
 class ShopController extends Controller
 {
@@ -13,18 +17,16 @@ class ShopController extends Controller
 	 */
     public function index()
     {
+    	if(Auth::check()) {
+    		$user = Auth::user();
+    	}
+
     	$goodies = Article::all();
     	$categories = ArticleCategory::all();
-    	return view('shop.index', compact('goodies', 'categories'));
+    	return view('shop.index', compact('user','goodies', 'categories'));
     }
 
-    //API Methods
-    public function goodies()
-    {
-    	return Article::all();
-    }
-
-	public function retrieveBasket(Request $request)
+    public function retrieveBasket(Request $request)
     {
     	if ($request->session()->has('basketSaved')) {
 		    $basket = $request->session()->get('basketSaved');
@@ -42,4 +44,45 @@ class ShopController extends Controller
     	$request->session()->put('basketSaved', $basket);
     	return 'ok';
     }
+
+    public function command(Request $request)
+    {
+    	if(Auth::check()) {
+    		$user = Auth::user();
+    		
+    		$basket = $request->all();
+
+    		$recap = [];
+
+    		foreach($basket['basket'] as $key => $item) {
+    			$command = new Command();
+    			$command->quantity = $item['quantity'];
+    			$command->price_total = $item['price']*$item['quantity'];
+    			$command->date_order = date('Y-m-d');
+    			$command->statut = 'WAIT';
+    			$command->id_user = $user->id;
+    			$command->id_goodie = $item['id'];
+    			$command->save();
+    			$command->name = $item['name'];
+    			array_push($recap, $command);
+    		}
+
+    		$request->session()->forget('basketSaved');
+
+    		Mail::to($user->mail)->send(new Contact($recap, $user));
+
+    		return "/shop/confirm";
+    	}
+    	else {
+    		return 'nonauth';
+    	}
+    }
+
+    //API Methods
+    public function goodies()
+    {
+    	return Article::all();
+    }
+
+	
 }
