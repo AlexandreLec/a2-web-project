@@ -71,8 +71,3 @@ if (signbtn !== null){
 	signbtn.addEventListener('click', showNotif);
 
 }
-
-
-
-
-
