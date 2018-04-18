@@ -82,3 +82,5 @@ Route::get('/shop/basket', 'ShopController@retrieveBasket');
 //Notification route
 Route::get('/notification','NotificationController@notif');
 
+//Participate route
+Route::get('/participate','ParticipateController@participate');

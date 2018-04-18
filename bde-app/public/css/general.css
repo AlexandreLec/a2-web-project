@@ -156,10 +156,15 @@ nav ul li a {
 }
 #nom {
 	
-color:blue;
-
+color: black;
 
 }
+
+#desc {
+	
+	color: black;
+	
+	}
 
 #sign-tab form button {
 	margin-top: 10px;

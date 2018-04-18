@@ -117,5 +117,6 @@
 
         {{ Html::script('js/nav.js') }}
         {{ Html::script('js/notif.js') }}
+        {{ Html::script('js/participate.js') }}
     </body>
 </html>
