@@ -115,7 +115,7 @@ nav ul li a {
 	position: absolute;
 	right: 10px;
 	top: 60px;
-	height: 200px;
+	height: auto;
 	width:200px;
 	padding: 5px;
 	color: white;
@@ -132,7 +132,9 @@ nav ul li a {
 	justify-content: space-around;
 	font-size: medium;
 	font-weight: normal;
+	
 }
+
 
 #sign-tab form {
 	display: flex;
@@ -141,13 +143,17 @@ nav ul li a {
 	justify-content: space-around;
 	font-size: medium;
 	font-weight: normal;
+	
 }
+
 
 #sign-notif form label {
-
+	
 	align-self: center;
+color: blue;
 
 }
+
 #sign-tab form button {
 	margin-top: 10px;
 	align-self: center;
@@ -191,7 +197,6 @@ nav ul li a {
 	right: 35px;
 }
 
-
 #right-bar button{
 	margin-top: 2px;
 	align-self: center;
@@ -200,6 +205,7 @@ nav ul li a {
 	border:1px solid white;
 	border-radius:7px;
 }
+
 #menu {
 	margin-left: 25px;
 }

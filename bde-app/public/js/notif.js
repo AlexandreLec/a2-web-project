@@ -16,31 +16,63 @@ function getnotif() {
     function executerequete() {
 
         // if (notif.length === 0) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
 
-            xhr.addEventListener('readystatechange', function () {
 
-                //if request completed gets the JSON file
-                if (xhr.readyState === 4 && xhr.status === 200) {
+        xhr.addEventListener('readystatechange', function () {
 
-                    var response = JSON.parse(xhr.responseText);
+            //if request completed gets the JSON file
+            if (xhr.readyState === 4 && xhr.status === 200) {
 
-                    name = response[0].name;
-                    desc = response[0].description;
-                    console.log(response);
+                var response = JSON.parse(xhr.responseText);
 
-                    // callback();
+                response.forEach(element => {
+                    var div = document.createElement('div');
+                    var namenotif = document.createElement('p')
+                    div.appendChild(namenotif);
+                    namenotif.innerHTML = element.name;
 
-                    
-                }
+                    $('form #nom').append(div);
+                });
 
-            });
-            xhr.send(null);
-        }
+                response.forEach(element => {
+                    var div = document.createElement('div');
+                    var descnotif = document.createElement('p');
+                    div.appendChild(descnotif);
+                    descnotif.innerHTML = element.description;
+
+                    $('form #desc').append(div);
+                });
+
+                name = response[0].name;
+                desc = response[0].description;
+
+                console.log(response);
+                // callback();
+
+            }
+
+        });
+        xhr.send(null);
+    }
     // }
+
     executerequete();
+
+    /*function affichernotif(jsonObj) {
+        var name = jsonObj['name'];
+
+        for (var i = 0; i < name.length; i++) {
+           
+            var div = document.createElement('div');
+            var namenotif = document.createElement('p')
+            div.appendChild(namenotif);*/
+
+
+    /* var element = document.getElementById("right-bar");
+     element.appendChild(namediv);*/
 }
+
 
 getnotif();

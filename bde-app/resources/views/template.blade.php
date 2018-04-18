@@ -40,8 +40,8 @@
                 <div id="sign-notif">
                     <form> 
 
-                        <label>Nom </label>: <label id = "nom"></label>
-                        <label>Description</label> : <label id = "desc"></label>
+                        <label >Nom </label> <label id = "nom"></label>
+                        <label>Description</label> <label id = "desc"></label>
                        
                       
                     </form>
