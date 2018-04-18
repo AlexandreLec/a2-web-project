@@ -1,9 +1,3 @@
-.globalcontainer{
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-}
-
 .card_idea{
     display: flex;
 	width:30%;
@@ -11,6 +5,15 @@
     align-items: center;
     justify-content: start;
     border-style: solid;
+}
+
+.button-red {
+    padding:6px;
+    font-size: large;
+    background:#d34836;
+    color:#fff;
+    border-radius:2px;
+    border:none;
 }
 
 .event_title{

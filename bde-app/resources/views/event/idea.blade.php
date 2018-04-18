@@ -1,37 +1,33 @@
-@extends ('template')
-@section('css')
-{{ Html::style('css/idea.css') }}
-@stop
+@extends ('event.events')
+
 @section('content')
 
 <div class="globalcontainer">
     
-    <div class="title">
+    <div class="title-event-detail">
         {{ $idea->name }}
     </div>
 
 
-    <div class=info>
+    <div class="info-event">
 
     <div class="price">
-        <p> {{ $idea->price}} </p>
-        <div class="icon">
+        @if ($idea->price == 0)
+            <p> Gratuit </p>
+        @else
+            <p> {{ $idea->price}} </p>
+        @endif
         <i class="fas fa-euro-sign"></i>
-</div>
     </div>
 
     <div class="location">
         <p> {{ $idea->location}} </p>
-        <div class="icon">
-        <i class="fas fa-map-marker"></i>
-        </div>
+        <i class="far fa-compass"></i>
     </div>
 
         
          <div class="like"><span>{{ $idea->getPoll() }}</span>
-         <div class="icon">
          <i class="fas fa-thumbs-up"></i>
-        </div>
         </div>
         
         

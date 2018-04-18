@@ -148,23 +148,20 @@ nav ul li a {
 }
 
 
-#sign-notif form label {
-	
+#sign-notif form label  {
+	font-size: x-large;
 	align-self: center;
 
 
 }
-#nom {
+#sign-notif form label div p {
 	
-color: black;
+color:black;
+text-align: center;
+
 
 }
 
-#desc {
-	
-	color: black;
-	
-	}
 
 #sign-tab form button {
 	margin-top: 10px;
@@ -266,6 +263,12 @@ color: black;
 	}
 }
 
+@media screen and (max-width: 850px){
+	#hello {
+		display: none;
+	}
+}
+
 @media screen and (max-width: 750px) {
 
 	#right-bar {
@@ -287,12 +290,16 @@ color: black;
 		margin-left: 60px;
 		margin-right: 50px;
 	}
+
+	#notif {
+		margin-right: 0px;
+	}
 }
 
 @media screen and (max-width: 475px) {
 
 
-	body p{
+	#bonjour{
 		 
 		visibility: hidden;
 		display: none;
@@ -307,6 +314,10 @@ color: black;
 	.container {
 		margin-left: 10px;
 		margin-right: 10px;
+	}
+	#sign-tab form button {
+		margin-top: 10px;
+		align-self: center;
 	}
 }
 

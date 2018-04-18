@@ -14,7 +14,9 @@
         <!-- CSS files -->
         {{ Html::style('css/general.css') }}
         <meta name="_token" content="{{ csrf_token() }}"/>
-       
+        @if (isset($user))
+        <span id="id-user" hidden>{{ $user->id }}</span>
+        @endif
 
         <!-- Script files -->
         <script
@@ -42,11 +44,7 @@
                     
                 <div id="sign-notif">
                     <form> 
-
-                        <label >Nom </label> <label id = "nom"></label>
-                        <label>Description</label> <label id = "desc"></label>
-                       
-                      
+                        <label >Notification </label> <label id = "nom"></label>
                     </form>
                  </div>
     
@@ -57,7 +55,9 @@
                     <i id="logo-connexion" class="fas fa-user fa-2x"></i><span id="text-connexion">Connexion<span>
                 </button>    
                 @else
+                <div id="hello">
                     <p>Bonjour, {{ $user->first_name }}</p>
+                </div>
                 @endif
                 <span id="menu"><i class="fas fa-bars fa-2x"></i></span>
             </div>

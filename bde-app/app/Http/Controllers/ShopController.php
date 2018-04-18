@@ -8,7 +8,9 @@ use App\ArticleCategory;
 use Illuminate\Support\Facades\Auth;
 use App\Command;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\Contact;
+use App\Mail\CommandConfirm;
+use App\Mail\NotifBDE;
+use App\User;
 
 class ShopController extends Controller
 {
@@ -69,7 +71,10 @@ class ShopController extends Controller
 
     		$request->session()->forget('basketSaved');
 
-    		Mail::to($user->mail)->send(new Contact($recap, $user));
+    		$bde = User::all()->where('id_group','=','4')->first();
+
+    		Mail::to($user->mail)->send(new CommandConfirm($recap, $user));
+    		Mail::to($bde->mail)->send(new NotifBDE($recap, $user));
 
     		return "/shop/confirm";
     	}
