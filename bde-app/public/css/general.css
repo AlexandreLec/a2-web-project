@@ -4,6 +4,7 @@ html, body {
 	height: 100%;
 	padding: 0;
 	margin: 0;
+	min-width: 300px;
 }
 
 body {
@@ -291,13 +292,6 @@ color: black;
 
 @media screen and (max-width: 475px) {
 
-
-	body p{
-		 
-		visibility: hidden;
-		display: none;
-
-	}
 	footer {
 		flex-direction: column;
 		padding-top: 35px;

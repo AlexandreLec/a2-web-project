@@ -71,7 +71,3 @@ if (signbtn !== null){
 }
 
 
-
-
-}
-

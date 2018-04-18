@@ -6,10 +6,10 @@
     
     @foreach ($ideas as $idea)
     <div class="card_idea"> 
-                
+                    
                  <div class ="idea_title">
                          <h2>{{ $idea->name }}</h2>
-                         <div id="{{ $idea->id }}" class="poll"><span>{{ $idea->getPoll() }}</span><i class="fas fa-thumbs-up"></i></div>
+                         <div id="{{ $idea->id }}" class="poll button-red"><span>{{ $idea->getPoll() }}</span><i class="fas fa-thumbs-up"></i></div>
                  </div>
             
                      <div class="card_img"> 
@@ -21,7 +21,7 @@
                     </div>
             
                     <div class="idea_detail">
-                        <a href="/events/ideas/{{ $idea->id }}"><button type="button">Voir détails</button></a>
+                        <a href="/events/ideas/{{ $idea->id }}"><button class="button-red" type="button">Voir détails</button></a>
                     </div>
     </div>
     @endforeach

@@ -5,8 +5,6 @@
     {{ Html::style('css/events.css') }}
     
 	{{ Html::style('css/ideas_box.css') }}
-	
-	{{ Html::style('css/event.css') }}
 
 	{{ Html::style('css/detail.css') }}
 
