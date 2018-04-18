@@ -31,6 +31,15 @@
     justify-content: center;
 }
 
+.button-sub {
+    padding:6px;
+    font-size: large;
+    background:#4c4c4c;
+    color:#fff;
+    border-radius:2px;
+    border:none;
+}
+
 .date-margin {
     margin-right: 10px;
 }
@@ -101,6 +110,7 @@
 .card_descrip p{
     color: black;
     width: 250px;
+    height: 150px;
     font-size: large;
     text-align: justify;
 }

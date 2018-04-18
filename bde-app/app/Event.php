@@ -66,6 +66,12 @@ class Event extends Model
         );
     }
 
+    //Remove a participants in participate table
+    public function removeParticipant(User $user)
+    {
+        DB::table('participate')->where('id_event', '=', $this->id)->where('id_user', '=', $user->id)->delete();
+    }
+
     public function category()
     {
         return $this->belongsTo('App\EventCategory', 'id_cat');

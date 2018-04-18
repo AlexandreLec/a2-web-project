@@ -14,7 +14,9 @@
         <!-- CSS files -->
         {{ Html::style('css/general.css') }}
         <meta name="_token" content="{{ csrf_token() }}"/>
+        @if (isset($user))
         <span id="id-user" hidden>{{ $user->id }}</span>
+        @endif
 
         <!-- Script files -->
         <script

@@ -96,6 +96,22 @@ class EventController extends Controller
         return 'refused';
     }
 
+    public function unscribe($id){
+        if(Auth::check()) {
+            $user = Auth::user();
+            $event = Event::find($id);
+
+            if($event->isInParticipant($user)){
+                $event->removeParticipant($user);
+                return 'removed';
+            }
+            else {
+                return 'Pas encore inscrit';
+            }
+        }
+        return 'refused';
+    }
+
     //API methods
     public function participantsCsv($id){
     	$event = Event::find($id);

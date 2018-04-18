@@ -53,6 +53,7 @@ Route::post('/events/desc/{id}', 'EventDescController@storepic');
 Route::get('/events/participate','EventIdeaController@create');
 Route::post('/events/participate','EventIdeaController@store');
 Route::get('/event/subscribe/{id}','EventController@subscribe');
+Route::get('/event/unscribe/{id}','EventController@unscribe');
 
 //add new goodie
 Route::get('/article','ArticleController@create');
