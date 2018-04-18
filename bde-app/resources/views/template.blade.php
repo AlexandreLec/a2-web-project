@@ -59,8 +59,10 @@
                     <i id="logo-connexion" class="fas fa-user fa-2x"></i><span id="text-connexion">Connexion<span>
                 </button>    
                 @else
+                <div id="hello">
                     <p>Bonjour, {{ $user->first_name }}</p>
                 @endif
+                </div>
                 <span id="menu"><i class="fas fa-bars fa-2x"></i></span>
             </div>
         </header>
