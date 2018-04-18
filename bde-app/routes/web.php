@@ -88,3 +88,5 @@ Route::post('/shop/command', 'ShopController@command');
 //Notification route
 Route::get('/notification','NotificationController@notif');
 
+//Participate route
+Route::get('/participate','ParticipateController@participate');
