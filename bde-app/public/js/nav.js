@@ -61,7 +61,6 @@ if (signBtn !== null){
 	signBtn.addEventListener('click', showSign);
 }
 
-
 if(document.querySelector(".carousel") !== null){
 	var flkty = new Flickity('.carousel');
 }
@@ -70,3 +69,5 @@ let signbtn = document.getElementById('notif');
 if (signbtn !== null){
 	signbtn.addEventListener('click', showNotif);
 }
+
+

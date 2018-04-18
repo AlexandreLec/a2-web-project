@@ -12,6 +12,8 @@
 
 	{{ Html::style('css/past.css') }}
 
+	{{ Html::style('css/event_desc.css') }}
+
 @stop
 
 @section('bar')

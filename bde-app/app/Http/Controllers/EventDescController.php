@@ -17,9 +17,11 @@ class EventDescController extends Controller {
     }
     
     public function show($id){
+        
         $eventid = Event::find($id);
         return view('event.evntdscp', compact('eventid'));
     }
+        
     
     //saves the uploaded picture
     public function storepic(Request $request){
