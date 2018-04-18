@@ -61,16 +61,12 @@ if (signBtn !== null){
 	signBtn.addEventListener('click', showSign);
 }
 
-<<<<<<< HEAD
+
 if(document.querySelector(".carousel") !== null){
 	var flkty = new Flickity('.carousel');
 }
-=======
+
 let signbtn = document.getElementById('notif');
 if (signbtn !== null){
 	signbtn.addEventListener('click', showNotif);
 }
-
-
-var flkty = new Flickity('.carousel');
->>>>>>> 53286825109174fa5bb54f943a22bfeb7474dcf3
