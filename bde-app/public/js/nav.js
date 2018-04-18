@@ -69,5 +69,3 @@ let signbtn = document.getElementById('notif');
 if (signbtn !== null){
 	signbtn.addEventListener('click', showNotif);
 }
-
-
