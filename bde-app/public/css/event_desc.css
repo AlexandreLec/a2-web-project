@@ -122,11 +122,6 @@ h2 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.image{
-    width: 70%;
-    
-}
-
 
  /* The Modal (background) */
 .modal {
@@ -144,25 +139,159 @@ h2 {
 
 /* Modal Content/Box */
 .modal-content {
+    /*display: flex;*/
+    position: relative;
     background-color: #fefefe;
     margin: 3% auto; /* 15% from the top and centered */
-    padding: 20px;
     border: 1px solid #888;
-    max-width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 5px;
+    width: 80%; /* Could be more or less, depending on screen size */
+    height: 80%;
 }
 
-.mdlImg{
-    max-height: auto;
-    max-width: auto;
+.corps{
+    display:flex;
+    flex-direction: row-reverse;
+    height:100%;
 }
 
+#imgContainer{
+    background-color: black;
+    width: 75%;
+    height: 100%;
+}
+
+#mdlImg{
+    width: 100%;
+    height: 100%;
+/*    background-size: contain;
+    background-position: center;
+    background: no repeat;*/
+    
+}
+
+#sideContent{
+    display:flex;
+    height: 100%;
+    flex-direction: column;
+    border-left: 1px solid black;
+}
+
+#comntHeader{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+    
+}
+
+.metadata{
+    display: flex;
+}
+
+.metadata>p{
+    font-size: 0.75em;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.like{
+    display: flex;
+    width: 40%;
+    align-self: center;
+    border: 2px dotted blue;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.likeNbr{
+    line-height: 1em; 
+    font-size: 25px;
+    margin-right: 15px;
+}
+
+.like>button{
+    height: 30px;
+}
+
+#comments{
+    overflow: auto;
+    height: 90%;
+    /*border: 1px solid black;*/
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.cmtMeta{
+    display: flex;
+    height: 20px;
+    justify-content: space-between;
+    line-height: 1em;
+    margin: 0px 2px 2px 2px;
+}
+
+.cmtMeta>p{
+    font-size: 10px;
+    line-height: 1em;
+}
+
+.cmtTextArea{
+    border: 2px solid blue;
+    border-radius: 6px;
+    background-color: greenyellow;
+    
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-between;
+    max-width: 250px;
+    
+    word-wrap: break-word;
+    margin: 0px 2px ;
+    padding: 3px;
+}
+
+.cmtTextArea p{
+    line-height: 1em;
+    margin: 0;
+    margin-right: 2px;
+}
+
+.cmtTextArea i{
+    margin: 0;
+    margin-left: 2px;
+}
+
+/*Own user's comments*/
+
+.ownComment .cmtTextArea{
+    border: 2px solid green;
+    border-radius: 6px;
+    background-color: greenyellow;
+    
+    align-self: flex-end;
+    
+}
+
+
+#reply{
+    display:flex;
+    width: 5%;
+}
 
 /* The Close Button */
 .close {
     color: #aaa;
-    float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    float:right;
     font-size: 28px;
     font-weight: bold;
+    margin: 10px;
 }
 
 .close:hover,

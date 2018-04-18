@@ -43,23 +43,80 @@
     </div>
         
     <div id="photos">
-<!--        
+      
     </div>
-    
+ </div>   
     <!-- The Modal -->
     <div id="myModal" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <div class="image">
-                <img id="mdlImg" src="">
+            <div class="corps">
+                <div id="sideContent">
+                    <div id="comntHeader">
+                        <div class="metadata">
+                            <p>postée le  <i id="imgDate">Date</i></p>
+                            <p>par  <i id="imgUser">User</i></p>
+                        </div>
+                        <div class="like">
+                            <div class="likeNbr">34</div>
+                            <button>Like</button>
+                        </div>
+                    </div>
+  <!------- COMMENTS AREA ---- added in JS ------------>
+                    <div id="comments">
+                        <!--Single comment-->
+                        <div class="comment">
+                            <div class="cmtMeta">
+                                <p>
+                                    <i class="cmtDate">date</i>
+                                    -
+                                    <i class="cmtTime">time</i>
+                                </p>
+                                <p class="cmtUser">User</p>
+                            </div>
+                            <div class="cmtTextArea">
+                                <p>Nous avons passé un fabuleux moment entre amis et sous le soleil, à refaire</p>
+                                <p><i class="fas fa-caret-down"></i></p>
+                            </div>
+                        </div>
+                        <div class="ownComment">
+                            <div class="comment">
+                                <div class="cmtMeta">
+                                    <p>
+                                        <i class="cmtDate">date</i>
+                                        -
+                                        <i class="cmtTime">time</i>
+                                    </p>
+                                    <p class="cmtUser"></p>
+                                </div>
+                                <div class="cmtTextArea">
+                                    <p>Top! À refaire, svp.... ;)</p>
+                                    <p><i class="fas fa-caret-down"></i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+  
+        <!--ADD A COMMENT-->
+                    <div id="reply">
+                        <input type="text" placeholder="Ajouter un commentaire..." name="comment">
+                        <input type="submit" value="-->">
+                    </div> 
+                </div>
+                <div id="imgContainer" >
+                    <div id="mdlImg">
+                        <!--poped up image-->
+                    </div>
+                </div>   
             </div>
-            <p>Some text in the Modal..</p>
         </div>
-
     </div>
-</div>
+
+
+
+
 
 {{ Html::script('js/load_imgs.js') }}
 
