@@ -15,6 +15,7 @@ class EventController extends Controller
 
     	foreach ($events as $key => $event) {
     		$event->category;
+            
     	}
     	return $events;
     }
@@ -40,10 +41,7 @@ class EventController extends Controller
 
     			$event->save();
             	return view('isubmitconfirm');
-
             }
-            
-            
         }else {
             return view('mustconnect');
         }
@@ -55,6 +53,44 @@ class EventController extends Controller
             if($user->group->id === 4){
                 Event::find($id)->delete();
                 return 'ok';
+            }
+        }
+        return 'refused';
+    }
+
+    public function event(){
+        if(Auth::check()) {
+            $user = Auth::user();
+        }
+        $events = Event::all()->where('statut', '!=', 'DONE');
+        foreach ($events as $key => $event) {
+            $event = $event->truncatDesc();
+        }
+        return view('event.Event', compact('events','user'));
+    }
+
+    public function detail($id){
+        $event = Event::find($id);
+        return view('event.Detail', compact('event'));
+    }
+
+
+    public function past(){
+        $events = Event::all()->where('statut', '=', 'DONE');
+        return view('event.Past', compact('events'));
+        }
+
+    public function subscribe($id){
+        if(Auth::check()) {
+            $user = Auth::user();
+            $event = Event::find($id);
+
+            if(!$event->isInParticipant($user)){
+                $event->addParticipant($user);
+                return 'added';
+            }
+            else {
+                return 'Deja inscrit';
             }
         }
         return 'refused';
@@ -76,21 +112,6 @@ class EventController extends Controller
         return $event->imgs;
     }
 
-    public function event(){
-        $events = Event::all()->where('statut', '!=', 'DONE');
-        return view('event.Event', compact('events'));
-    }
-
-    public function detail($id){
-        $event = Event::find($id);
-        return view('event.Detail', compact('event'));
-    }
-
-
-    public function past(){
-        $events = Event::all()->where('statut', '=', 'DONE');
-        return view('event.Past', compact('events'));
-        }
-    }
+}
 
 
