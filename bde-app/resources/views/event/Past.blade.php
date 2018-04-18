@@ -7,35 +7,29 @@
     
     <div class="cardevent"> 
                 
-            <div class"event-info">
+            <div class="event-info">
                  <div class ="event-title">
-                     <div class="icon-event">
                     <i class="fas fa-angle-double-right"></i>
-                    </div>
-                         <h2>{{ $event->name }}</h2>
+                    {{ $event->name }}
                  </div>
 
                  <div class="event-participate">
-                    <p> {{ $event-> nbrParticipants }} </p>
-                <div class="icon-event">
-
+                <i class="fas fa-users"></i>
+                {{ $event-> nbrParticipants() }}
                 </div>
-                    
-                
-
-                       
-                 <div class="event-date"> 
-                <p>{{ $event->event_date }}</p>
-                <div class="icon-event">
+                      
+                 <div class="event-date">
                         <i class="far fa-calendar"></i>
-                    </div>
+                        {{ $event->event_date }}
                 </div> 
             </div>
 
-                 <div class="event-descrip"> 
-                         <p>{{ $event->description }}</p>
+                <div class="event-descrip"> 
+                <p>{{ $event->description }}</p>
         </div>
 
+                <div class="event-img">
+                <img src="{{ $event->url_img }}">
 </div>
 </div>
     @endforeach
