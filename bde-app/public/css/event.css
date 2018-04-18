@@ -2,17 +2,14 @@
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 .card_idea{
     display: flex;
 	width:30%;
     height:20%;
-    flex-direction: column;
     align-items: center;
     justify-content: start;
-    margin-left:10px;
     border-style: solid;
 }
 
@@ -41,7 +38,7 @@
 
 .card_idea button{
     display: flex;
-    margin-left: 265px;
+    margin-left: 150px;
     margin-bottom: 10px;
     border: solid 1px #D03E3E;
     border-radius: 5px 5px 5px 5px;
@@ -117,6 +114,9 @@
         width:70%;
     }
 
+    .card_idea button{
+        margin-left: 100px;
+    }
 }
 
 @media screen and (max-width: 450px)

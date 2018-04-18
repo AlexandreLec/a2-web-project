@@ -30,7 +30,12 @@
 
                 <div class="event-img">
                 <img src="{{ $event->url_img }}">
+                </div>
+
+        <div class="button">
+    <a href="/events/desc/{id}"><button type="button">Plus de photos --> </button></a>
 </div>
+
 </div>
     @endforeach
 </div>
