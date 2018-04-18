@@ -1,4 +1,4 @@
-var pics = [];
+//var pics = [];
 //var response;
 
 function getImages(){
@@ -16,15 +16,18 @@ function getImages(){
     if (xhr.readyState === 4 && xhr.status === 200) {
       
       
-      response = JSON.parse(xhr.responseText);
-//      console.log(response);
+      var response = JSON.parse(xhr.responseText);
       var i=0;
       
       
       while(response[i] != null){
-        pics[i] = response[i].url_picture;
+        setImage(response[i].url_picture, response[i].id);
+//        console.log(response[i].url_picture);
         i+=1;
       }
+      
+      var ldedstate = document.getElementById("imgsloaded");
+      ldedstate.value = 1;
  
     }
     else {
@@ -32,79 +35,33 @@ function getImages(){
     }
 
     });
-    console.log(response);
+}
+
+function setImage(imgpath, id){
+    //print to DOM
+    var newimage = new Image();
+    newimage.id = "id"+id;
+    newimage.src = imgpath;
+    newimage.addEventListener('click', function(){
+        
+        //function executed when photo clicked
+        
+        //Get the modal
+        var modal = document.getElementById('myModal');
+        var img = document.getElementById(this.id);
+        var modalImg = document.getElementById("mdlImg");
+
+        modal.style.display = "block";
+        modalImg.src = this.src;
+
+        var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            } ;
+    });
+    document.getElementById('photos').appendChild(newimage); 
 }
 
 getImages();
-
-
-
-
-
-
-
-
-
-
-
-
-////------------------------------------------
-//var images = [];
-//
-////request to json file
-//function getImages(){
-//    url = '/api/event/pictures/'+document.getElementById("eventid").value;         
-//    
-//    //xml http request
-//    var xhr = new XMLHttpRequest();
-//    xhr.open('GET', url);
-//    xhr.send(null);
-//    
-//    xhr.addEventListener('readystatechange', function() {
-//
-//    //if request completed gets the JSON file
-//    if (xhr.readyState === 4 && xhr.status === 200) {
-//      
-//      console
-//      var response = JSON.parse(xhr.responseText);
-//      var i=0;
-//       
-//      //get img urls
-//      while(response[i] != null){
-//        images[i] = response[i].url_picture;
-////        console.log(images[i]);
-//        i+=1;
-//      }
-//      
-//      
-//     
-//    }
-//    else {
-//        return 'error';
-//    }
-//    
-//    });
-//    
-//    
-//}
-//
-//function setImages(){
-//   var i=0;
-//    while(images[i] != null){
-//        console.log('test');
-//        i+=1;
-//    }
-//    
-//    console.log(images);
-//    console.log(images[0]);
-//    //print to DOM
-//    var newimage = document.createElement("img");
-////    newimage.src = imgs[0];
-//    document.getElementById('photos').appendChild(newimage); 
-//}
-//
-//
-//getImages();
-//setImages();
-//
-//
