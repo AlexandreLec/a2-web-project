@@ -8,6 +8,10 @@
 	
 	{{ Html::style('css/event.css') }}
 
+	{{ Html::style('css/detail.css') }}
+
+	{{ Html::style('css/past.css') }}
+
 @stop
 
 @section('bar')

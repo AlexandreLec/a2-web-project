@@ -28,7 +28,7 @@ class ArticleController extends Controller
             $article->id_category = $request->category;
 
                 $file = $request->file('picture');
-                    $destinationPath = $request->file('picture')->store('users_upload/goodie', 'public');
+                    $destinationPath = $request->file('picture')->store('/users_upload/goodie', 'public');
                  
                     $article->url_img = '/storage/'.$destinationPath;
             

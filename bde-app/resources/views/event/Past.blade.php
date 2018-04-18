@@ -1,36 +1,41 @@
 @extends('event.events')
 
 @section('content')
-<div class="globalcontainer">
+<div class="container">
     
     @foreach ($events as $event)
     
-    <div class="card_idea"> 
+    <div class="cardevent"> 
                 
-            <div class"event_info">
-                 <div class ="event_title">
-                     <div class="icon">
+            <div class"event-info">
+                 <div class ="event-title">
+                     <div class="icon-event">
                     <i class="fas fa-angle-double-right"></i>
                     </div>
                          <h2>{{ $event->name }}</h2>
                  </div>
+
+                 <div class="event-participate">
+                    <p> {{ $event-> nbrParticipants }} </p>
+                <div class="icon-event">
+
+                </div>
+                    
+                
+
                        
-                 <div class="event_date"> 
-                     
+                 <div class="event-date"> 
                 <p>{{ $event->event_date }}</p>
-                <div class="icon">
+                <div class="icon-event">
                         <i class="far fa-calendar"></i>
                     </div>
                 </div> 
             </div>
 
-                 <div class="event_descrip"> 
+                 <div class="event-descrip"> 
                          <p>{{ $event->description }}</p>
         </div>
 
-            <div class="button">
-    <a href="/events/soon/{{ $event->id }}"><button type="button">Plus d'information </button></a>
-        <button type="button"> S'inscrire </button>
 </div>
 </div>
     @endforeach
