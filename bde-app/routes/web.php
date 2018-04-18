@@ -61,7 +61,7 @@ Route::post('/events/insert','EventController@insert');
 Route::delete('/events/{id}','EventController@delete');
 
 //eventPast route
-Route::get('/events/{id}', 'EventController@past');
+Route::get('/events/past', 'EventController@past');
 
 //eventSoon route
 Route::get('/events/soon', 'EventController@event');

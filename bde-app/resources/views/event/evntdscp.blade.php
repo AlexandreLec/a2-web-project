@@ -37,6 +37,7 @@
                 <form action="/events/desc/{id}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" id="eventid" name="event_id" value="{{ $eventid->id }}">
+                    <<input type="hidden" id="imgsloaded" value="0">
                     <input type="file" id="usrimg" name="photo">
                     <input id="submit" type="submit" value="Poster image">
                 </form>
@@ -45,23 +46,28 @@
     </div>
         
     <div id="photos">
-        <img src="/storage/users_upload/idea/games.png">
-        <img src="/storage/users_upload/idea/games.png">
-        <img src="/storage/users_upload/idea/paintball.png">
-        <img src="/storage/users_upload/idea/games.png">
-        <img src="/storage/users_upload/idea/games.png">
-        <img src="/storage/users_upload/idea/games.png">
-        <img src="/storage/users_upload/idea/paintball.png">
-        <img src="/storage/users_upload/idea/games.png">
-        <img src="/storage/users_upload/idea/paintball.png">
-        <img src="/storage/users_upload/idea/games.png">
-        <img src="/storage/users_upload/idea/games.png">
-        <img src="/storage/users_upload/idea/games.png">
-        <img src="/storage/users_upload/idea/paintball.png">
-        
+<!--        <div class="fixed-aspect-ratio-container square">
+            <img id="myImg" src="/storage/users_upload/event/mpfswW4QgatFkGYuZR7bwI4nRqNhZEBXKTbRz6X8.png">
+        </div>-->
+    </div>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="image">
+                <img id="mdlImg" src="">
+            </div>
+            <p>Some text in the Modal..</p>
+        </div>
+
     </div>
 </div>
 
 {{ Html::script('js/load_imgs.js') }}
+{{ Html::script('js/click_on_img.js') }}
+
 
 @stop

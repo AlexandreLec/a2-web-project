@@ -1,9 +1,9 @@
-var url ='/api/users';
+
 var participate = [];
 var user;
 var event;
 function participate() {
-    
+    var url ='/api/users';
     var samemail = new XMLHttpRequest();
 
      samemail.addEventListener('readystatechange', function () {
