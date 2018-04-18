@@ -289,7 +289,7 @@ text-align: center;
 @media screen and (max-width: 475px) {
 
 
-	body p{
+	#bonjour{
 		 
 		visibility: hidden;
 		display: none;
