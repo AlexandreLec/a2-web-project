@@ -65,10 +65,11 @@ Route::get('/events/past', 'EventController@past');
 
 //eventSoon route
 Route::get('/events/soon', 'EventController@event');
+
 //DetailEvenSoon
 Route::get('/events/soon/{id}','EventController@detail');
 
-//liker and have the number of vote
+//Liker and have the number of vote
 Route::get('/idea/poll/add/{id}', 'EventIdeaController@addPoll');
 Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 
@@ -78,7 +79,14 @@ Route::get('/shop', 'ShopController@index');
 
 Route::post('/shop/basket', 'ShopController@saveBasket');
 Route::get('/shop/basket', 'ShopController@retrieveBasket');
+Route::get('/shop/confirm', function(){
+	return view('shop.confirm');
+});
+Route::post('/shop/command', 'ShopController@command');
+
 
 //Notification route
 Route::get('/notification','NotificationController@notif');
 
+//Participate route
+Route::get('/participate','ParticipateController@participate');

@@ -13,7 +13,7 @@
                     <i class="fas fa-angle-double-right"></i>
                     </div>
                          <h2>{{ $event->name }}</h2>
-                 </div>
+                    </div>
                        
                  <div class="event_date"> 
                      
@@ -29,8 +29,11 @@
         </div>
 
             <div class="button">
-    <a href="/events/soon/{{ $event->id }}"><button type="button">Plus d'information </button></a>
-        <button type="button"> S'inscrire </button>
+                <a href="/events/soon/{{ $event->id }}"><button type="button">Plus d'information </button></a>
+                <button type="button"> S'inscrire </button>
+            </div>
+
+        
 </div>
 </div>
     @endforeach

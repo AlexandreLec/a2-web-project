@@ -1,8 +1,5 @@
-@extends ('template')
+@extends ('event.events')
 
-@section('css')
-{{ Html::style('css/event_desc.css') }}
-@stop
 
 @section('content')
 
