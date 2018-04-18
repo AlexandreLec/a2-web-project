@@ -32,3 +32,8 @@ Route::get('/ideas', 'EventIdeaController@getAll');
 
 Route::get('/idea/{id}/poll', 'EventIdeaController@addPoll');
 
+Route::get('/shop/goodies', 'ShopController@goodies');
+
+
+
+

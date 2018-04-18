@@ -8,7 +8,7 @@
 
     {{ Html::script('https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js') }}
 
-    <meta name="_token" content="{{ csrf_token() }}"/>
+    
 
 @stop
 

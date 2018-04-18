@@ -13,6 +13,7 @@
 
         <!-- CSS files -->
         {{ Html::style('css/general.css') }}
+        <meta name="_token" content="{{ csrf_token() }}"/>
        
 
         <!-- Script files -->
@@ -30,7 +31,9 @@
         <header>
             <img alt='logo du bde' id="logo" src="/img/bde_arras.png" />
             <h1>@yield('title-page')</h1>
+            <span id="top-bar">
             @yield('bar')
+            </span>
             <div id="right-bar">
                 @if (isset($user))
                 <span id="notif"><i class="fas fa-bell fa-2x"></i></span>

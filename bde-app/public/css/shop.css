@@ -1,0 +1,170 @@
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 10px;
+}
+
+.rate svg {
+	margin:0;
+	padding: 0;
+}
+
+.shop-container {
+	display: flex;
+	height: 100%;
+	width: 100%;
+
+}
+
+.goodies-container {
+	display: flex;
+	width: 80%;
+	height: 100%;
+	flex-wrap: wrap;
+}
+
+#bar {
+	position: relative;
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#bar input, #bar svg {
+	margin-right: 20px;
+}
+
+#bar input {
+	height: 22px;
+	width: 50%;
+	border-radius: 5px 5px 5px 5px;
+	font-size: large;
+	padding: 2px;
+}
+
+#command-tab {
+	position: absolute;
+	z-index: 1001;
+	background-color: white;
+	top: 10%;
+	right: 15%;
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	padding: 25px;
+	display: none;
+}
+
+#command-title {
+	text-align: center;
+}
+
+.title {
+	width: 40%;
+}
+
+.others {
+	width: 20%;
+}
+
+
+
+#head span {
+	font-weight: bold;
+}
+
+#head li {
+	display: flex;
+	align-items: center;
+	border: solid 1px #D03E3E;
+	margin-top: 20px;
+	padding: 5px;
+
+}
+
+.command-content{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.command-content button {
+	width: 25%;
+	align-self: center;
+}
+
+.command-recap {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-left: 20px;
+	width: 100%;
+}
+
+#total {
+	margin-left: 10px;
+	font-weight: bold;
+}
+
+.command-list {
+	width: 100%;
+}
+
+.command-list ul li {
+	display: flex;
+	align-items: center;
+	border: solid 1px #D03E3E;
+	margin-top: 20px;
+	padding: 5px;
+}
+
+
+.card-goodie {
+	height: 100%;
+	display: flex;
+	padding: 10px;
+	margin: 10px;
+	background-color: white;
+	flex-direction: column;
+	border: solid 1px #D03E3E;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.buy {
+	color: #D03E3E;
+}
+
+.card-goodie h3 {
+	text-align: center;
+}
+
+.card-goodie p {
+	overflow: hidden;
+	width: 249px;
+	height: 40px;
+}
+
+.card-goodie img {
+	width: 249px;
+	height: 200px;
+}
+
+.goodie-foot {
+	display: flex;
+	justify-content: space-between;
+	margin-right: 5px;
+	margin-left: 5px;
+	font-size: large;
+}
+
+.sort-container {
+	height: 100%;
+	margin: 0;
+	width: 20%;
+	/*border: solid 2px red;*/
+}
+
+.revert {
+  transform:rotateY(180deg);
+}

@@ -49,4 +49,6 @@ if (signBtn !== null){
 	signBtn.addEventListener('click', showSign);
 }
 
-var flkty = new Flickity('.carousel');
+if(document.querySelector(".carousel") !== null){
+	var flkty = new Flickity('.carousel');
+}

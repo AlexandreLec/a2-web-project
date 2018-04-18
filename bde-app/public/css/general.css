@@ -10,7 +10,8 @@ body {
 	margin: 0px;
 	display: flex;
 	flex-direction: column;
-	background-color: #E8E8E8;
+	background-image: url('/img/gplaypattern_@2X.png');
+	/*background-color: #E8E8E8;*/
 }
 
 a {
@@ -188,6 +189,10 @@ nav ul li a {
 
 #logo-connexion {
 	margin : 2px;
+}
+
+#top-bar {
+	width: 100%;
 }
 
 @media screen and (max-width: 500px) {
