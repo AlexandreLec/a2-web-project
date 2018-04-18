@@ -2,13 +2,10 @@
     width: 100%;
 }
 
-
-
 .cardevent{
     width: 70%;
     align-items: center;
     text-align: center;
-    height: 30%;
     border-style: solid;
     margin-bottom: 10px;
 }
@@ -27,4 +24,10 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+}
+
+.button{
+    display: flex;
+    border-radius: 10px 5px 10px 5px;
+    flex-direction: row-reverse;
 }

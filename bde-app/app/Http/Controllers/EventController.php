@@ -77,7 +77,7 @@ class EventController extends Controller
     }
 
     public function event(){
-        $events = Event::all();
+        $events = Event::all()->where('statut', '!=', 'DONE');
         return view('event.Event', compact('events'));
     }
 
@@ -87,7 +87,7 @@ class EventController extends Controller
     }
 
 
-    public function past($id){
+    public function past(){
         $events = Event::all()->where('statut', '=', 'DONE');
         return view('event.Past', compact('events'));
         }

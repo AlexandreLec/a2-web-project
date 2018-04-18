@@ -15,7 +15,7 @@
                  </div>
                   
                  <div class="img_event"> 
-                <p>{{ $event->url_img }}</p>
+                 <img src="{{ $event->url_img }}">
                 </div> 
 
                  <div class="descrip_event">
