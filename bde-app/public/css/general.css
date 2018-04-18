@@ -263,6 +263,12 @@ text-align: center;
 	}
 }
 
+@media screen and (max-width: 850px){
+	#hello {
+		display: none;
+	}
+}
+
 @media screen and (max-width: 750px) {
 
 	#right-bar {
@@ -283,6 +289,10 @@ text-align: center;
 	.container {
 		margin-left: 60px;
 		margin-right: 50px;
+	}
+
+	#notif {
+		margin-right: 0px;
 	}
 }
 
@@ -308,7 +318,6 @@ text-align: center;
 	#sign-tab form button {
 		margin-top: 10px;
 		align-self: center;
-	
 	}
 }
 

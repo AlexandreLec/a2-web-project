@@ -21,7 +21,7 @@
             
         </div> 
 
-        <div class="card_descrip"> 
+        <div class="card_descrip event-desc"> 
            <p>{{ $event->descriptionShort }}</p>
         </div>
 

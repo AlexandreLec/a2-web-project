@@ -44,11 +44,7 @@
                     
                 <div id="sign-notif">
                     <form> 
-
                         <label >Notification </label> <label id = "nom"></label>
-                       
-                       
-                      
                     </form>
                  </div>
     
@@ -61,8 +57,8 @@
                 @else
                 <div id="hello">
                     <p>Bonjour, {{ $user->first_name }}</p>
-                @endif
                 </div>
+                @endif
                 <span id="menu"><i class="fas fa-bars fa-2x"></i></span>
             </div>
         </header>

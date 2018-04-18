@@ -1,5 +1,3 @@
-
-
 .button-red {
     padding:6px;
     font-size: large;
@@ -110,9 +108,12 @@
 .card_descrip p{
     color: black;
     width: 250px;
-    height: 150px;
     font-size: large;
     text-align: justify;
+}
+
+.event-desc p{
+    height: 150px;
 }
 
 @media screen and (max-width: 1100px)
