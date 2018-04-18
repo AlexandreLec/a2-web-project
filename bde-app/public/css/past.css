@@ -1,0 +1,30 @@
+.container{
+    width: 100%;
+}
+
+
+
+.cardevent{
+    width: 70%;
+    align-items: center;
+    text-align: center;
+    height: 30%;
+    border-style: solid;
+    margin-bottom: 10px;
+}
+
+.event-desctip {
+    display: flex;
+    border-style: solid;
+    float: left;
+}
+.icon-event{
+    margin-right: 10px;
+}
+
+.event-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}

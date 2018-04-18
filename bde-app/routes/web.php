@@ -45,6 +45,10 @@ Route::post('/events/ideas/create','EventIdeaController@store');
 Route::delete('/events/ideas/{id}', 'EventIdeaController@delete');
 Route::get('/events/ideas/{id}', 'EventIdeaController@show');
 
+//idea description page
+Route::get('/events/desc/{id}', 'EventDescController@show');
+Route::post('/events/desc/{id}', 'EventDescController@storepic');
+
 //new participate event
 Route::get('/events/participate','EventIdeaController@create');
 Route::post('/events/participate','EventIdeaController@store');
@@ -56,13 +60,25 @@ Route::post('/article','ArticleController@store');
 Route::post('/events/insert','EventController@insert');
 Route::delete('/events/{id}','EventController@delete');
 
+//eventPast route
+Route::get('/events/{id}', 'EventController@past');
 
+//eventSoon route
+Route::get('/events/soon', 'EventController@event');
+//DetailEvenSoon
+Route::get('/events/soon/{id}','EventController@detail');
 
+//liker and have the number of vote
 Route::get('/idea/poll/add/{id}', 'EventIdeaController@addPoll');
 Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 
 //Shop routes
 Route::get('/shop', 'ShopController@index');
 
+
 Route::post('/shop/basket', 'ShopController@saveBasket');
 Route::get('/shop/basket', 'ShopController@retrieveBasket');
+
+//Notification route
+Route::get('/notification','NotificationController@notif');
+

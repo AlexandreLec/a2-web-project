@@ -36,7 +36,20 @@
             </span>
             <div id="right-bar">
                 @if (isset($user))
-                <span id="notif"><i class="fas fa-bell fa-2x"></i></span>
+                <button id="notif">
+                    <i class="fas fa-bell fa-2x"></i>
+                </button>
+                    
+                <div id="sign-notif">
+                    <form> 
+
+                        <label >Nom </label> <label id = "nom"></label>
+                        <label>Description</label> <label id = "desc"></label>
+                       
+                      
+                    </form>
+                 </div>
+    
                 @endif
 
                 @if (!isset($user))
@@ -103,5 +116,6 @@
         </footer>
 
         {{ Html::script('js/nav.js') }}
+        {{ Html::script('js/notif.js') }}
     </body>
 </html>

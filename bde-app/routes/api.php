@@ -32,8 +32,12 @@ Route::get('/ideas', 'EventIdeaController@getAll');
 
 Route::get('/idea/{id}/poll', 'EventIdeaController@addPoll');
 
+
 Route::get('/shop/goodies', 'ShopController@goodies');
 
 
+
+//api to events' pictures
+Route::get('/event/pictures/{id}', 'EventController@eventImgs');
 
 

@@ -1,0 +1,127 @@
+.globalcontainer{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card_idea{
+    display: flex;
+	width:30%;
+    height:20%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin-left:10px;
+    border-style: solid;
+}
+
+.event_title{
+    display: flex;
+    align-items: baseline;
+}
+
+.event_date{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.event_descrip{
+    text-align: center;
+    margin-bottom: 40px;
+
+}
+
+.event_info{
+    display: flex;
+    justify-content: center;
+
+}
+
+.card_idea button{
+    display: flex;
+    margin-left: 265px;
+    margin-bottom: 10px;
+    border: solid 1px #D03E3E;
+    border-radius: 5px 5px 5px 5px;
+    color : #D03E3E;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 1300px)
+{
+    .card-container {
+        flex-wrap: wrap;
+    }
+    .card_idea{
+        width:45%;
+    }
+}
+@media screen and (max-width: 1100px)
+{
+    .card_img {
+        width:150px;
+        height:100px;
+        flex-direction: column;  
+    }
+    .card_idea{
+        width:45%;  
+    }
+    .card-container {
+        flex-wrap: wrap;
+    }
+    .card_idea button{
+        margin-right : 50px;
+    }
+}
+@media screen and (max-width: 900px)
+{
+    .card_img {
+        width:200px;
+        height:150px;
+        
+    }
+    .container {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 800px)
+{
+    .card_idea{
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+}
+   
+@media screen and (max-width: 700px)
+{
+    .card_img {
+        width:150px;
+        height:100px; 
+    }
+    .container {
+        margin-left: 40px;
+        margin-right: 30px;
+    }
+    .card_idea button{
+        margin-right: 100px;
+    }
+}
+
+@media screen and (max-width: 650px)
+{
+    .card_idea{
+        width:70%;
+    }
+
+}
+
+@media screen and (max-width: 450px)
+{
+    .card_idea button{
+        margin-right: 50px;
+    }
+}

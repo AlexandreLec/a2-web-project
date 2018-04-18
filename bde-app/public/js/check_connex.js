@@ -1,6 +1,6 @@
 
 
-var mailB = surnameB = firstnameB = passwordB  = false;
+var mailB = surnameB = firstnameB = passwordB =  false;
 var emails = [];
 
 function getemails(){
@@ -13,11 +13,11 @@ function getemails(){
     xhr.send(null);
     
     xhr.addEventListener('readystatechange', function() {
-
+console.log("ok");
     //if request completed gets the JSON file
     if (xhr.readyState === 4 && xhr.status === 200) {
       
-      console.log("request complete");
+      
       var response = JSON.parse(xhr.responseText);
       var i=0;
       
@@ -83,10 +83,11 @@ function checkmail() {
         else if (grade == "Salarié CESI" && regex_cesi.test(mail.value)) {
 
             mail.style.border = "solid 2px green";
-            mailB=true;
+           
         }
         else {
             mail.style.border = "solid 2px red";
+            mailB =false;
         }
         
         error.innerHTML = ""; // Reset the content of the message
@@ -110,7 +111,7 @@ function chkuniqmail(tstdmail){
     }
     return true;
 }
-console.log("test");
+
 
 function checkpassword() {
     var password = document.getElementById('Password');
@@ -180,7 +181,7 @@ grade.addEventListener('click', checkmail);
 
 
 document.getElementById('btnSubmit').addEventListener('click', function (e) {
-    if (firstnameB == false || surnameB == false || passwordB == false || mailB == false) {
+    if (firstnameB == false || surnameB == false || passwordB == false || mailB == false ) {
         e.preventDefault();
     }
 }

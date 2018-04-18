@@ -1,4 +1,5 @@
 var url ='/api/users';
+var participate = [];
 function participate() {
     
     var samemail = new XMLHttpRequest();
@@ -26,4 +27,17 @@ function participate() {
     samemail.open('GET', url, true);
     samemail.send();
 
+
+function inscrit(inscrit){
+        var i=0;
+        while(participate[i] != null){
+            if(participate[i] == inscrit){
+                
+                return false;
+            }
+            i+=1;
+    
+        }
+        return true;
+    }
 }

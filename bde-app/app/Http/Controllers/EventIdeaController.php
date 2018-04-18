@@ -37,7 +37,7 @@ class EventIdeaController extends Controller
             try {
                 EventIdea::find($id)->addPoll($user->id,$id);
             } catch (\Exception $e) {
-                return "Vote déjà prit en compte ";
+                return "Vote déjà pris en compte ";
             }
             return 'ok';   
         }
@@ -83,8 +83,8 @@ class EventIdeaController extends Controller
                 
             //uploaded img verification
             //check for img presence
-            $eventIdea->url_img = Image::upload($request, 'users_upload');
-
+            $eventIdea->url_img = Image::upload($request, 'users_upload/idea');
+            
             //save to database
             $eventIdea->save();
 

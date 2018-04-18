@@ -1,0 +1,49 @@
+.totalcontainer{
+    display: flex;
+    border-style: solid;
+    width: 100%;
+}
+
+.card_event{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title_event{
+    display: flex;
+    text-decoration: underline;
+    align-items: baseline;
+}
+
+.location_event{
+    display: flex;
+    align-items: baseline;
+    margin-right: 35px;
+}
+
+.date_event{
+    display: flex;
+    align-items: baseline;
+    margin-right: 35px;
+}
+
+.time_event{
+    display: flex;
+    align-items: baseline;
+    margin-right: 35px;
+}
+
+.price_event{
+    display: flex;
+    align-items: baseline;
+    margin-right: 35px;
+}
+
+.info_event{
+    display: flex;
+    flex-direction: row;
+}
+
+.icon_event{
+    margin-right: 10px;
+}
