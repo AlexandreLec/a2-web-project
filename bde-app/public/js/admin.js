@@ -12,7 +12,7 @@ var User = function(id,name, surname, mail, group) {
   this.group = group;
 };
 
-var Idea = function(id,name, location, desc, price, poll, user) {
+var Idea = function(id,name, location, desc, price, poll, user, userID) {
   this.id = id;
   this.name = name;
   this.location = location;
@@ -20,6 +20,7 @@ var Idea = function(id,name, location, desc, price, poll, user) {
   this.price = price;
   this.poll = poll;
   this.user = user; 
+  this.userId = userID;
 };
 
 var Event = function(id,name, location, desc, price, date, time, recurrence, month=false, category, statut) {
@@ -36,9 +37,26 @@ var Event = function(id,name, location, desc, price, date, time, recurrence, mon
   this.statut = statut;
 };
 
+var CatGoodie = function (id, name){
+    this.id = id;
+    this.name = name;
+}
+
+var Goodie = function (id, name,description, price, stock, units_sold,category){
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.price = price;
+    this.stock = stock;
+    this.unitsSold = units_sold;
+    this.category = category;
+}
+
 var users=[];
 var ideas=[];
 var events=[];
+var catGoodies=[];
+var goodies=[];
 
 
 var ScrollToTop=function() {
@@ -73,6 +91,18 @@ var getEventById = function(id){
     });
 };
 
+var getCatGoodieById = function(id) {
+    return catGoodies.find(function(element){
+        return element.id == id;
+    });
+}
+
+var getGoodieById = function(id) {
+    return goodies.find(function(element){
+        return element.id == id;
+    });
+}
+
 var showEdit = function (){
 
 	let boardEdit = document.querySelector('.board-edit #user-form');
@@ -94,6 +124,35 @@ var showEdit = function (){
 	document.getElementById(user.group.name).setAttribute("selected", "");
 };
 
+var newCategory = function (){
+
+    let boardEdit = document.querySelector('.board-edit #cat-goodie-form');
+    let hidePanel = document.querySelector('#hide');
+
+    boardEdit.style.visibility = 'visible';
+    hidePanel.style.display = 'inline';
+
+    ScrollToTop();
+    StopAnimation();
+    $('body').css('overflow-y','hidden');
+
+    document.getElementById("cat-goodie-form").action="/goodie/category/";
+};
+
+var newCatGoodie = function(){
+    let boardEdit = document.querySelector('.board-edit #cat-goodie-form');
+    let hidePanel = document.querySelector('#hide');
+
+    boardEdit.style.visibility = 'visible';
+    hidePanel.style.display = 'inline';
+
+    ScrollToTop();
+    StopAnimation();
+    $('body').css('overflow-y','hidden');
+
+    document.getElementById("cat-goodie-form").action="/goodie/category/";
+}
+
 var newEvent = function (){
 
     let boardEdit = document.querySelector('.board-edit #event-form');
@@ -107,6 +166,12 @@ var newEvent = function (){
     $('body').css('overflow-y','hidden');
 
     idea = getIdeaById(this.id);
+
+    var user = document.createElement("input");
+    user.name = "iduser";
+    user.value = idea.userId;
+    user.setAttribute("hidden", "hidden");
+    boardEdit.append(user);
 
     if(idea !== undefined){
         document.querySelector('#event-name').value = idea.name;
@@ -158,6 +223,8 @@ var hideEdit = function (){
 
     let boardEditUser = document.querySelector('.board-edit #user-form');
     let boardEditEvent = document.querySelector('.board-edit #event-form');
+    let boardEditCat = document.querySelector('.board-edit #cat-form');
+    let boardEditCatGoodie = document.querySelector('.board-edit #cat-goodie-form');
 	let hidePanel = document.querySelector('#hide');
 
 	if(boardEditUser.style.visibility == 'visible'){
@@ -166,6 +233,12 @@ var hideEdit = function (){
     if(boardEditEvent.style.visibility == 'visible'){
         boardEditEvent.style.visibility = 'hidden';
     };
+    if(boardEditCat.style.visibility == 'visible'){
+        boardEditCat.style.visibility = 'hidden';
+    };
+    if(boardEditCatGoodie.style.visibility == 'visible'){
+        boardEditCatGoodie.style.visibility = 'hidden';
+    };
 
 	hidePanel.style.display = 'none';
 
@@ -173,8 +246,8 @@ var hideEdit = function (){
 
 };
 
-var confirmDel = function () {
-    element = this;
+var confirmDel = function (act) {
+    element = act;
     user = getUserById(element.id);
     if (confirm("Vous allez supprimer l'utilisateur "+user.name+" "+user.surname+". Cette opération est irréversible, voulez-vous continuer ?")){
         $.ajax({
@@ -184,7 +257,10 @@ var confirmDel = function () {
                 getDataUsers();
             }
         });
-    };
+    }
+    else {
+        return;
+    }
 }
 
 var confirmDelIdea = function () {
@@ -215,6 +291,34 @@ var confirmDelEvent = function () {
     };
 }
 
+var confirmDelCatGoodie = function () {
+    element = this;
+    catGoodie = getCatGoodieById(element.id);
+    if (confirm("Vous allez supprimer la catégorie "+catGoodie.name+". Cette opération supprimera tous les goodies de cette catégorie, voulez-vous continuer ?")){
+        $.ajax({
+            url: "/goodie/category/"+element.id,
+            type: 'DELETE',
+            success: function(data, statut){
+                getDataCatGoodie();
+            }
+        });
+    };
+}
+
+var confirmDelGoodie = function () {
+    element = this;
+    goodie = getGoodieById(element.id);
+    if (confirm("Vous allez supprimer le goodie "+goodie.name+". Cette opération est irréversible, voulez-vous continuer ?")){
+        $.ajax({
+            url: "/goodie/"+element.id,
+            type: 'DELETE',
+            success: function(data, statut){
+                getDataGoodie();
+            }
+        });
+    };
+}
+
 var actionsButton = function (user){
 	let actions = document.createElement("td");
 	let edit = document.createElement("i");
@@ -232,9 +336,11 @@ var actionsButton = function (user){
     spanDel.setAttribute('id', user.id);
 	actions.appendChild(spanEdit);
     actions.appendChild(spanDel);
+
+    spanEdit.className = "btn-edit-user";
+    spanDel.className = "btn-del-user";
     
-    spanEdit.addEventListener('click', showEdit);
-    spanDel.addEventListener('click', confirmDel);
+    
 
 	return actions;
 }
@@ -257,9 +363,9 @@ var actionsIdea = function (idea){
 
     actions.appendChild(spanEdit);
     actions.appendChild(spanDel);
-    
-    spanEdit.addEventListener('click', newEvent);
-    spanDel.addEventListener('click', confirmDelIdea);
+
+    spanEdit.className = "btn-edit-idea";
+    spanDel.className = "btn-del-idea";
 
     return actions;
 }
@@ -297,12 +403,122 @@ var actionsEvent = function (event) {
     actions.appendChild(csv);
     actions.appendChild(spanPdf);
     
-    spanEdit.addEventListener('click', showEvent);
-    spanDel.addEventListener('click', confirmDelEvent);
-    spanPdf.addEventListener('click', participantsPDF);
+    spanEdit.className = "btn-edit-event";
+    spanDel.className = "btn-del-event";
 
     return actions;
 }
+
+var actionsCatGoodie = function (catGoodie) {
+    let actions = document.createElement("td");
+    let del = document.createElement("i");
+    let spanDel = document.createElement("span");
+
+    del.className="fas fa-trash-alt";
+
+    spanDel.setAttribute('id', catGoodie.id);
+    spanDel.appendChild(del);
+
+    actions.appendChild(spanDel);
+    
+    spanDel.className = "btn-del-cat-goodie";
+
+    return actions;
+}
+
+var actionsGoodie = function (goodie) {
+    let actions = document.createElement("td");
+    let del = document.createElement("i");
+    let spanDel = document.createElement("span");
+
+    del.className="fas fa-trash-alt";
+
+    spanDel.setAttribute('id', goodie.id);
+    spanDel.appendChild(del);
+
+    actions.appendChild(spanDel);
+    
+    spanDel.className = "btn-del-goodie";
+
+    return actions;
+}
+
+var getDataCatGoodie = function () {
+    
+    $.get("/api/goodie/category", function(data, statut){
+
+        if($('tbody').children().length !== 0){
+            $('#goodies tbody').children().remove();
+        }
+
+        data.forEach(function (catGoodie){
+            let row = document.createElement("tr");
+            let name = document.createElement("td");
+
+            let actions = actionsCatGoodie(catGoodie);
+
+            name.innerHTML = catGoodie.name;
+
+            catGoodies.push(new CatGoodie(catGoodie.id, catGoodie.name));
+
+            row.appendChild(name);
+            row.appendChild(actions);
+
+            $('#cat-goodie tbody').append(row);
+            
+        });
+        $('#cat-goodie').on('click', '.btn-del-cat-goodie', confirmDelCatGoodie);
+        $('#cat-goodie').DataTable({
+            responsive: true
+        });
+    });
+};
+
+var getDataGoodie = function () {
+    
+    $.get("/api/shop/goodies/", function(data, statut){
+
+        if($('tbody').children().length !== 0){
+            $('#goodies tbody').children().remove();
+        }
+
+        data.forEach(function (goodie){
+            let row = document.createElement("tr");
+            let name = document.createElement("td");
+            let description = document.createElement("td");
+            let price = document.createElement("td");
+            let stock = document.createElement("td");
+            let unitsSold = document.createElement("td");
+            let category = document.createElement("td");
+
+            let actions = actionsGoodie(goodie);
+
+            name.innerHTML = goodie.name;
+            description.innerHTML = goodie.description;
+            price.innerHTML = goodie.price;
+            stock.innerHTML = goodie.stock;
+            unitsSold.innerHTML = goodie.units_sold;
+            category.innerHTML = goodie.category.name;
+
+            goodies.push(new Goodie(goodie.id, goodie.name, goodie.description, goodie.price, goodie.stock, goodie.units_sold,goodie.category.name));
+
+            row.appendChild(name);
+            row.appendChild(description);
+            row.appendChild(price);
+            row.appendChild(stock);
+            row.appendChild(unitsSold);
+            row.appendChild(category);
+            row.appendChild(actions);
+
+            $('#goodies tbody').append(row);
+            
+        });
+        $('#goodies').on('click', '.btn-del-goodie', confirmDelGoodie);
+        $('#goodies').DataTable({
+            responsive: true
+        });
+    });
+};
 
 var getDataUsers = function () {
     
@@ -337,7 +553,13 @@ var getDataUsers = function () {
         	$('#users tbody').append(row);
         	
         });
-        $('#users').DataTable();
+        $('#users').on('click', '.btn-edit-user', showEdit);
+        $('#users').on('click', '.btn-del-user', function (){
+            confirmDel(this);
+        });
+        $('#users').DataTable({
+            responsive: true
+        });
     });
 };
 
@@ -365,7 +587,7 @@ var getDataIdeas = function () {
             user.innerHTML = idea.user.first_name+" "+idea.user.surname;
             poll.innerHTML = idea.poll;
 
-            let newIdea = new Idea(idea.id, idea.name,idea.location, idea.description, idea.price, idea.poll, idea.user.first_name+" "+idea.user.surname);
+            let newIdea = new Idea(idea.id, idea.name,idea.location, idea.description, idea.price, idea.poll, idea.user.first_name+" "+idea.user.surname, idea.user.id);
             ideas.push(newIdea);
 
             let actions = actionsIdea(newIdea);
@@ -381,7 +603,11 @@ var getDataIdeas = function () {
             $('#ideas tbody').append(row);
             
         });
-        $('#ideas').DataTable();
+        $('#ideas').on('click', '.btn-edit-idea', newEvent);
+        $('#ideas').on('click', '.btn-del-idea', confirmDelIdea);
+        $('#ideas').DataTable({
+            responsive: true
+        });
     });
 };
 
@@ -444,8 +670,17 @@ var getDataEvents = function () {
             
             
         });
-        $('#events').DataTable();
-        $('#events-past').DataTable();
+        $('#events').on('click', '.btn-edit-event', showEvent);
+        $('#events').on('click', '.btn-del-event', confirmDelEvent);
+        $('#events-past').on('click', '.btn-edit-event', showEvent);
+        $('#events-past').on('click', '.btn-del-event', confirmDelEvent);
+
+        $('#events').DataTable({
+            responsive: true
+        });
+        $('#events-past').DataTable({
+            responsive: true
+        });
     });
 };
 
@@ -474,12 +709,23 @@ $(document).ready( function () {
     getDataUsers();
     getDataIdeas();
     getDataEvents();
-
-    
+    getDataCatGoodie();
+    getDataGoodie();
 });
 
 let hidePanel = document.getElementById('hide');
 let addEvent = document.getElementById('add-event');
+let addCat = document.getElementById('add-cat');
+let addCatGoodie = document.getElementById('add-goodie-cat');
 
 addEvent.addEventListener('click', newEvent);
 hidePanel.addEventListener('click', hideEdit);
+addCat.addEventListener('click', newCategory);
+addCatGoodie.addEventListener('click', newCatGoodie);
+
+window.onresize = resize;
+
+function resize()
+{
+    location.reload();
+}

@@ -58,6 +58,8 @@ Route::get('/event/unscribe/{id}','EventController@unscribe');
 //add new goodie
 Route::get('/article','ArticleController@create');
 Route::post('/article','ArticleController@store');
+Route::post('/goodie/category', 'ArticleCategoryController@create');
+Route::delete('/goodie/category/{id}', 'ArticleCategoryController@delete');
 
 Route::post('/events/insert','EventController@insert');
 Route::delete('/events/{id}','EventController@delete');

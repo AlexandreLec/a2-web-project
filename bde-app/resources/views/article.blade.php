@@ -27,7 +27,7 @@
         <label for="description"> Description</label>
         </div>
         <div class="icon">
-        <i class="fas fa-align-justify"></i><input type"email" name="description" id="description" />
+        <i class="fas fa-align-justify"></i><input type="text" name="description" id="description" />
 </div>
     </div>
 
@@ -39,6 +39,15 @@
         <i class="fas fa-euro-sign"></i><input type="number" name="price" id="price" />
 </div>
    </div>
+
+   <div class="field">
+    <div class="text">
+        <label for="description"> Stock</label>
+        </div>
+        <div class="icon">
+        <i class="fas fa-align-justify"></i><input type="number" name="stock" id="stock" />
+</div>
+    </div>
 
    
     <div class="field">
@@ -55,16 +64,14 @@
        <label for="Training"> Catégorie </label>
         </div>
         <select name="category" id="category">
-            <option value="1">Bracelet</option>
-            <option value="2">Mugg</option>
-            <option value="3">T-shirt</option>
-            <option value="4">Autocollant</option>
-            <option value="5">Coque</option>
+            @foreach ($categories as $category)
+                <option id="{{ $category->id }}" value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
         </select>
    </div> 
     
     <div class="button">
-    <input type="Submit" id="submit" value="Mettre en vente">
+    <input type="Submit" class="button-red" id="submit" value="Mettre en vente">
     </div>
 
     </form>

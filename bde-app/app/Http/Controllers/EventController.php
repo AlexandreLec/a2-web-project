@@ -40,6 +40,9 @@ class EventController extends Controller
     			$event->url_img = Image::upload($request,'users_upload/event');
 
     			$event->save();
+
+                $userIdeaId = $request->input('iduser');
+
             	return view('isubmitconfirm');
             }
         }else {
