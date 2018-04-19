@@ -85,7 +85,7 @@ Route::get('/report', function(){return view('report');});
 Route::get('/shop', 'ShopController@index');
 
 //Download all route
-Route::get('/picture/events/{id}', 'EventController@downloadzip');
+Route::get('/downloadZip', 'EventController@downloadZip');
 
 Route::post('/shop/basket', 'ShopController@saveBasket');
 Route::get('/shop/basket', 'ShopController@retrieveBasket');

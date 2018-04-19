@@ -62,6 +62,7 @@ class UserController extends Controller
         return view('register');
     }
 
+	//add a new user on BDD
     public function store(Request $request){
         $firstName = $request->input('Name');
         $surname = $request->input('Surname');
@@ -72,6 +73,7 @@ class UserController extends Controller
         $add = DB::select("CALL ajout_user(?,?,?,?,?)",array($firstName, $surname, $mail, $password,$name));
         return view('RegisterConfirm');
     }
+
 
     public function admin(){
     	if(Auth::check()) {
@@ -84,6 +86,7 @@ class UserController extends Controller
     	return $this->index();
     }
 
+	//Add a new BDE Member
     public function update($id, Request $request){
     	if(Auth::check()) {
     		$user = Auth::user();
@@ -96,6 +99,7 @@ class UserController extends Controller
     	}
     }
 
+	//Delete a BDE Member
     public function delete($id){
         if(Auth::check()) {
             $user = Auth::user();

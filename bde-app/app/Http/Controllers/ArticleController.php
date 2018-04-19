@@ -10,7 +10,7 @@ use App\ArticleCategory;
 
 class ArticleController extends Controller
 {
-    
+    //return the page for add an article
     public function create() {
         if(Auth::check()){
             
@@ -24,6 +24,7 @@ class ArticleController extends Controller
         return view ('mustconnect');
     }
     
+    //add a new article on the BDD
     public function store(Request $request) {
         
         //Check if authentified

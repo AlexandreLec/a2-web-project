@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Image;
 use App\Event;
+use ZipArchive;
 
 class EventController extends Controller
 {
+    //take all the table Event on BDD
     public function index(){
     	$events = Event::all();
 
@@ -20,6 +22,7 @@ class EventController extends Controller
     	return $events;
     }
 
+    //add a new event with the formular
     public function insert(Request $request){
     	if(Auth::check()){
             
@@ -50,6 +53,7 @@ class EventController extends Controller
         }
     }
 
+    //Delete a user to event
     public function delete($id){
         if(Auth::check()) {
             $user = Auth::user();
@@ -71,20 +75,21 @@ class EventController extends Controller
         }
         return view('event.Event', compact('events','user'));
     }
-
+    //Show Detail when you click on "more information"
     public function detail($id){
         $event = Event::find($id);
         return view('event.Detail', compact('event'));
     }
 
-
+    //show Past Event
     public function past(){
         $events = Event::all()->where('statut', '=', 'DONE');
         return view('event.Past', compact('events'));
         }
 
-    public function subscribe($id){
-        if(Auth::check()) {
+        //unscribe to an event
+        public function subscribe($id){
+            if(Auth::check()) {
             $user = Auth::user();
             $event = Event::find($id);
 
@@ -99,6 +104,7 @@ class EventController extends Controller
         return 'refused';
     }
 
+    //unscribe to an event
     public function unscribe($id){
         if(Auth::check()) {
             $user = Auth::user();
@@ -120,12 +126,13 @@ class EventController extends Controller
     	$event = Event::find($id);
     	return redirect($event->participantsCsv());
     }
-
+    //show Json of participant
     public function participants($id){
     	$event = Event::find($id);
     	return $event->participants;
     }
     
+    //show Json of event by id
     public function eventImgs($id){
         $event = Event::find($id);
         return $event->imgs;
@@ -133,18 +140,15 @@ class EventController extends Controller
     
     
 
+    //create and download zip
+    public function downloadZip(){
+
+    $files = glob(public_path('storage/users_upload/event/*'));
+
+        \Zipper::make(public_path('photo.zip'))->add($files)->close();
+
+
+
+        return response()->download(public_path('photo.zip'));
+    }
 }
-
-    //public function downloadZip($id){
-      //  $event = Event::find($id);
-        //$tab = $event->imgs;
-        //return $tab;
-    //}
-
-       // Zipper::make(public_path('test.zip'))->add($file)->close();
-        //return $file;
-
-        //return response()->download(public_path('Photo.zip'));
-
-
-
