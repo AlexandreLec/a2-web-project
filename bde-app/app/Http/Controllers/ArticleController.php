@@ -9,11 +9,12 @@ use App\Article;
 
 class ArticleController extends Controller
 {
-    
+    //return the page for add an article
     public function create() {
         return view('article');
     }
     
+    //add a new article on the BDD
     public function store(Request $request) {
         
         //Check if authentified
