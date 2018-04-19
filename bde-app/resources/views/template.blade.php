@@ -46,8 +46,9 @@
                 <div id="sign-notif">
                     <form> 
                         <label id= "titlenotif">Notification </label> <label id = "nom"></label>
-                        <button >Supprimer</button>
+                           
                     </form>
+                    <button id="del-notif">Supprimer</button>
                  </div>
     
                 @endif

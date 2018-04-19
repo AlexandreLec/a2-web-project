@@ -37,7 +37,10 @@ Route::get('/shop/goodies', 'ShopController@goodies');
 
 Route::get('/goodie/category', 'ArticleCategoryController@index');
 
-//api to events' pictures
+//events' pictures
 Route::get('/event/pictures/{id}', 'EventController@eventImgs');
 
+//event picture comments
+Route::get('/event/pictures/{id}/comments', 'CommentController@getComments');
+Route::post('/event/pictures/{id}/comments', 'CommentController@addComment');
 

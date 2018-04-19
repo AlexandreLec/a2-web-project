@@ -31,6 +31,7 @@ class EventIdeaController extends Controller
     	return view('event.ideas', compact('ideas', 'user'));
     }
 
+    //vote for a event idea
     public function addPoll($id){
         if(Auth::check()) {
             $user = Auth::user();
@@ -43,6 +44,7 @@ class EventIdeaController extends Controller
         }
         return 'Utilisateur non authentifié';
     }
+
 
     public function getPoll($id){
         if(Auth::check()) {
@@ -57,10 +59,12 @@ class EventIdeaController extends Controller
         return 'Utilisateur non authentifié';
     }
     
+    //show the idea event formular
     public function create() {
         return view('isubmit');
     }
     
+    //add the event idea into the BDD
     public function store(Request $request) {
         
         //Check if authentified
@@ -107,6 +111,7 @@ class EventIdeaController extends Controller
         return 'refused';
     }
 
+    //show 
     public function show($id){
         if(Auth::check()) {
             $user = Auth::user();

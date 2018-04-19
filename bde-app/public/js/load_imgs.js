@@ -1,6 +1,14 @@
 //var pics = [];
 //var response;
 
+var Picture = function (id, name, urlImg){
+    this.id = id;
+    this.name = name;
+    this.url = urlImg;
+};
+
+var images = [];
+
 function getImages(){
     
     //xml http request to /api/users
@@ -21,6 +29,7 @@ function getImages(){
       
       
       while(response[i] != null){
+          images.push(new Picture(response[i].id, response[i].name, response[i].url_picture));
         setImage(response[i].url_picture, response[i].id);
 //        console.log(response[i].url_picture);
         i+=1;
@@ -53,7 +62,8 @@ function setImage(imgpath, id){
 
         modal.style.display = "block";
         modalImg.style.background = 'center / contain no-repeat url('+this.src+')';
-        ;
+        
+        loadComments();
 
         var span = document.getElementsByClassName("close")[0];
 
