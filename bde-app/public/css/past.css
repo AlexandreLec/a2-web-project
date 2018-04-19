@@ -1,13 +1,10 @@
-<<<<<<< HEAD
 .Pastcontainer{
     display: flex;
     flex-direction: column;
     width: 100%;
     margin: auto;
 }
-=======
 
->>>>>>> e7565a6f9666fc4428331bb82a9e4fb825755a08
 
 .cardevent{
     display: flex;
@@ -15,8 +12,6 @@
     margin: auto;
     width: 50%;
     text-align: center;
-    border-style: solid;
-    border-radius: 5px 5px 5px 5px;
     margin-bottom: 10px;
 }
 
