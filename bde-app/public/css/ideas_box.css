@@ -1,13 +1,10 @@
-.idea_button button {
-
-    justify-content:center;
-    border: solid 1px #D03E3E;
-    border-radius: 5px 5px 5px 5px;
-    font-size: 25px;
-    color : #D03E3E;
-
-    margin-top: 50px;
-	
+.button-red {
+    padding:6px;
+    font-size: large;
+    background:#d34836;
+    color:#fff;
+    border-radius:2px;
+    border:none;
 }
 
 .idea_button {
@@ -17,35 +14,70 @@
 
 .card_idea{
     display: flex;
-	width:30%;
     height:20%;
     flex-direction: column;
+    padding: 5px;
     align-items: center;
     justify-content: start;
-    margin-left:10px;
-    
+    margin-left:20px;
 }
+
+.event_date {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-sub {
+    padding:6px;
+    font-size: large;
+    background:#4c4c4c;
+    color:#fff;
+    border-radius:2px;
+    border:none;
+}
+
+.date-margin {
+    margin-right: 10px;
+}
+
+.event_date svg {
+    margin-right: 10px;
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
 .idea_title{
 
     display: flex;
     width: 100%;
+    width: 350px;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    margin-bottom: 30px;
-    
+    justify-content: center;   
+}
+
+.idea_title svg {
+    margin-left: 10px;
+}
+
+.idea_title h2 {
+    margin-left: 10px;
 }
 
 .idea_title div{
 
     display: flex;
-    justify-content: space-between;
-    font-size: x-large;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
     width: 50px;
-    padding: 5px;
-    color: #D03E3E;
-    border: solid 1px #D03E3E;
-    border-radius: 5px 5px 5px 5px;
+  
 }
 
 .idea_title div i{
@@ -67,72 +99,43 @@
     height:150px;
 }
 
+.newIdea {
+    margin-top: 50px;
+}
+
+.newIdea:hover {
+    background-color: #4c4c4c;
+}
+
 .card_img img {
     
 	width:100%;
     height:100%;
 }
 
-
 .card_descrip p{
     color: black;
+    width: 250px;
     font-size: large;
-    margin-left: 35px; 
-    margin-right: 35px;
     text-align: justify;
 }
 
-.idea_detail button{
-
-    justify-content:center;
-    border: solid 1px #D03E3E;
-    border-radius: 5px 5px 5px 5px;
-    border-color:#D03E3E;
-    font-size: 25px;
-    color : #D03E3E;
-    margin-bottom: 10px;
+.event-desc p{
+    height: 150px;
 }
-@media screen and (max-width: 1300px)
-{
-    .card-container {
-        flex-wrap: wrap;
-        
-    
-    }
-    .card_idea{
-        width:45%;
-        
-    }
 
-}
 @media screen and (max-width: 1100px)
 {
-    .card_img {
-        width:150px;
-        height:100px;
-        flex-direction: column;
-       
-        
-    }
 
-    .card_idea{
-        width:45%;
-        
-    }
-    .card-container {
-        flex-wrap: wrap;
-        
+    .idea_title{
+        width: 250px;
+        height: 120px;  
     }
   
    
 }
 @media screen and (max-width: 900px)
 {
-    .card_img {
-        width:200px;
-        height:150px;
-        
-    }
 
     .container {
         margin-left: 50px;
@@ -147,7 +150,6 @@
 
     .card_idea{
        margin-left: 30px;
-        
     }
 }
    
@@ -156,11 +158,7 @@
 
 @media screen and (max-width: 700px)
 {
-    .card_img {
-        width:150px;
-        height:100px;
-        
-    }
+
     .container {
         margin-left: 40px;
         margin-right: 30px;
@@ -174,8 +172,41 @@
 @media screen and (max-width: 650px)
 {
 
+    .idea_title {
+        width: 400px;
+    }
+
+    .card_descrip p{
+
+        width: 400px;
+
+    }
+
     .card_idea{
-        width:100%;
-        
+       margin-left: 0;
+    }
+
+    .card_img {
+    
+        width:350px;
+        height:230px;
+    }
+}
+
+@media screen and (max-width: 475px)
+{
+
+    .card_descrip p{
+
+        width: 250px;
+    }
+
+    .idea_title {
+        width: 250px;
+    }
+
+    .card_img {
+        width:250px;
+        height:150px;
     }
 }

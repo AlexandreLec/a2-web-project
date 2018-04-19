@@ -52,6 +52,8 @@ Route::post('/events/desc/{id}', 'EventDescController@storepic');
 //new participate event
 Route::get('/events/participate','EventIdeaController@create');
 Route::post('/events/participate','EventIdeaController@store');
+Route::get('/event/subscribe/{id}','EventController@subscribe');
+Route::get('/event/unscribe/{id}','EventController@unscribe');
 
 //add new goodie
 Route::get('/article','ArticleController@create');
@@ -89,6 +91,3 @@ Route::post('/shop/command', 'ShopController@command');
 
 //Notification route
 Route::get('/notification','NotificationController@notif');
-
-//Participate route
-Route::get('/participate','ParticipateController@participate');

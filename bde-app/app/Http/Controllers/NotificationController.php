@@ -11,8 +11,9 @@ class NotificationController extends Controller
 {
 public function notif(){
     if(Auth::check()) {
-   $notif = Notification::all();
-   return $notif;
-}
+        $user = Auth::user();
+        $notif = Notification::all()->where('id_user', '=', $user->id);
+        return $notif;
+    }
 }
 }

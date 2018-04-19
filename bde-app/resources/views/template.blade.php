@@ -14,7 +14,9 @@
         <!-- CSS files -->
         {{ Html::style('css/general.css') }}
         <meta name="_token" content="{{ csrf_token() }}"/>
-       
+        @if (isset($user))
+        <span id="id-user" hidden>{{ $user->id }}</span>
+        @endif
 
         <!-- Script files -->
         <script
@@ -42,11 +44,7 @@
                     
                 <div id="sign-notif">
                     <form> 
-
-                        <label >Nom </label> <label id = "nom"></label>
-                        <label>Description</label> <label id = "desc"></label>
-                       
-                      
+                        <label >Notification </label> <label id = "nom"></label>
                     </form>
                  </div>
     
@@ -57,7 +55,9 @@
                     <i id="logo-connexion" class="fas fa-user fa-2x"></i><span id="text-connexion">Connexion<span>
                 </button>    
                 @else
+                <div id="hello">
                     <p>Bonjour, {{ $user->first_name }}</p>
+                </div>
                 @endif
                 <span id="menu"><i class="fas fa-bars fa-2x"></i></span>
             </div>
@@ -66,8 +66,12 @@
         <nav>
             <ul>
                 <li><a href="/">Accueil</a></li>
-                <li><a href="/events">Evènements</a></li>
-                <li><a href="/asso">Associations</a></li>
+                <li><a href="/events/past">Evènements</a></li>
+                <ul>
+                    <li><a href="/events/soon">A venir</a></li>
+                    <li><a href="/events/past">Terminés</a></li>
+                    <li><a href="/events/ideas">Idées</a></li>
+                </ul>
             </ul>
             <ul>
                 <li><a href="/shop">Boutique</a></li>                
@@ -84,12 +88,14 @@
         </nav>
 
         <div id="sign-tab">
-            <form method="POST" action="signin">
+            <form method="POST" action="/signin">
                 {{ csrf_field() }}
                 <label>Identifiant </label><input name="login" type="text"/>
                 <label>Mot de passe </label><input name="password" type="password"/>
                 <button type="submit">Connexion</button>
+                <span>Pas encore inscris ? - <a href="/register">Cliquer ici</a></span>
             </form>
+
         </div>
 
         <div id="mask"></div>

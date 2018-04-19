@@ -108,8 +108,11 @@ class EventIdeaController extends Controller
     }
 
     public function show($id){
+        if(Auth::check()) {
+            $user = Auth::user();
+        }
         $idea = EventIdea::find($id);
-        return view('event.idea', compact('idea'));
+        return view('event.idea', compact('idea','user'));
     }
 
     //API methods

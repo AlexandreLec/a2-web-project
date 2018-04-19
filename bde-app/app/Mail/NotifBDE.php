@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Contact extends Mailable
+class NotifBDE extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -32,7 +32,7 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this->view('shop.mail')
+        return $this->view('shop.bde')
         ->with([
                 'items' => $this->items,
                 'user' => $this->user,

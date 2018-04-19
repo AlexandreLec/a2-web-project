@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class Event extends Model
 {
@@ -13,6 +14,16 @@ class Event extends Model
      * @var string
      */
     protected $table = 'event';
+
+    public function truncatDesc() {
+
+        $nb_words = 20;
+        $tab = explode(' ', $this->description, $nb_words+1);
+        unset($tab[$nb_words]);
+        $this->descriptionShort = implode(' ', $tab).'...';
+
+        return $this;
+    }
 
     public function participantsCsv()
     {
@@ -33,6 +44,32 @@ class Event extends Model
             }
         }
         return '/storage/event'.$this->id.'.csv';
+    }
+
+    public function isInParticipant(User $user)
+    {
+        $check = Event::find($this->id)->participants->where('id','=',$user->id);
+
+        if (sizeof($check) === 0){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    //Add a participants in participate table
+    public function addParticipant(User $user)
+    {
+        DB::table('participate')->insert(
+            ['id_user' => $user->id, 'id_event' => $this->id]
+        );
+    }
+
+    //Remove a participants in participate table
+    public function removeParticipant(User $user)
+    {
+        DB::table('participate')->where('id_event', '=', $this->id)->where('id_user', '=', $user->id)->delete();
     }
 
     public function category()

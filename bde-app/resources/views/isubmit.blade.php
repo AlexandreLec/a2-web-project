@@ -63,7 +63,7 @@
                 <input type="file" id="img"  name="photo">
             </div>
 
-        <input class="button" type="submit" id="submit" value="Soumettre l'idée">
+        <input class="button button-red" type="submit" id="submit" value="Soumettre l'idée">
 
     </form>
 </div>
