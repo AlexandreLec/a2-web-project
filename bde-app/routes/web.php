@@ -58,6 +58,8 @@ Route::get('/event/unscribe/{id}','EventController@unscribe');
 //add new goodie
 Route::get('/article','ArticleController@create');
 Route::post('/article','ArticleController@store');
+Route::post('/goodie/category', 'ArticleCategoryController@create');
+Route::delete('/goodie/category/{id}', 'ArticleCategoryController@delete');
 
 Route::post('/events/insert','EventController@insert');
 Route::delete('/events/{id}','EventController@delete');
@@ -78,6 +80,8 @@ Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 //Shop routes
 Route::get('/shop', 'ShopController@index');
 
+//Download all route
+Route::get('/picture/events/{id}', 'EventController@downloadzip');
 
 Route::post('/shop/basket', 'ShopController@saveBasket');
 Route::get('/shop/basket', 'ShopController@retrieveBasket');
@@ -86,6 +90,8 @@ Route::get('/shop/confirm', function(){
 });
 Route::post('/shop/command', 'ShopController@command');
 
-
 //Notification route
 Route::get('/notification','NotificationController@notif');
+
+//DeleteNotif route
+Route::get('/signin/delete','NotificationController@deletenotif');

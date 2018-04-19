@@ -120,6 +120,7 @@ return [
     */
 
     'providers' => [
+    
 
         /*
          * Laravel Framework Service Providers...
@@ -164,6 +165,8 @@ return [
          * Added providers
          */
         Collective\Html\HtmlServiceProvider::class,
+
+        'Chumper\Zipper\ZipperServiceProvider',
 
     ],
 
@@ -216,6 +219,8 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'Zipper' => 'Chumper\Zipper\Zipper'
 
     ],
 

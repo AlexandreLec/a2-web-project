@@ -4,9 +4,10 @@
 
     {{ Html::style('css/admin.css') }}
 
-    {{ Html::style('https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css') }}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.css"/>
+ 
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/r-2.2.1/datatables.min.js"></script>
 
-    {{ Html::script('https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js') }}
 
     
 
@@ -24,15 +25,20 @@
 		<section class="manage-board" id="access-manage">
 	    	<h2>Accès rapide</h2>
 	    	<ul>
-	    		<a href="#events-manage"><li>Gestion des événenements à venir</li></a>
-	    		<a href="#events-pasts-manage"><li>Gestion des événenements passés</li></a>
-	    		<a href="#ideas-manage"><li>Gestion de la boîte à idées</li></a>
-	    		<a href="#shop-manage"><li>Gestion de la boutique</li></a>
-	    	<ul>
-	    	
+	    		<a href="#events-manage"><li><i class="fas fa-angle-double-right"></i>Gestion des événenements à venir</li></a>
+	    		<a href="#events-pasts-manage"><li><i class="fas fa-angle-double-right"></i>Gestion des événenements passés</li></a>
+	    		<a href="#ideas-manage"><li><i class="fas fa-angle-double-right"></i>Gestion de la boîte à idées</li></a>
+	    		<a href="#shop-manage-cat"><li><i class="fas fa-angle-double-right"></i>Gestion de la boutique</li></a>
+	    	</ul>
+	    	<div class="rapid-actions">
+	    		<button class="button-red" id="add-event"><i class="fas fa-plus"></i> Evénement</button>
+	    		<button class="button-red" id="add-cat"><i class="fas fa-plus"></i> Catégorie événement</button>
+	    		<a href="/article"><button class="button-red" id="add-goodie"><i class="fas fa-plus"></i> Goodie</button></a>
+	    		<button class="button-red" id="add-goodie-cat"><i class="fas fa-plus"></i> Catégorie Goodie</button>
+	    	</div>
 	    </section>
 	    <section class="manage-board" id="events-manage">
-	    	<h2>Evènements à venir</h2><button id="add-event">Ajouter un événement</button>
+	    	<h2>Evènements à venir</h2>
 	    	<table id="events" class="display">
 			    <thead>
 			        <tr>
@@ -93,8 +99,38 @@
 			    </tbody>
 			</table>
 	    </section>
-	    <section class="manage-board" id="shop-manage">
-	    	<h2>Boutique</h2>
+	    <section class="manage-board" id="shop-manage-cat">
+	    	<h2>Boutique Catégories</h2>
+	    	<table id="cat-goodie" class="display">
+			    <thead>
+			        <tr>
+			            <th>Nom</th>
+			            <th>Action</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	
+			    </tbody>
+			</table>
+	    </section>
+	    <section class="manage-board" id="shop-manage-goodie">
+	    	<h2>Boutique Goodies</h2>
+	    	<table id="goodies" class="display">
+			    <thead>
+			        <tr>
+			            <th>Nom</th>
+			            <th>Description</th>
+			            <th>Prix</th>
+			            <th>Stock</th>
+						<th>Unités vendus</th>
+						<th>Catégorie</th>
+			            <th>Action</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	
+			    </tbody>
+			</table>
 	    </section>
 	    <section class="manage-board" id="users-manage">
 	    	<h2>Utilisateurs</h2>
@@ -155,6 +191,18 @@
         	</select>
         	<label>Image</label>
         	<input type="file" name="photo"/>
+        	<button type="submit">Ajouter</button>
+        </form>
+        <form id="cat-form" method="POST" action="/category/">
+			{{ csrf_field() }}
+			<h3>Ajouter une nouvelle catégorie d'événement</h3>
+	    	<label>Nom</label><input id="cat-name" name="category" type="text" />
+        	<button type="submit">Ajouter</button>
+        </form>
+        <form id="cat-goodie-form" method="POST" action="/goodie/category">
+			{{ csrf_field() }}
+			<h3>Ajouter une nouvelle catégorie de goodies</h3>
+	    	<label>Nom</label><input id="cat-goodie-name" name="goodie-category" type="text" />
         	<button type="submit">Ajouter</button>
         </form>
 	</div>

@@ -40,6 +40,9 @@ class EventController extends Controller
     			$event->url_img = Image::upload($request,'users_upload/event');
 
     			$event->save();
+
+                $userIdeaId = $request->input('iduser');
+
             	return view('isubmitconfirm');
             }
         }else {
@@ -131,5 +134,17 @@ class EventController extends Controller
     
 
 }
+
+    //public function downloadZip($id){
+      //  $event = Event::find($id);
+        //$tab = $event->imgs;
+        //return $tab;
+    //}
+
+       // Zipper::make(public_path('test.zip'))->add($file)->close();
+        //return $file;
+
+        //return response()->download(public_path('Photo.zip'));
+
 
 

@@ -25,6 +25,7 @@
   crossorigin="anonymous"></script>
 
         <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
          @yield('css')
     </head>
@@ -44,7 +45,8 @@
                     
                 <div id="sign-notif">
                     <form> 
-                        <label >Notification </label> <label id = "nom"></label>
+                        <label id= "titlenotif">Notification </label> <label id = "nom"></label>
+                        <button >Supprimer</button>
                     </form>
                  </div>
     
@@ -66,8 +68,12 @@
         <nav>
             <ul>
                 <li><a href="/">Accueil</a></li>
-                <li><a href="/events">Evènements</a></li>
-                <li><a href="/asso">Associations</a></li>
+                <li><a href="/events/past">Evènements</a></li>
+                <ul>
+                    <li><a href="/events/soon">A venir</a></li>
+                    <li><a href="/events/past">Terminés</a></li>
+                    <li><a href="/events/ideas">Idées</a></li>
+                </ul>
             </ul>
             <ul>
                 <li><a href="/shop">Boutique</a></li>                
@@ -84,12 +90,14 @@
         </nav>
 
         <div id="sign-tab">
-            <form method="POST" action="signin">
+            <form method="POST" action="/signin">
                 {{ csrf_field() }}
                 <label>Identifiant </label><input name="login" type="text"/>
                 <label>Mot de passe </label><input name="password" type="password"/>
                 <button type="submit">Connexion</button>
+                <span>Pas encore inscris ? - <a href="/register">Cliquer ici</a></span>
             </form>
+
         </div>
 
         <div id="mask"></div>

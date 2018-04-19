@@ -28,7 +28,7 @@
 </div>   
 
 <div class="idea_button">
-    <a href="/events/ideas/create"><button type="button">Proposer une nouvelle idée</button></a>
+    <a href="/events/ideas/create"><button class="button-red newIdea" type="button">Proposer une nouvelle idée</button></a>
 </div>
 
 <script src="/js/poll.js"></script>

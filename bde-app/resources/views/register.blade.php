@@ -78,7 +78,7 @@
 </div> 
 
     <div class="button">
-    <input id="btnSubmit" type="submit" value="S'inscrire">
+    <input id="btnSubmit" class="button-red" type="submit" value="S'inscrire">
     </div>
 
 </form>    
