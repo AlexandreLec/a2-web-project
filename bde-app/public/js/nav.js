@@ -65,6 +65,11 @@ if(document.querySelector(".carousel") !== null){
 	var flkty = new Flickity('.carousel');
 }
 
+if(document.querySelector(".carousel-goodies") !== null){
+	var flkty = new Flickity('.carousel-goodies');
+}
+
+
 let signbtn = document.getElementById('notif');
 if (signbtn !== null){
 	signbtn.addEventListener('click', showNotif);

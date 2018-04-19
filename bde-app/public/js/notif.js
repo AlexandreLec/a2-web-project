@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+    }
+});
+
 var notif = [];
 //var name;
 //var desc;
@@ -5,7 +11,7 @@ var notif = [];
 
 function getnotif() {
 
-    
+
 
     var url = '/notification';
 
@@ -29,19 +35,19 @@ function getnotif() {
 
                 response.forEach(element => {
                     var div = document.createElement('div');
-                    div.id= 'divnotif';
-                 
+                    div.id = 'divnotif';
+
                     var namenotif = document.createElement('p');
-                    namenotif.id= 'namenotif';
+                    namenotif.id = 'namenotif';
                     var descnotif = document.createElement('p');
-                    descnotif.id= 'descnotif';
+                    descnotif.id = 'descnotif';
                     var autornotif = document.createElement('p');
-                    autornotif.id= 'autornotif';
-                
+                    autornotif.id = 'autornotif';
+
 
                     div.appendChild(namenotif);
                     namenotif.innerHTML = element.name;
-                   
+
                     div.appendChild(descnotif);
                     descnotif.innerHTML = element.description;
 
@@ -51,11 +57,6 @@ function getnotif() {
                     $('form #nom').append(div);
                     //$('form #nom').append($('form #desc'));
                     //$('form #desc').append(div);
-                   
-                   
-                   
-
-
 
                 });
 
@@ -66,28 +67,28 @@ function getnotif() {
                 console.log(response);
                 // callback();
 
-            }
+                 
+                }
 
-        });
+            });
+        
         xhr.send(null);
     }
-    // }
 
     executerequete();
+    
+}
+getnotif();
 
-    /*function affichernotif(jsonObj) {
-        var name = jsonObj['name'];
-
-        for (var i = 0; i < name.length; i++) {
-           
-            var div = document.createElement('div');
-            var namenotif = document.createElement('p')
-            div.appendChild(namenotif);*/
-
-
-    /* var element = document.getElementById("right-bar");
-     element.appendChild(namediv);*/
+function confirmDelnotif () {
+                    
+    $.ajax({
+        url: "/notification" ,
+        type: 'DELETE',
+        success: function (data, statut) {
+          console.log(data);
+        }
+    });
 }
 
-
-getnotif();
+$('#del-notif').on('click', confirmDelnotif);

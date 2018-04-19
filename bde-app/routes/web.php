@@ -99,4 +99,4 @@ Route::get('/notification','NotificationController@notif');
 
 
 //DeleteNotif route
-Route::get('/signin/delete','NotificationController@deletenotif');
+Route::delete('/notification','NotificationController@deleteall');

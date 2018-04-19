@@ -41,6 +41,7 @@ public function notif(){
     }
 }
 
+<<<<<<< HEAD
 public function addNotif(Request $request) {
     if(Auth::check()){
         $notifs =  Notification::all();
@@ -67,15 +68,19 @@ public function addNotif(Request $request) {
     }
 }
 
-public function deletenotif(){
+
+public function deleteall(){
+
     
     if(Auth::check()) {
-           Notification::delete();
+            $user = Auth::user();
+          DB::table('is_for')->where('id_user', '=', $user->id)->delete();
            return 'ok';
         }
         return 'pas ok';
 
     }
+
 }
           
 
