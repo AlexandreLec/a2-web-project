@@ -6,12 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB; 
 use App\Article;
+use App\ArticleCategory;
 
 class ArticleController extends Controller
 {
     //return the page for add an article
     public function create() {
-        return view('article');
+        if(Auth::check()){
+            
+            $user = Auth::user();
+            if($user->group->id === 4){
+                $categories = ArticleCategory::all();
+                return view('article', compact('user','categories'));
+            }
+            return view ('mustconnect');
+        }
+        return view ('mustconnect');
     }
     
     //add a new article on the BDD
@@ -20,6 +30,7 @@ class ArticleController extends Controller
         //Check if authentified
         if(Auth::check()){
             
+            $user = Auth::user();
             //model contaning the form data to input
             $article = new Article;
 
@@ -27,6 +38,7 @@ class ArticleController extends Controller
             $article->description = $request->description;
             $article->price = $request->price;
             $article->id_category = $request->category;
+            $article->stock = $request->stock;
 
                 $file = $request->file('picture');
                     $destinationPath = $request->file('picture')->store('/users_upload/goodies', 'public');
@@ -35,7 +47,9 @@ class ArticleController extends Controller
             
                     $article->save();
                     
-                    return view('ArticleConfirm');
+                    return view('ArticleConfirm', compact('user'));
         }
+
+        return view ('mustconnect');
     }
 }

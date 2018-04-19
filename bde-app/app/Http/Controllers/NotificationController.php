@@ -13,7 +13,45 @@ public function notif(){
     if(Auth::check()) {
         $user = Auth::user();
         $notif = Notification::all()->where('id_user', '=', $user->id);
-        return $notif;
+
+        $notifs =  Notification::all();
+
+        foreach ($notifs as $key => $notif) {
+            $notif->recipients;
+            $notif->author;
+        }
+
+        $arraynotif = array ();
+        
+        foreach ($notifs as $key => $notif) {
+            $check = false;
+            foreach  ($notif->recipients as $key => $recipient) {
+                if($recipient->id == $user->id){
+                    $check = true;
+                }
+            }
+            if($check){
+                array_push($arraynotif,$notif);
+            }
+        }
+
+        return $arraynotif;
+
     }
 }
+public function deletenotif(){
+    
+    if(Auth::check()) {
+           Notification::delete();
+           return 'ok';
+        }
+        return 'pas ok';
+
+    }
 }
+          
+
+
+
+
+

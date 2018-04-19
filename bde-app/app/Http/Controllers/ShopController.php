@@ -67,6 +67,11 @@ class ShopController extends Controller
     			$command->save();
     			$command->name = $item['name'];
     			array_push($recap, $command);
+                
+                $article = Article::find($item['id']);
+                $article->stock = $article->stock-1;
+                $article->save();
+
     		}
 
     		$request->session()->forget('basketSaved');
@@ -86,7 +91,12 @@ class ShopController extends Controller
     //API Methods
     public function goodies()
     {
-    	return Article::all();
+        $articles = Article::all();
+
+        foreach ($articles as $key => $article) {
+            $article->category;
+        }
+    	return $articles;
     }
 
 	

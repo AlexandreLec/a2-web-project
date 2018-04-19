@@ -18,8 +18,8 @@ class EventDescController extends Controller {
     
     public function show($id){
         
-        $eventid = Event::find($id);
-        return view('event.evntdscp', compact('eventid'));
+        $event = Event::find($id);
+        return view('event.evntdscp', compact('event'));
     }
         
     

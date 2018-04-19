@@ -164,15 +164,24 @@ nav ul li a {
 #sign-notif form label  {
 	font-size: x-large;
 	align-self: center;
-
+	border-radius: 30px;
 
 }
+
 #sign-notif form label div p {
 	
 color:black;
 text-align: center;
 
+}
+#descnotif{
 
+font-size: small;
+
+}
+#namenotif {
+	
+	font-size: large;
 }
 
 
