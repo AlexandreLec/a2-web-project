@@ -1,7 +1,7 @@
 @extends('event.events')
 
 @section('content')
-<div class="container">
+<div class="Pastcontainer">
     
     @foreach ($events as $event)
     
@@ -29,7 +29,7 @@
         </div>
 
                 <div class="event-img">
-                <img src="{{ $event->url_img }}">
+                <img id="photo" src="{{ $event->url_img }}">
                 </div>
 
         <div class="button">
