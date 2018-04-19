@@ -70,6 +70,7 @@ class ShopController extends Controller
                 
                 $article = Article::find($item['id']);
                 $article->stock = $article->stock-1;
+                $article->units_sold = $article->units_sold+1;
                 $article->save();
 
     		}

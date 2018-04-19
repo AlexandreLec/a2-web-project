@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Image;
 use App\Event;
+use App\Notification;
+use App\User;
 
 class EventController extends Controller
 {
@@ -41,7 +43,18 @@ class EventController extends Controller
 
     			$event->save();
 
-                $userIdeaId = $request->input('iduser');
+                if($request->input('iduser') !== null){
+                    $userIdeaId = $request->input('iduser');
+                    $userToNotif = User::find($userIdeaId);
+
+                    $notif = new Notification();
+                    $notif->name = "Idée acceptée !";
+                    $notif->description = "Votre idée ".$request->input('name')." a été acceptée! Retrouvez là dans la rubrique évènement à venir ;)";
+                    $notif->notif_date = date('Y-m-d');
+                    $notif->id_user = $user->id;
+                    $notif->save();
+                    $notif->addRecipient($userToNotif);
+                }
 
             	return view('isubmitconfirm');
             }

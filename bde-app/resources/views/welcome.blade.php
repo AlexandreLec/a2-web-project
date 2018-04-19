@@ -33,7 +33,12 @@
                     <p id="text-intro">Le Bureau des étudiants est l’association en charge de la vie étudiante de l'école d'ingénieur CESI. Il s’occupe aussi bien de l’organisation d’événements que de l’amélioration de la vie quotidienne sur le campus. Ce sont donc des étudiants, éluent par les étudiants pour les étudiants.</p>
                 </div>
                 <div class="top-products">
-                    
+                    <h2>Top Goodies</h2>
+                    <div class="carousel-goodies">
+                        @foreach ($goodies as $goodie)
+                            <div class="carousel-cell"><a href="/shop"><img  src="{{$goodie->url_img}}"/></a></div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
             <div class="top-event">
