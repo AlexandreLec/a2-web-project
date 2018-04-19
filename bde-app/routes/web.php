@@ -80,7 +80,7 @@ Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 //Shop routes
 Route::get('/shop', 'ShopController@index');
 
-//Download all route
+//Download all event picture into a zip file
 Route::get('/downloadZip', 'EventController@downloadZip');
 
 Route::post('/shop/basket', 'ShopController@saveBasket');

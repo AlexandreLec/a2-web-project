@@ -12,8 +12,22 @@
 @section('title-page')
 
     Accueil
+    
+<?php 
+        if(Auth::check()) {
+    		$user = Auth::user();
+            if($user->group->id === 3){ 
+    echo'
+    <a "id="buttonDownload" href="/downloadZip" ><button type="button">Download Image</button></a>';
+            }
+        }
+        ?>
+
+
 
 @stop
+
+
 
 @section('content')
     
