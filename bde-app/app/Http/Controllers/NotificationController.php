@@ -13,7 +13,18 @@ public function notif(){
     if(Auth::check()) {
         $user = Auth::user();
         $notif = Notification::all()->where('id_user', '=', $user->id);
-        return $notif;
+
+        $notifs =  Notification::all();
+
+        foreach ($notifs as $key => $notif) {
+            $notif->recipients;
+        }
+
+        
+        // $autor = Notification::all()->select('id', 'first_name')->join('notification','users_id','=','notification.id_user')->get() ;
+        return $notifs;
     }
 }
+
 }
+

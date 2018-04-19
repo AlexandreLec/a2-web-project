@@ -84,4 +84,14 @@ class User extends Authenticatable
         return $this->hasMany('App\EventIdea','id_user');
     }
 
+    public function notifications()
+    {
+        return $this->belongsToMany('App\Notification', 'is_for', 'id_user', 'id_notif');
+    }
+
+    public function authorNotifications()
+    {
+        return $this->hasMany('App\Notification', 'id_user');
+    }
+
 }

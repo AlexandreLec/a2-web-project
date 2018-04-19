@@ -172,7 +172,15 @@ nav ul li a {
 color:black;
 text-align: center;
 
+}
+#descnotif{
 
+font-size: small;
+
+}
+#namenotif {
+	
+	font-size: large;
 }
 
 
