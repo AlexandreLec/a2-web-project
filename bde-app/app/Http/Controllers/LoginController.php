@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Article;
 
 class LoginController extends Controller
 {
@@ -54,7 +55,9 @@ class LoginController extends Controller
 
     	$pictures = $this->randomPictures();
 
-    	return view('welcome', compact('user', 'monthEvent','pictures'));
+    	$goodies = DB::table('goodie')->orderBy('units_sold', 'desc')->limit(3)->get();
+
+    	return view('welcome', compact('user', 'monthEvent','pictures','goodies'));
     }
 
     public function login(Request $request){

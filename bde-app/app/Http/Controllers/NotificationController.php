@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB; 
+use App\isFor;
 
 class NotificationController extends Controller
 {
@@ -39,15 +40,47 @@ public function notif(){
 
     }
 }
-public function deletenotif(){
+
+<<<<<<< HEAD
+public function addNotif(Request $request) {
+    if(Auth::check()){
+        $notifs =  Notification::all();
+        
+        $notif = new Notification;
+        $notif->name = $request->type.' non conforme';
+        $notif->description = $request->info.' ---- dans '.$request->event_name.'  '.$request->pic_name;
+        $notif->notif_date = date("Y-m-d");
+        $notif->id_user = Auth::id();
+        
+        
+        $notif->save();
+        
+        $corres = new isFor;
+        $corres->id_notif = count($notifs)+1;
+        $corres->id_user = 4;
+        
+        $corres->save();
+        
+        return view('reported');
+    }
+    else {
+        return 'connectez vous';
+    }
+}
+
+
+public function deleteall(){
+
     
     if(Auth::check()) {
-           Notification::delete();
+            $user = Auth::user();
+          DB::table('is_for')->where('id_user', '=', $user->id)->delete();
            return 'ok';
         }
         return 'pas ok';
 
     }
+
 }
           
 

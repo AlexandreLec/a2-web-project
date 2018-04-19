@@ -77,6 +77,10 @@ Route::get('/events/soon/{id}','EventController@detail');
 Route::get('/idea/poll/add/{id}', 'EventIdeaController@addPoll');
 Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 
+//Report content
+Route::get('/report', function(){return view('report');});
+Route::post('/report','NotificationController@addNotif');     
+
 //Shop routes
 Route::get('/shop', 'ShopController@index');
 
@@ -93,5 +97,6 @@ Route::post('/shop/command', 'ShopController@command');
 //Notification route
 Route::get('/notification','NotificationController@notif');
 
+
 //DeleteNotif route
-Route::get('/signin/delete','NotificationController@deletenotif');
+Route::delete('/notification','NotificationController@deleteall');
