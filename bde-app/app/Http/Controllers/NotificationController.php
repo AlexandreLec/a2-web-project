@@ -10,6 +10,7 @@ use App\isFor;
 
 class NotificationController extends Controller
 {
+    //check the user,take the table notification where id = id of user connected
 public function notif(){
     if(Auth::check()) {
         $user = Auth::user();
@@ -17,20 +18,21 @@ public function notif(){
 
         $notifs =  Notification::all();
 
-        foreach ($notifs as $key => $notif) {
+        foreach ($notifs as $key => $notif) { //Browse the array
             $notif->recipients;
             $notif->author;
         }
 
-        $arraynotif = array ();
+        $arraynotif = array (); //new array 
         
-        foreach ($notifs as $key => $notif) {
+        foreach ($notifs as $key => $notif) { // Browse the array
             $check = false;
             foreach  ($notif->recipients as $key => $recipient) {
-                if($recipient->id == $user->id){
+                if($recipient->id == $user->id){ // check if the user is the goog recipient
                     $check = true;
                 }
             }
+            //send JSON
             if($check){
                 array_push($arraynotif,$notif);
             }
@@ -41,7 +43,6 @@ public function notif(){
     }
 }
 
-<<<<<<< HEAD
 public function addNotif(Request $request) {
     if(Auth::check()){
         $notifs =  Notification::all();
@@ -68,9 +69,9 @@ public function addNotif(Request $request) {
     }
 }
 
-
+//delet all notif of the table is_for in the database where id_user in the user connected
 public function deleteall(){
-
+    
     
     if(Auth::check()) {
             $user = Auth::user();

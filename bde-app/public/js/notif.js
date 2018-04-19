@@ -4,40 +4,37 @@ $.ajaxSetup({
     }
 });
 
-var notif = [];
-//var name;
-//var desc;
-//var autor;
+var notif = [];  // array of notif
 
-function getnotif() {
+
+function getnotif() { // function for take the differents notifcation
 
 
 
-    var url = '/notification';
+    var url = '/notification'; // the road of my request AJAX
 
     function executerequete() {
 
-        // if (notif.length === 0) {
-        var xhr = new XMLHttpRequest();
+        
+        var xhr = new XMLHttpRequest(); //instance of Ajax request
         xhr.open('GET', url, true);
 
 
-        xhr.addEventListener('readystatechange', function () {
+        xhr.addEventListener('readystatechange', function () { //asynchrone request with function of callback
 
             //if request completed gets the JSON file
             if (xhr.readyState === 4 && xhr.status === 200) {
 
-                var response = JSON.parse(xhr.response);
+                var response = JSON.parse(xhr.response); //Parse a character string JSON
 
-                response = $.map(response, function (el) {
+                response = $.map(response, function (el) { //create a new array 
                     return el;
                 })
 
                 response.forEach(element => {
-                    var div = document.createElement('div');
+                    var div = document.createElement('div'); //create element div
                     div.id = 'divnotif';
-
-                    var namenotif = document.createElement('p');
+                    var namenotif = document.createElement('p'); //create element p
                     namenotif.id = 'namenotif';
                     var descnotif = document.createElement('p');
                     descnotif.id = 'descnotif';
@@ -45,8 +42,8 @@ function getnotif() {
                     autornotif.id = 'autornotif';
 
 
-                    div.appendChild(namenotif);
-                    namenotif.innerHTML = element.name;
+                    div.appendChild(namenotif); //location of the element
+                    namenotif.innerHTML = element.name; 
 
                     div.appendChild(descnotif);
                     descnotif.innerHTML = element.description;
@@ -55,24 +52,15 @@ function getnotif() {
                     autornotif.innerHTML = element.author.first_name;
 
                     $('form #nom').append(div);
-                    //$('form #nom').append($('form #desc'));
-                    //$('form #desc').append(div);
-
+                    
                 });
-
-
-                // name = response[0].name;
-                // desc = response[0].description;
-                // autor = response[0].first_name;
                 console.log(response);
-                // callback();
-
-                 
+                                 
                 }
 
             });
         
-        xhr.send(null);
+        xhr.send(null); //send request
     }
 
     executerequete();
@@ -80,15 +68,15 @@ function getnotif() {
 }
 getnotif();
 
-function confirmDelnotif () {
+function confirmDelnotif () { //function for delete notif
                     
-    $.ajax({
+    $.ajax({ // AJAX request
         url: "/notification" ,
-        type: 'DELETE',
-        success: function (data, statut) {
+        type: 'DELETE', // type of 
+        success: function (data, statut) { 
           console.log(data);
         }
     });
 }
 
-$('#del-notif').on('click', confirmDelnotif);
+$('#del-notif').on('click', confirmDelnotif); //button delete

@@ -1,4 +1,4 @@
-var nameChecked = placeChecked = priceChecked = false;
+var nameChecked = placeChecked = priceChecked = false; 
 
 function checkname() {
     var elmt = document.getElementById('name');
