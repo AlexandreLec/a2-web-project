@@ -77,6 +77,10 @@ Route::get('/events/soon/{id}','EventController@detail');
 Route::get('/idea/poll/add/{id}', 'EventIdeaController@addPoll');
 Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 
+//Report content
+Route::get('/report', function(){return view('report');});
+        
+
 //Shop routes
 Route::get('/shop', 'ShopController@index');
 
