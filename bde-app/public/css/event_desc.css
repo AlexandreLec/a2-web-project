@@ -33,9 +33,6 @@
     margin: auto;
 }
 
-i{
-    
-}
 
 .rest {
     display:flex;
@@ -217,12 +214,13 @@ h2 {
 #comments{
     overflow: auto;
     height: 90%;
-    /*border: 1px solid black;*/
+    
 }
 
 .comment{
     display: flex;
     flex-direction: column;
+    /*border: 1px solid black;*/
 }
 
 
@@ -260,10 +258,48 @@ h2 {
     margin-right: 2px;
 }
 
-.cmtTextArea i{
-    margin: 0;
-    margin-left: 2px;
+.stgsButton{
+    /*margin: 0;*/
+    cursor: pointer;
+    background: none;
+    border: none;
 }
+
+.stgsButton:focus{
+    outline: none;
+}
+
+.cmntSettings {
+    position: relative;
+    display: inline-block;
+}
+
+/* Comment Settings Content (Hidden by Default) */
+.settingsContent {
+    display: none;
+    float: right;
+    right: 0;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.settingsContent a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.settingsContent a:hover{
+    text-decoration: underline;
+}
+
+/* Show the dropdown menu */
+.show {display:block;}
 
 /*Own user's comments*/
 

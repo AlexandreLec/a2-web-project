@@ -127,6 +127,8 @@ class EventController extends Controller
         $event = Event::find($id);
         return $event->imgs;
     }
+    
+    
 
 }
 

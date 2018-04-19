@@ -8,19 +8,19 @@
 
     <div id="info">
         <div class="title">
-            <h2>{{ $eventid->name }}</h2>
+            <h2>{{ $event->name }}</h2>
             <div class="info">
                 
                 <div class="field">    
-                    <i class="fas fa-male"></i><p class='people'>{{ $eventid->nbrParticipants() }}</p>
+                    <i class="fas fa-male"></i><p class='people'>{{ $event->nbrParticipants() }}</p>
                 </div>
                 
                 <div class="field">    
-                    <i class="far fa-calendar-alt"></i><p class='date'>{{ $eventid->event_date }} </p>
+                    <i class="far fa-calendar-alt"></i><p class='date'>{{ $event->event_date }} </p>
                 </div>
                 
                 <div class="field"> 
-                    <i class="fas fa-map-marker-alt"></i><p class='place'>{{ $eventid->location }}</p>
+                    <i class="fas fa-map-marker-alt"></i><p class='place'>{{ $event->location }}</p>
                 </div>
             </div>
         </div>
@@ -31,9 +31,9 @@
 
             <div class="upldimg">
                 <label for="usrimg">Vous avez une image de cet évènement?</label>
-                <form action="/events/desc/{{ $eventid->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/events/desc/{{ $event->id }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <input type="hidden" id="eventid" name="event_id" value="{{ $eventid->id }}">
+                    <input type="hidden" id="eventid" name="event_id" value="{{ $event->id }}">
                     <input type="hidden" id="imgsloaded" value="0">
                     <input type="file" id="usrimg" name="photo">
                     <input id="submit" type="submit" value="Poster image">
@@ -50,7 +50,7 @@
     <div id="myModal" class="modal">
 
         <!-- Modal content -->
-        <div class="modal-content">
+        <div id="modal-content" class="modal-content">
             <span class="close">&times;</span>
             <div class="corps">
                 <div id="sideContent">
@@ -78,7 +78,16 @@
                             </div>
                             <div class="cmtTextArea">
                                 <p>Nous avons passé un fabuleux moment entre amis et sous le soleil, à refaire</p>
-                                <p><i class="fas fa-caret-down"></i></p>
+                                <div class="cmntSettings">
+                                    <div >
+                                        <button class="stgsButton" onclick="showCmtSettings()"><i class="fas fa-caret-down"></i></button>
+                                    </div>
+                                    
+                                    <div id="drpSet01" class="settingsContent">
+                                        <a href="#">Supprimer ce commentaire</a>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="ownComment">
@@ -93,7 +102,15 @@
                                 </div>
                                 <div class="cmtTextArea">
                                     <p>Top! À refaire, svp.... ;)</p>
-                                    <p><i class="fas fa-caret-down"></i></p>
+                                    <div class="cmntSettings">
+                                        <div >
+                                            <button class="stgsButton" onclick="test()"><i class="fas fa-caret-down"></i></button>
+                                        </div>
+
+                                        <div id="drpSet1" class="settingsContent">
+                                            <a href="#">Supprimer ce commentaire</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -101,8 +118,10 @@
   
         <!--ADD A COMMENT-->
                     <div id="reply">
-                        <input type="text" placeholder="Ajouter un commentaire..." name="comment">
-                        <input type="submit" value="-->">
+                        <form  action="" method="POST">
+                            <input type="text" placeholder="Ajouter un commentaire..." name="comment">
+                            <input type="submit" onclick="addComment('03/12/17','15:45', 'C. Bebere', 'Splendide aprem au parc', '1', '0')" value="-->">
+                        </form>    
                     </div> 
                 </div>
                 <div id="imgContainer" >
@@ -119,5 +138,6 @@
 
 
 {{ Html::script('js/load_imgs.js') }}
+{{ Html::script('js/event_img_detail.js') }}
 
 @stop
