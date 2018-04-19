@@ -18,13 +18,40 @@ public function notif(){
 
         foreach ($notifs as $key => $notif) {
             $notif->recipients;
+            $notif->author;
         }
 
+        $arraynotif = array ();
         
-        // $autor = Notification::all()->select('id', 'first_name')->join('notification','users_id','=','notification.id_user')->get() ;
-        return $notifs;
+        foreach ($notifs as $key => $notif) {
+            $check = false;
+            foreach  ($notif->recipients as $key => $recipient) {
+                if($recipient->id == $user->id){
+                    $check = true;
+                }
+            }
+            if($check){
+                array_push($arraynotif,$notif);
+            }
+        }
+
+        return $arraynotif;
+
     }
 }
+public function deletenotif(){
+    
+    if(Auth::check()) {
+           Notification::delete();
+           return 'ok';
+        }
+        return 'pas ok';
 
+    }
 }
+          
+
+
+
+
 

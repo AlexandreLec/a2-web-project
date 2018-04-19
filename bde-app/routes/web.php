@@ -90,6 +90,8 @@ Route::get('/shop/confirm', function(){
 });
 Route::post('/shop/command', 'ShopController@command');
 
-
 //Notification route
 Route::get('/notification','NotificationController@notif');
+
+//DeleteNotif route
+Route::get('/signin/delete','NotificationController@deletenotif');

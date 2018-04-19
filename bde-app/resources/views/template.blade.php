@@ -45,7 +45,8 @@
                     
                 <div id="sign-notif">
                     <form> 
-                        <label >Notification </label> <label id = "nom"></label>
+                        <label id= "titlenotif">Notification </label> <label id = "nom"></label>
+                        <button >Supprimer</button>
                     </form>
                  </div>
     
