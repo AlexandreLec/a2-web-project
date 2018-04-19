@@ -66,8 +66,12 @@
         <nav>
             <ul>
                 <li><a href="/">Accueil</a></li>
-                <li><a href="/events">Evènements</a></li>
-                <li><a href="/asso">Associations</a></li>
+                <li><a href="/events/past">Evènements</a></li>
+                <ul>
+                    <li><a href="/events/soon">A venir</a></li>
+                    <li><a href="/events/past">Terminés</a></li>
+                    <li><a href="/events/ideas">Idées</a></li>
+                </ul>
             </ul>
             <ul>
                 <li><a href="/shop">Boutique</a></li>                
@@ -84,12 +88,14 @@
         </nav>
 
         <div id="sign-tab">
-            <form method="POST" action="signin">
+            <form method="POST" action="/signin">
                 {{ csrf_field() }}
                 <label>Identifiant </label><input name="login" type="text"/>
                 <label>Mot de passe </label><input name="password" type="password"/>
                 <button type="submit">Connexion</button>
+                <span>Pas encore inscris ? - <a href="/register">Cliquer ici</a></span>
             </form>
+
         </div>
 
         <div id="mask"></div>

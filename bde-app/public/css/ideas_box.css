@@ -99,6 +99,14 @@
     height:150px;
 }
 
+.newIdea {
+    margin-top: 50px;
+}
+
+.newIdea:hover {
+    background-color: #4c4c4c;
+}
+
 .card_img img {
     
 	width:100%;
