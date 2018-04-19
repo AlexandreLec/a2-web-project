@@ -48,11 +48,12 @@ function setImage(imgpath, id){
         
         //Get the modal
         var modal = document.getElementById('myModal');
-        var img = document.getElementById(this.id);
-        var modalImg = document.getElementById("mdlImg");
+//        var imgsrc = document.getElementById(this.id).src;
+        var modalImg = document.getElementById('mdlImg');
 
         modal.style.display = "block";
-        modalImg.src = this.src;
+        modalImg.style.background = 'center / contain no-repeat url('+this.src+')';
+        ;
 
         var span = document.getElementsByClassName("close")[0];
 
