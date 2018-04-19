@@ -93,4 +93,14 @@ class EventController extends Controller
         }
     }
 
+    //public function downloadZip($id){
+        //$event = Event::find($id);
+        //$tab = $event->imgs;
+
+        //Zipper::make(public_path('test.zip'))->add($file)->close();
+        //return $file;
+
+        //return response()->download(public_path('Photo.zip'));
+
+
 

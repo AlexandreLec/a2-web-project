@@ -76,6 +76,8 @@ Route::get('/idea/poll/{id}', 'EventIdeaController@getPoll');
 //Shop routes
 Route::get('/shop', 'ShopController@index');
 
+//Download all route
+Route::get('/picture/events/{id}', 'EventController@downloadzip');
 
 Route::post('/shop/basket', 'ShopController@saveBasket');
 Route::get('/shop/basket', 'ShopController@retrieveBasket');

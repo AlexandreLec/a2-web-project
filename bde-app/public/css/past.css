@@ -1,19 +1,25 @@
-.container{
-    width: 90%;
+.Pastcontainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
 }
 
 .cardevent{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
     width: 50%;
-    margin-left: 230px;
     text-align: center;
     border-style: solid;
+    border-radius: 5px 5px 5px 5px;
     margin-bottom: 10px;
 }
 
-.event-desctip {
+
+.event-descrip {
     display: flex;
-    border-style: solid;
-    float: left;
+    margin-top: 20px;
 }
 .icon-event{
     margin-right: 10px;
@@ -22,17 +28,40 @@
 .event-info{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
+    margin-top: 10px;
 }
 
 .button{
     display: flex;
-    border-radius: 10px 5px 10px 5px;
     flex-direction: row-reverse;
+    margin-top: 20px;
 }
 
-.event-img{
-    display: flex;
-    
+button{
+    border-radius: 5px 5px 5px 5px;
+}
+
+#photo{
+    border-style: solid;
+    border-radius:  5px 5px 5px 5px;
+}
+
+@media screen and (max-width:1300px){
+
+    .Pastcontainer{
+        flex-direction: row;
+    }
+
+    .cardevent{
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width:1000px){
+    #photo{
+        height: 100px;
+        width: 100px;
+    }
 }
