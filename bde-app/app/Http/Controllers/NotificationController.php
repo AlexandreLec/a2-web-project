@@ -39,15 +39,18 @@ public function notif(){
 
     }
 }
-public function deletenotif(){
+
+public function deleteall(){
     
     if(Auth::check()) {
-           Notification::delete();
+            $user = Auth::user();
+          DB::table('is_for')->where('id_user', '=', $user->id)->delete();
            return 'ok';
         }
         return 'pas ok';
 
     }
+
 }
           
 
