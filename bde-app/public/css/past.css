@@ -65,4 +65,8 @@ button{
         height: 100px;
         width: 100px;
     }
+    
+    .Pastcontainer{
+        width: 90%;
+    }
 }
