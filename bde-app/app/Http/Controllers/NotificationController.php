@@ -58,7 +58,7 @@ public function addNotif(Request $request) {
         
         $corres = new isFor;
         $corres->id_notif = count($notifs)+1;
-        $corres->id_user = 4;
+        $corres->id_user = 1;
         
         $corres->save();
         
