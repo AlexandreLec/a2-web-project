@@ -22,6 +22,11 @@
     margin-top: 50px;
 }
 
+.img img {
+    height: 100%;
+    width: 100%;
+}
+
 .description p{
     text-align: justify;
 }

@@ -24,6 +24,36 @@ class EventController extends Controller
     	return $events;
     }
 
+    public function update($id, Request $request)
+    {
+        if(Auth::check()){
+            
+            $user = Auth::user();
+            
+            if($user->group->id === 4){
+                $event = Event::find($id);
+
+                $event->name = $request->input('name');
+                $event->description = $request->input('desc');
+                $event->location = $request->input('location');
+                $event->event_date = $request->input('date');
+                $event->event_time = $request->input('hour');
+                $event->price = $request->input('price');
+                $event->recurrence = $request->input('recurence');
+
+                $event->id_cat=2;
+
+                $event->url_img = Image::upload($request,'users_upload/event');
+
+                $event->save();
+
+                return view('isubmitconfirm');
+            }
+        }else {
+            return view('mustconnect');
+        }
+    }
+
     //add a new event with the formular
     public function insert(Request $request){
     	if(Auth::check()){
@@ -90,8 +120,13 @@ class EventController extends Controller
     }
     //Show Detail when you click on "more information"
     public function detail($id){
+        if(Auth::check()){
+            
+            $user = Auth::user();
+
+        }
         $event = Event::find($id);
-        return view('event.Detail', compact('event'));
+        return view('event.Detail', compact('event','user'));
     }
 
     //show Past Event

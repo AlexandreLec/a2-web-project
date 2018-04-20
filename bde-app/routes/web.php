@@ -63,6 +63,7 @@ Route::delete('/goodie/category/{id}', 'ArticleCategoryController@delete');
 
 Route::post('/events/insert','EventController@insert');
 Route::delete('/events/{id}','EventController@delete');
+Route::post('/events/update/{id}','EventController@update');
 
 //eventPast route
 Route::get('/events/past', 'EventController@past');
