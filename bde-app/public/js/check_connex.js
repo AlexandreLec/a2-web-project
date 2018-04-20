@@ -20,9 +20,7 @@ console.log("ok");
       
       var response = JSON.parse(xhr.responseText);
       var i=0;
-      
-      
-      while(response[i] != null){
+        while(response[i] != null){
         emails[i] = response[i].mail;
         i+=1;
       }
