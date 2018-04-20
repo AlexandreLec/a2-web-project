@@ -42,86 +42,44 @@
         </div>
     </div>
         
-    <div id="photos">
-      
-    </div>
+    <div id="photos"></div>
  </div>   
     <!-- The Modal -->
     <div id="myModal" class="modal">
 
         <!-- Modal content -->
         <div id="modal-content" class="modal-content">
-            <span class="close">&times;</span>
+            
             <div class="corps">
                 <div id="sideContent">
-                    <div id="comntHeader">
+                    <span id="close-window"><i class="fas fa-times-circle"></i></span>
+                    <div id="img-header">
                         <div class="metadata">
-                            <p>postée le  <i id="imgDate">Date</i></p>
-                            <p>par  <i id="imgUser">User</i></p>
+                            <p>postée le  <i id="imgDate">Date</i> par <i id="imgUser">User</i></p>
                         </div>
                         <div class="like">
-                            <div class="likeNbr">34</div>
-                            <button>Like</button>
+                            <div class="button-red"><span class="img-like">10</span><i class="fas fa-thumbs-up"></i></div>
                         </div>
                     </div>
   <!------- COMMENTS AREA ---- added in JS ------------>
                     <div id="comments">
                         <!--Single comment-->
                         <div class="comment">
-                            <div class="cmtMeta">
-                                <p>
-                                    <i class="cmtDate">date</i>
-                                    -
-                                    <i class="cmtTime">time</i>
-                                </p>
-                                <p class="cmtUser">User</p>
-                            </div>
+                            <div class="cmtMeta"><p>User, le date à time</p></div>
                             <div class="cmtTextArea">
-                                <p>Nous avons passé un fabuleux moment entre amis et sous le soleil, à refaire</p>
-                                <div class="cmntSettings">
-                                    <div >
-                                        <button class="stgsButton" onclick="showCmtSettings()"><i class="fas fa-caret-down"></i></button>
-                                    </div>
-                                    
-                                    <div id="drpSet01" class="settingsContent">
-                                        <a href="#">Supprimer ce commentaire</a>
-                                    </div>
-                                </div>
-                                
+                                <p>Nous avons passé un fabuleux moment entre amis et sous le soleil, à refaire</p>   
                             </div>
-                        </div>
-                        <div class="ownComment">
-                            <div class="comment">
-                                <div class="cmtMeta">
-                                    <p>
-                                        <i class="cmtDate">date</i>
-                                        -
-                                        <i class="cmtTime">time</i>
-                                    </p>
-                                    <p class="cmtUser"></p>
-                                </div>
-                                <div class="cmtTextArea">
-                                    <p>Top! À refaire, svp.... ;)</p>
-                                    <div class="cmntSettings">
-                                        <div >
-                                            <button class="stgsButton" onclick="test()"><i class="fas fa-caret-down"></i></button>
-                                        </div>
+                                <span class="del-comment">Supprimer</span>
 
-                                        <div id="drpSet1" class="settingsContent">
-                                            <a href="#">Supprimer ce commentaire</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
   
         <!--ADD A COMMENT-->
                     <div id="reply">
-                        <form  action="" method="POST">
-                            <input type="text" placeholder="Ajouter un commentaire..." name="comment">
-                            <input type="submit" onclick="addComment('03/12/17','15:45', 'C. Bebere', 'Splendide aprem au parc', '1', '0')" value="-->">
-                        </form>    
+                        <div>
+                            <input type="text" placeholder="Ajouter un commentaire..." id='add-comment' name="comment">
+                            <button class="button-red" id='send-comment'><i class="fas fa-paper-plane"></i></button>
+                        </div>
                     </div> 
                 </div>
                 <div id="imgContainer" >

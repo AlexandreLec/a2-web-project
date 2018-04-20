@@ -148,11 +148,21 @@ class EventController extends Controller
     //show Json of event by id
     public function eventImgs($id){
         $event = Event::find($id);
-        return $event->imgs;
+        $imgs = $event->imgs;
+
+        foreach ($imgs as $key => $img) {
+            $img->comments;
+            $img->getLike();
+            $img->author;
+            foreach ($img->comments as $key => $comment) {
+                $comment->author;
+            }
+        }
+
+        
+        return $imgs;
     }
     
-    
-
     //create and download zip
     public function downloadZip(){
 

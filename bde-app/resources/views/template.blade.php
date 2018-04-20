@@ -16,6 +16,7 @@
         <meta name="_token" content="{{ csrf_token() }}"/>
         @if (isset($user))
         <span id="id-user" hidden>{{ $user->id }}</span>
+        <span id="id-group-user" hidden>{{ $user->id_group }}</span>
         @endif
 
         <!-- Script files -->

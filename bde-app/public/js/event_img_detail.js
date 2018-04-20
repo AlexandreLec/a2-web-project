@@ -1,103 +1,106 @@
-var comments = [];
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+    }
+});
 
-function addComment(date, time, user, contnt, id, own){
-    
-    var newComment = document.createElement("div");
-    newComment.className = "comment";
-    
-    var newCmtMeta = document.createElement('div');
-    newCmtMeta.className = 'cmtMeta';
-    
-    var newDateTime = document.createElement('p');
-    
-    var newDate = document.createElement('i');
-    newDate.className = 'cmtDate';
-    newDate.textContent = date;
-    
-    var newTime = document.createElement('i');
-    newTime.className = 'cmtTime';
-    newTime.textContent = time;
-    
-    var newUser = document.createElement('p');
-    newUser.className = 'cmtUser';
-    newUser.textContent = user;
-    
-    var newCmtText = document.createElement('div');
-    newCmtText.className = 'cmtTextArea';
-    
-    var newCmtContent = document.createElement('p');
-    newCmtContent.textContent = contnt;
-    
-    var newCmtSet = document.createElement('div');
-    newCmtSet.className = 'cmntSettings';
-    
-    var newCmtSetBut = document.createElement('button');
-    newCmtSetBut.className = 'stgsButton';
-    newCmtSetBut.id = 'drpSet'+id;
-    newCmtSetBut.addEventListener('click',dltComment);
-    
-    var newCmtSetButIcn = document.createElement('i');
-    newCmtSetButIcn.className = 'fas fa-trash-alt';
-    
-    var newCmtSetCnt = document.createElement('div');
-    
-    newCmtSetCnt.className = 'settingsContent';
-    
-    var newCmtSetLine = document.createElement('a');
-    newCmtSetLine.textContent = 'Supprimer ce commentaire';
-    
-    
-    newCmtSetCnt.appendChild(newCmtSetLine);
-    newCmtSetBut.appendChild(newCmtSetButIcn);
-    
-    newCmtMeta.appendChild(newDateTime);
-    newCmtMeta.appendChild(newUser);
-    
-    newDateTime.appendChild(newDate);
-    newDateTime.appendChild(newTime);
-    
-            
-    newCmtSet.appendChild(newCmtSetCnt);
-    newCmtSet.appendChild(newCmtSetBut);
-    
-    newCmtText.appendChild(newCmtContent);
-    newCmtText.appendChild( newCmtSet);
-    
-    newComment.appendChild(newCmtMeta);
-    newComment.appendChild(newCmtText);
-    
-    var cmtSection = document.getElementById('comments');
-    
-    if(own == 1){
-        var newOwnComment = document.createElement('div');
-        newOwnComment.className = 'ownComment';
-        newOwnComment.appendChild(newComment);
-        cmtSection.appendChild(newOwnComment);
-    }
-    else {
-        cmtSection.appendChild(newComment);
-    }
-    
-    
-//    console.log(document.getElementsByClassName('comment'));
-    
-    
+var addLike = function() {
+
+    id_image = document.getElementById('mdlImg').getAttribute("name");
+    image = getImageById(id_image);
+    element = this;
+    $.get("/picture/like/add/"+this.id).done([
+        function () { 
+            $.get("/picture/like/"+element.id, function(data){
+                if(data){
+                    $('.img-like').text(data);
+                    picture = getImageById(element.id);
+                    picture.likes = data;
+                }
+            });
+        }
+    ]);
 }
 
-function getComments(id){
-    $.get("/api/pictures/"+id+"/comments", function(data){
-        comments = data;
+function loadMeta(picture){
+
+    var metaData = document.createElement("p");
+    metaData.innerHTML = "Postée par "+picture.author.first_name+" "+picture.author.surname;
+    $('.metadata').empty().append(metaData);
+
+    $('.img-like').text(picture.likes);
+    $('.like .button-red').attr('id', picture.id);
+
+    $('#comments').empty();
+
+    picture.comments.forEach(comment => {
+        var newComment = document.createElement("div");
+        newComment.className = "comment";
+
+        var newCmtMeta = document.createElement('div');
+        var newMeta = document.createElement('p');
+        newCmtMeta.className = 'cmtMeta';
+        newMeta.innerHTML = comment.author.first_name+" "+comment.author.surname+", le "+comment.date_comment+" à "+comment.time_comment;
+        newCmtMeta.appendChild(newMeta);
+        newComment.appendChild(newCmtMeta);
+
+        var newCmtText = document.createElement('div');
+        var newCmtContent = document.createElement('p');
+
+        newCmtText.className = 'cmtTextArea';
+        newCmtContent.innerHTML = comment.body;
+        newCmtText.appendChild(newCmtContent);
+        newComment.appendChild(newCmtText);
+
+        if($('#id-group-user').html() == 4){
+            var suppr = document.createElement('span');
+            suppr.className="del-comment";
+            suppr.innerHTML="Supprimer";
+            suppr.setAttribute("id", comment.id);
+            suppr.addEventListener("click", confirmDelComment);
+            newComment.appendChild(suppr);
+        }
+
+        $('#comments').append(newComment);
     });
 }
 
-function loadComments(){
-    console.log(this.id);
-    getComments();
-    document.querySelector('#reply form').action = "/event/pictures/{{ $picid->id }}/comments";
-    comments.forEach(addComment(this.date, this.time, this.user, this.contnt, this.id, this.own));
-}
+var addComment = function(){
 
-function dltComment(){
+    id_image = document.getElementById('mdlImg').getAttribute("name");
+    image = getImageById(id_image);
+    content = document.getElementById('add-comment').value;
+
+    $.ajax({
+      type: "POST",
+      url: '/event/comment/',
+      data: {
+        id_img: image.id,
+        content: content
+      },
+      success: function(){
+        getImages(image);
+        document.getElementById('add-comment').value="";
+      }
+    });
     
 }
 
+var confirmDelComment = function () {
+
+    id_image = document.getElementById('mdlImg').getAttribute("name");
+    image = getImageById(id_image);
+
+    if (confirm("Voulez-vous vraiment supprimer ce commentaire ? Cette opération est irréversible.")){
+        $.ajax({
+            url: "/event/comment/"+this.id,
+            type: 'DELETE',
+            success: function(data, statut){
+                getImages(image);
+            }
+        });
+    };
+}
+
+$('#send-comment').on("click", addComment);
+$('.like .button-red').on('click', addLike);

@@ -41,6 +41,5 @@ Route::get('/goodie/category', 'ArticleCategoryController@index');
 Route::get('/event/pictures/{id}', 'EventController@eventImgs');
 
 //event picture comments
-Route::get('/event/pictures/{id}/comments', 'CommentController@getComments');
-Route::post('/event/pictures/{id}/comments', 'CommentController@addComment');
+
 

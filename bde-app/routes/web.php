@@ -95,3 +95,9 @@ Route::get('/notification','NotificationController@notif');
 
 //DeleteNotif route
 Route::delete('/notification','NotificationController@deleteall');
+
+Route::post('/event/comment/', 'CommentController@addComment');
+Route::delete('/event/comment/{id}', 'CommentController@removeComment');
+
+Route::get('/picture/like/{id}', 'PictureController@getLike');
+Route::get('/picture/like/add/{id}', 'PictureController@addLike');

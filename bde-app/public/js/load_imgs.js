@@ -1,15 +1,25 @@
 //var pics = [];
 //var response;
 
-var Picture = function (id, name, urlImg){
+var Picture = function (id, name, urlImg, sender, comments, likes){
     this.id = id;
     this.name = name;
     this.url = urlImg;
+    this.author = sender;
+    this.comments = comments;
+    this.likes = likes;
 };
 
 var images = [];
 
-function getImages(){
+var getImageById = function(id){
+
+    return images.find(function(element){
+        return element.id == id;
+    });
+};
+
+function getImages(image=null){
     
     //xml http request to /api/users
     url = '/api/event/pictures/'+document.getElementById("eventid").value;
@@ -23,16 +33,21 @@ function getImages(){
     //if request completed gets the JSON file
     if (xhr.readyState === 4 && xhr.status === 200) {
       
-      
       var response = JSON.parse(xhr.responseText);
       var i=0;
-      
+      images = [];
       
       while(response[i] != null){
-          images.push(new Picture(response[i].id, response[i].name, response[i].url_picture));
-        setImage(response[i].url_picture, response[i].id);
-//        console.log(response[i].url_picture);
-        i+=1;
+        let pic = new Picture(response[i].id, response[i].name, response[i].url_picture, response[i].author,response[i].comments,response[i].likes)
+        images.push(pic);
+        i++;
+      }
+      if($('#photos').html() == ""){
+        buildImage(images);
+      }
+      if(image !== null){
+        image = getImageById(image.id);
+        loadMeta(image);
       }
       
       var ldedstate = document.getElementById("imgsloaded");
@@ -46,33 +61,42 @@ function getImages(){
     });
 }
 
-function setImage(imgpath, id){
-    //print to DOM
-    var newimage = new Image();
-    newimage.id = "id"+id;
-    newimage.src = imgpath;
-    newimage.addEventListener('click', function(){
-        
-        //function executed when photo clicked
-        
-        //Get the modal
-        var modal = document.getElementById('myModal');
-//        var imgsrc = document.getElementById(this.id).src;
-        var modalImg = document.getElementById('mdlImg');
+var showFrame = function (){
+    var modal = document.getElementById('myModal');
+    var modalImg = document.getElementById('mdlImg');
 
-        modal.style.display = "block";
-        modalImg.style.background = 'center / contain no-repeat url('+this.src+')';
-        
-        loadComments();
+    modal.style.display = "block";
+    modalImg.style.background = 'center / contain no-repeat url('+this.src+')';
 
-        var span = document.getElementsByClassName("close")[0];
+    modalImg.setAttribute("name", this.id);
 
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            } ;
-    });
-    document.getElementById('photos').appendChild(newimage); 
+    img = getImageById(this.id);
+
+    loadMeta(img);
 }
+
+var hideFrame = function (){
+    var modal = document.getElementById('myModal');
+
+    modal.style.display = "none";
+}
+
+function buildImage(pictures){
+    //print to DOM
+
+    pictures.forEach(picture =>{
+        var newimage = document.createElement('img');
+        newimage.id = picture.id;
+        newimage.src = picture.url;
+        newimage.addEventListener('click', showFrame);
+        document.getElementById('photos').appendChild(newimage); 
+    });
+    
+}
+
+$("#mdlImg").on("click", hideFrame);
+$("#close-window").on("click", hideFrame);
+
+
 
 getImages();

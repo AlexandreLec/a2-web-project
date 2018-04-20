@@ -94,4 +94,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Notification', 'id_user');
     }
 
+    public function imagesPost()
+    {
+        return $this->hasMany('App\Images', 'id_user');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'id_user');
+    }
+
 }

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Image extends Model
 {
@@ -31,9 +32,32 @@ class Image extends Model
     }
     
     public $timestamps = false;
+
+    public function getLike() {
+
+        if($this->likes == null){
+            $poll = DB::table('likes')->where('id_picture','=',$this->id)->get();
+            $poll = sizeof($poll);
+            return $this->likes = $poll;
+        }
+        else {
+            return $this->likes;
+        }
+        
+    }
     
     public function event()
     {
         return $this->belongsTo('App\Event', 'id_event');
+    }
+
+    public function author()
+    {
+        return $this->belongsTo('App\User', 'id_user');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'id_picture');
     }
 }
