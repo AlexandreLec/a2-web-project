@@ -44,7 +44,7 @@ class LoginController extends Controller
 			return $tab;
 		}
 	}
-
+	
     public function index(){
     	if(Auth::check()) {
     		$user = Auth::user();

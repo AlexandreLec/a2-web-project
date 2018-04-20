@@ -1,6 +1,6 @@
 
 
-var mailB = surnameB = firstnameB = passwordB =  false;
+var mailB = surnameB = firstnameB = passwordB =  false; //for lock the button register
 var emails = [];
 
 function getemails(){
@@ -37,7 +37,7 @@ console.log("ok");
     });
      
 }
-
+//regular expression for check name
 function checkname() {
     var firstname = document.getElementById('Name');
     var filtre = /^[a-zA-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\.\,\!\?\-]{3,35}$/;
@@ -53,7 +53,7 @@ function checkname() {
 
     }
 }
-
+//regular expression for check surname
 function checksecondname() {
     var surname = document.getElementById('Surname');
     var filtre = /^[a-zA-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\.\,\!\?\-]{3,35}$/;
@@ -65,7 +65,7 @@ function checksecondname() {
         surname.style.border = "solid 2px red";
     }
 }
-
+//regular expression for check mail
 function checkmail() {
     var grade = document.getElementById('Grade').value;
     var regex_viacesi = /^[a-z\.A-Z]{2,}@viacesi\.fr/;
@@ -83,7 +83,7 @@ function checkmail() {
         else if (grade == "Salarié CESI" && regex_cesi.test(mail.value)) {
 
             mail.style.border = "solid 2px green";
-           
+            mailB=true;
         }
         else {
             mail.style.border = "solid 2px red";
@@ -112,7 +112,7 @@ function chkuniqmail(tstdmail){
     return true;
 }
 
-
+//regular expression for check password
 function checkpassword() {
     var password = document.getElementById('Password');
     var passwordv = document.getElementById('Passwordv');
@@ -120,11 +120,11 @@ function checkpassword() {
 
 
     if ((password.value == '' || passwordv.value == '') && regex_pass.test(password.value)) {
-        //alert('Tous les champs ne sont pas remplis');
+        
 
         password.focus();
 
-        // return false;
+       
 
     }
 
@@ -179,7 +179,7 @@ passwordv.addEventListener('change', checkpassword);
 var grade = document.getElementById('Grade');
 grade.addEventListener('click', checkmail);
 
-
+//button submit
 document.getElementById('btnSubmit').addEventListener('click', function (e) {
     if (firstnameB == false || surnameB == false || passwordB == false || mailB == false ) {
         e.preventDefault();

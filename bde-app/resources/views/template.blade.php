@@ -85,6 +85,8 @@
                 <li><a href="/logout">Déconnexion</a></li>
                     @if ($user->checkAdmin())
                     <li><a href="/admin">Administration</a></li>
+                    @elseif ($user->checkSalarie())
+                    <li><a href="/report">Signaler un contenu</a></li>
                     @endif
                 @endif
                 
@@ -97,7 +99,7 @@
                 <label>Identifiant </label><input name="login" type="text"/>
                 <label>Mot de passe </label><input name="password" type="password"/>
                 <button type="submit">Connexion</button>
-                <span>Pas encore inscris ? - <a href="/register">Cliquer ici</a></span>
+                <span>Pas encore inscrit? - <a href="/register">Cliquer ici</a></span>
             </form>
 
         </div>

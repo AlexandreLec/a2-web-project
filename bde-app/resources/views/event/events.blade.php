@@ -12,7 +12,6 @@
 
 	{{ Html::style('css/idea.css') }}
 
-	{{ Html::style('css/viewfile.css') }}
 
 	@yield('css')
 

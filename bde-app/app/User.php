@@ -49,6 +49,15 @@ class User extends Authenticatable
         }
         return $this->admin;
     }
+    
+    public function checkSalarie() {
+    if($this->id_group === 3){//groupName == 'Salarié CESI'){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public function getGroup(){
         if($this->group === null){
