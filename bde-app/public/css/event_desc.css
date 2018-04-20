@@ -15,7 +15,7 @@
     border-radius: 5px;*/
 }
 
-.info {
+.info-event {
     
     display: flex;
     width: 50%;
@@ -42,12 +42,18 @@
 .event{
     max-width: 1200px;
     margin: auto;
+    margin-bottom: 60px;
     display: flex;
     flex-direction: column;
     
     padding: 4px;
     border: 1px solid black;
     border-radius: 5px;
+}
+
+p i{
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 h2 {
@@ -79,7 +85,7 @@ h2 {
     border-radius: 5px;*/
 }
 
-.back {
+#back {
     width: 200px;
 }
 
@@ -99,6 +105,12 @@ h2 {
     width: 30%;
     padding-left: 15px;
     align-self: center;
+}
+
+#submit{
+    margin: auto;
+    margin-top: 30px;
+    width: 150px;
 }
 
 #photos{
@@ -273,3 +285,31 @@ h2 {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
 }
+
+@media screen and (max-width: 800px) {
+    .info-event{
+        flex-direction: row;
+    }
+
+    .info-event div{
+        margin-top: 10px;
+        
+    }
+    
+    .title{
+        flex-direction: column;
+    }
+    
+    .rest{
+        flex-direction: column;
+    }
+    
+    .rest p {
+        border-right: none;
+    }
+    
+    .upldimg{
+        align-self: flex-start;
+    }
+}
+
