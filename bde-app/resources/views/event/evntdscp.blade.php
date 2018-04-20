@@ -4,23 +4,23 @@
 @section('content')
 
 <div class="event">
-    <a href="/events/past"><button class="back" > <--   Retourner aux events</button></a>
+    <a href="/events/past"><button id="back" class="button button-red" > <--   Retourner aux events</button></a>
 
     <div id="info">
         <div class="title">
             <h2>{{ $event->name }}</h2>
-            <div class="info">
+            <div class="info-event">
                 
                 <div class="field">    
-                    <i class="fas fa-male"></i><p class='people'>{{ $event->nbrParticipants() }}</p>
+                    <p class='people'><i class="fas fa-male"></i>{{ $event->nbrParticipants() }}</p>
                 </div>
                 
                 <div class="field">    
-                    <i class="far fa-calendar-alt"></i><p class='date'>{{ $event->event_date }} </p>
+                    <p class='date'><i class="far fa-calendar-alt"></i>{{ $event->event_date }} </p>
                 </div>
                 
                 <div class="field"> 
-                    <i class="fas fa-map-marker-alt"></i><p class='place'>{{ $event->location }}</p>
+                    <p class='place'><i class="fas fa-map-marker-alt"></i>{{ $event->location }}</p>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                     <input type="hidden" id="eventid" name="event_id" value="{{ $event->id }}">
                     <input type="hidden" id="imgsloaded" value="0">
                     <input type="file" id="usrimg" name="photo">
-                    <input id="submit" type="submit" value="Poster image">
+                    <input id="submit" class="button button-red" type="submit" value="Poster image">
                 </form>
             </div>  
         </div>
