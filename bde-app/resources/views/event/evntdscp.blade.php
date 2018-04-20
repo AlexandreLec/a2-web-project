@@ -1,6 +1,10 @@
 @extends ('event.events')
 
 
+@section('addcss')
+    {{ Html::style('css/event_desc.css') }}
+@stop
+
 @section('content')
 
 <div class="event">

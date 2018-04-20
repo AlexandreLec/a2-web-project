@@ -8,12 +8,12 @@
 
 	{{ Html::style('css/past.css') }}
 
-	{{ Html::style('css/event_desc.css') }}
+	
 
 	{{ Html::style('css/idea.css') }}
 
 
-	@yield('css')
+	@yield('addcss')
 
 @stop
 

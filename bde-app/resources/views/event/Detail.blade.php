@@ -33,7 +33,7 @@
         </div>
     </div>     
 </div>
-    <div class="img">
+    <div class="img-soon">
         <img src="{{ $event->url_img }}">
         </div>
         
