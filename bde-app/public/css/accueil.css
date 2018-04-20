@@ -70,9 +70,37 @@ p {
   counter-increment: carousel-cell;
 }
 
+.carousel-goodies {
+	width:300px;
+	height: 230px;
+	align-self: center;
+}
+
+.carousel-goodies-cell {
+	width: 100%;
+	height: 100%;
+	counter-increment: carousel-goodies-cell;
+
+}
+
+.carousel-goodies-cell img {
+	width: 100%;
+	height: 100%;
+}
+
 .carousel-cell img {
 	width: 100%;
 	height: 100%;
+}
+
+.top-products {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.top-products h2{
+	text-align: center;
 }
 
 @media screen and (max-width: 1400px) {

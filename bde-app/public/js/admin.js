@@ -405,6 +405,7 @@ var actionsEvent = function (event) {
     
     spanEdit.className = "btn-edit-event";
     spanDel.className = "btn-del-event";
+    spanPdf.className = "btn-pdf";
 
     return actions;
 }
@@ -672,8 +673,10 @@ var getDataEvents = function () {
         });
         $('#events').on('click', '.btn-edit-event', showEvent);
         $('#events').on('click', '.btn-del-event', confirmDelEvent);
+        $('#events').on('click', '.btn-pdf', participantsPDF);
         $('#events-past').on('click', '.btn-edit-event', showEvent);
         $('#events-past').on('click', '.btn-del-event', confirmDelEvent);
+        $('#events-past').on('click', '.btn-pdf', participantsPDF);
 
         $('#events').DataTable({
             responsive: true
@@ -727,5 +730,5 @@ window.onresize = resize;
 
 function resize()
 {
-    location.reload();
+    //location.reload();
 }

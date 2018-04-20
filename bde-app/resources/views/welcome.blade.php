@@ -50,7 +50,7 @@
                     <h2>Top Goodies</h2>
                     <div class="carousel-goodies">
                         @foreach ($goodies as $goodie)
-                            <div class="carousel-cell"><a href="/shop"><img  src="{{$goodie->url_img}}"/></a></div>
+                            <div class="carousel-goodies-cell"><a href="/shop"><img  src="{{$goodie->url_img}}"/></a></div>
                         @endforeach
                     </div>
                 </div>

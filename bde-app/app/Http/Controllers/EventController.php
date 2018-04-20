@@ -96,8 +96,11 @@ class EventController extends Controller
 
     //show Past Event
     public function past(){
+        if(Auth::check()) {
+            $user = Auth::user();
+        }
         $events = Event::all()->where('statut', '=', 'DONE');
-        return view('event.Past', compact('events'));
+        return view('event.Past', compact('events','user'));
         }
 
         //unscribe to an event
